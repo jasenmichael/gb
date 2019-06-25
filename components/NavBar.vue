@@ -1,23 +1,23 @@
 <template>
   <div>
     <mdb-container>
+      <!-- <pre>{{ $mq }}</pre> -->
       <!-- eslint-disable-next-line -->
-      <mdb-navbar dark color="green darken-2" gradient='green' class="white-text" animated animation="3">
-        <mdb-navbar-brand v-if="this.$route.path === '/' ? true : false" to="/">
+      <mdb-navbar dark color="green darken-2" class="white-text" animated animation="3">
+        <mdb-navbar-brand>
           <!-- eslint-disable-next-line -->
           <img
+            v-if="$mq === 'sm' ? true : false"
+            id="icon"
             src="/icon.png"
-            height="60"
+            height="30"
             alt="an image of a greenbriar vine"
           />
-          <strong id="brand">
-            Greenbriar Community School
-          </strong>
-        </mdb-navbar-brand>
-        <mdb-navbar-brand v-else to="/">
           <img
+            v-else
+            id="icon"
             src="/icon.png"
-            height="60"
+            height="80"
             alt="an image of a greenbriar vine"
           />
           <strong id="brand">
@@ -85,18 +85,33 @@ export default {
 
 <style>
 #brand {
-  font-size: 110%;
+  font-size: 90%;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.69);
+  transition: all 0.5s ease-in-out;
+}
+#icon {
+  transition: all 0.5s ease-in-out;
 }
 
 .link {
   transition: all 0.2s ease-in-out;
 }
+
 @media only screen and (min-width: 992px) {
+  #brand {
+    font-size: 150%;
+  }
+  .link {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
   .link:hover {
     transform: scale(1.3);
-    margin-left: 2px;
-    margin-right: 2px;
+  }
+}
+@media only screen and (max-width: 366px) {
+  #brand {
+    font-size: 80%;
   }
 }
 </style>

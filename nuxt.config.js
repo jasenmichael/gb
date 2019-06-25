@@ -67,7 +67,19 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    [
+      'nuxt-mq',
+      {
+        // Default breakpoint for SSR
+        defaultBreakpoint: 'sm',
+        breakpoints: {
+          sm: 992,
+          md: 1250,
+          lg: Infinity
+        }
+      }
+    ]
   ],
   /*
    ** Axios module configuration
