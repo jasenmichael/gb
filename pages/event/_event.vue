@@ -1,24 +1,39 @@
 <template>
   <div>
-    <nuxt-link :to="'/events'">Events</nuxt-link>
-    <span>&middot; {{ getEvent().urlPath }}</span>
-    <br>
-    <div>
-      <b-jumbotron
-        id="hero"
-        class="text-md-center text-sm-left mt-6"
-        container-fluid
-        :header="getEvent().name.text"
-        :lead="getEvent().description.text"
-        style="background-image: url(https://mdbootstrap.com/img/Photos/Others/forest2.jpg); background-repeat: no-repeat;"
-      >
-        <!-- <p v-html="getEvent().description.html"></p> -->
-        <b-button variant="primary" href="#">More Info</b-button>
-      </b-jumbotron>
-    </div>
-
-    <!-- <b-img :src="getEvent().logo.original.url" fluid alt="Responsive image"></b-img> -->
-    <div class="container">
+    <mdb-card
+      class="card-image"
+      :style="{
+        background:
+          '#fff url(' +
+          (getEvent().logo == null ? eventLogo : getEvent().logo.original.url) +
+          ') no-repeat center'
+      }"
+    >
+      <div class="text-white text-center rgba-stylish-light py-5 px-4">
+        <div>
+          <h1 class="pt-3 mb-4 font-bold display-4 eventtitle">
+            <strong>{{ getEvent().name.text }}</strong>
+          </h1>
+          <h5
+            class="mx-4 mb-4 font-bold eventdescription"
+            v-html="getEvent().description.text"
+          ></h5>
+          <mdb-btn
+            outine="primary"
+            class="rsvp"
+            color="green"
+            tag="a"
+            target="_blank"
+            :href="getEvent().url"
+            icon="leaf"
+            >RSVP
+          </mdb-btn>
+        </div>
+      </div>
+    </mdb-card>
+    <div class="container mt-3">
+      <nuxt-link :to="'/events'">Events</nuxt-link>
+      <span>&middot; {{ getEvent().urlPath }}</span>
       <div id="category">
         <p>
           Category:
@@ -28,85 +43,106 @@
       <!-- <h1>{{ getEvent().name.text }}</h1> -->
       <div
         class="content"
-        v-html="getEvent().description.html.replace(getEvent().description.text, '')"
+        v-html="
+          getEvent()
+            .description.html.replace(getEvent().description.text, '')
+            .replace(/<img/g, '<img class=\'img-fluid\'')
+        "
       ></div>
-      <hr>
-      <hr>
-      <!-- <pre>{{ getEvent() }}</pre>
-      <pre>{{ this.$store.state.events.categories }}</pre>
-      <pre>{{ this.$store.state.events.subcategories }}</pre>-->
+      <hr />
+      <hr />
+      <div>
+        <pre>{{ getEvent() }}</pre>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mdbCard, mdbBtn } from 'mdbvue'
+
 export default {
-  async fetch({ store }) {
-    if (store.state.events.list.length == 0) {
-      await store.dispatch("events/get");
-    }
-    if (store.state.events.categories.length == 0) {
-      await store.dispatch("events/getCategories");
-    }
-    if (store.state.events.subcategories.length == 0) {
-      await store.dispatch("events/getSubcategories");
-    }
+  name: 'JumbotronPage',
+  components: {
+    mdbCard,
+    mdbBtn
   },
   data() {
     return {
+      eventLogo: '/event-logo.jpg',
       getEvent: () => {
-        let eventPath = this.$nuxt.$route.params.event;
-        let event = this.$store.state.events.list.find(
-          event => event.urlPath == eventPath
-        );
-        return event;
+        const eventPath = this.$nuxt.$route.params.event
+        const event = this.$store.state.events.list.find(
+          event => event.urlPath === eventPath
+        )
+        return event
       },
       getCategory: () => {
-        let event = this.getEvent();
-        let category = this.$store.state.events.categories.find(
-          category => category.id == event.category_id
-        );
-        return category.name;
+        const event = this.getEvent()
+        const category = this.$store.state.events.categories.find(
+          category => category.id === event.category_id
+        )
+        if (!category) {
+          return 'Educational'
+        }
+        return category.name
       },
       getSubcategory: () => {
-        let event = this.getEvent();
-        let subcategory = this.$store.state.events.subcategories.find(
-          subcategory => subcategory.id == event.subcategory_id
-        );
-        return subcategory.name;
+        const event = this.getEvent()
+        const subcategory = this.$store.state.events.subcategories.find(
+          subcategory => subcategory.id === event.subcategory_id
+        )
+        if (!subcategory) {
+          return 'Educational'
+        }
+        return subcategory.name
       }
-    };
+    }
+  },
+  async fetch({ store }) {
+    if (store.state.events.list.length === 0) {
+      await store.dispatch('events/getEvents')
+    }
+    if (store.state.events.categories.length === 0) {
+      await store.dispatch('events/getCategories')
+    }
+    if (store.state.events.subcategories.length === 0) {
+      await store.dispatch('events/getSubcategories')
+    }
+  },
+  mounted: function() {
+    const imgs = document.getElementsByClassName('img-fluid')
+    for (let index = 0; index < imgs.length; index++) {
+      const img = imgs[index]
+      if (index % 2 === 0) {
+        // alert("Even Number");
+        img.classList.add('img-left')
+        img.parentNode.classList.add('img-max')
+        img.parentNode.classList.add('img-left')
+      } else {
+        // alert("Odd Number");
+        img.classList.add('img-right')
+        img.parentNode.classList.add('img-max')
+        img.parentNode.classList.add('img-right')
+      }
+    }
   }
-};
+}
 </script>
 
-<style>
-#hero {
-  min-height: 70vh;
+<style scoped>
+.rsvp {
+  transition: all 0.2s ease-in-out;
+}
+.rsvp:hover {
+  transform: scale(1.1);
 }
 
-.content div:nth-child(even) > img {
-  border-radius: 8px;
-  max-width: 400px;
-  max-height: 400px;
-  padding-right: 1rem;
-  padding-bottom: 2rem;
-  padding-top: 1rem;
-  float: left;
-  clear: both;
+.eventtitle {
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.51);
 }
 
-.content div:nth-child(odd) > img {
-  border-radius: 8px;
-  max-width: 450px;
-  max-height: 450px;
-  padding-left: 1rem;
-  padding-bottom: 2rem;
-  padding-top: 1rem;
-
-  float: right;
-  clear: both;
+.eventdescription {
+  text-shadow: 1px 1px 16px rgba(0, 0, 0, 1);
 }
 </style>
-
-
