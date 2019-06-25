@@ -14,6 +14,7 @@
     "generate": "nuxt generate",
     "deploy-local": "rm -rf /var/www/public_html && nuxt generate && mv dist /var/www",
     "deploy-staging": "rm -rf ../../public_html/gbdev && nuxt generate && mv dist ../../public_html/gbdev"
+    "deploy-production": "rm -rf ../../public_html/gbdev && nuxt generate && mv dist ../../public_html/gbdev"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
