@@ -1,47 +1,45 @@
 <template>
   <div>
-    <mdb-container>
-      <!-- <pre>{{ $mq }}</pre> -->
-      <!-- eslint-disable-next-line -->
-      <mdb-navbar dark color="green darken-2" class="white-text" animated animation="3">
-        <mdb-navbar-brand>
+    <!-- <pre>{{ $mq }}</pre> -->
+    <!-- eslint-disable-next-line -->
+    <mdb-navbar dark color="green darken-2" class="white-text" animated animation="3">
+      <mdb-navbar-brand to="/">
+        <!-- eslint-disable-next-line -->
+        <img
+          v-if="$mq === 'sm' ? true : false"
+          id="icon"
+          src="/icon.png"
+          height="30"
+          alt="an image of a greenbriar vine"
+        />
+        <img
+          v-else
+          id="icon"
+          src="/icon.png"
+          height="80"
+          alt="an image of a greenbriar vine"
+        />
+        <strong id="brand">
+          Greenbriar Community School
+        </strong>
+      </mdb-navbar-brand>
+      <mdb-navbar-toggler>
+        <mdb-navbar-nav center>
           <!-- eslint-disable-next-line -->
-          <img
-            v-if="$mq === 'sm' ? true : false"
-            id="icon"
-            src="/icon.png"
-            height="30"
-            alt="an image of a greenbriar vine"
-          />
-          <img
-            v-else
-            id="icon"
-            src="/icon.png"
-            height="80"
-            alt="an image of a greenbriar vine"
-          />
-          <strong id="brand">
-            Greenbriar Community School
-          </strong>
-        </mdb-navbar-brand>
-        <mdb-navbar-toggler>
-          <mdb-navbar-nav center>
-            <!-- eslint-disable-next-line -->
-            <mdb-nav-item :class="isActive('/about') + ' link'" anchor-class="white-text" to="/about">
-              About
-            </mdb-nav-item>
-            <!-- eslint-disable-next-line -->
-            <mdb-nav-item :class="isActive('/contact') + ' link'" anchor-class="white-text" to="/contact">
-              Contact
-            </mdb-nav-item>
-            <!-- eslint-disable-next-line -->
-            <mdb-nav-item :class="isActive('/events') + ' link'" anchor-class="white-text" to="/events">
-              Events & Workshops
-            </mdb-nav-item>
-          </mdb-navbar-nav>
-        </mdb-navbar-toggler>
-      </mdb-navbar>
-    </mdb-container>
+          <mdb-nav-item :class="isActive('/about') + ' link'" anchor-class="white-text" to="/about">
+            About
+          </mdb-nav-item>
+          <!-- eslint-disable-next-line -->
+          <mdb-nav-item :class="isActive('/contact') + ' link'" anchor-class="white-text" to="/contact">
+            Contact
+          </mdb-nav-item>
+          <!-- eslint-disable-next-line -->
+          <mdb-nav-item :class="isActive('/events') + ' link'" anchor-class="white-text" to="/events">
+            Events & Workshops
+          </mdb-nav-item>
+        </mdb-navbar-nav>
+      </mdb-navbar-toggler>
+    </mdb-navbar>
     <!-- <pre>{{ this.$route.path }}</pre> -->
   </div>
 </template>
@@ -91,15 +89,20 @@ export default {
 }
 #icon {
   transition: all 0.5s ease-in-out;
+  padding-left: 0rem;
 }
 
 .link {
   transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.69);
 }
 
 @media only screen and (min-width: 992px) {
   #brand {
     font-size: 150%;
+  }
+  #icon {
+    padding-left: 3rem;
   }
   .link {
     margin-left: 10px;

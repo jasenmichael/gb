@@ -24,7 +24,8 @@
     "bootstrap-vue": "^2.0.0-rc.24",
     "mdbvue": "^5.5.0",
     "nuxt": "^2.0.0",
-    "nuxt-mq": "^2.0.0"
+    "nuxt-mq": "^2.0.0",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

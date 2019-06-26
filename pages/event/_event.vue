@@ -6,7 +6,7 @@
         background:
           '#fff url(' +
           (getEvent().logo == null ? eventLogo : getEvent().logo.original.url) +
-          ') no-repeat center'
+          ') no-repeat center center'
       }"
     >
       <div class="text-white text-center rgba-stylish-light py-5 px-4">
@@ -130,7 +130,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .rsvp {
   transition: all 0.2s ease-in-out;
 }
