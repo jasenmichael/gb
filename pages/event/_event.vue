@@ -69,7 +69,7 @@ export default {
   },
   data() {
     return {
-      eventLogo: '/event-logo.jpg',
+      eventLogo: '/banner.jpg',
       getEvent: () => {
         const eventPath = this.$nuxt.$route.params.event
         const event = this.$store.state.events.list.find(

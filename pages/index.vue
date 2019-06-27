@@ -9,7 +9,7 @@
         tag="a"
         href="#"
         icon="angle-double-right"
-        color="green"
+        color="blue darken-4"
       >
         learn more
       </mdb-btn>

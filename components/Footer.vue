@@ -1,19 +1,14 @@
 <template>
   <!-- Footer -->
-  <mdb-footer color="green darken-4" class="page-footer font-small">
-    <div style="backgroundColor: #00695c">
-      <mdb-container class="text-left text-center">
-        <h6 class="mb-0 white-text p-4">
-          Follow us on Facebook
-          <a
-            class="fb-ic ml-4"
-            target="_blank"
-            href="https://www.facebook.com/greenbriarcommunityschool/"
-          >
-            <i class="fab fa-facebook white-text mr-lg-4"></i>
-          </a>
-        </h6>
+  <mdb-footer color="primary-color-dark" class="page-footer font-small">
+    <div style="backgroundColor: #00695c" class="z-depth-3">
+      <hr class="clearfix w-100 m-0" />
+      <mdb-container class="text-center">
+        <PayPal />
       </mdb-container>
+    </div>
+    <div class="z-depth-4">
+      <hr class="clearfix w-100 m-0" />
     </div>
     <mdb-container class="text-left mt-4">
       <mdb-row>
@@ -22,11 +17,31 @@
             Get in touch
           </h5>
           <ul class="list-unstyled">
-            <li>Greenbriar Community School</li>
-            <li>1411 Old Sayers Rd.</li>
-            <li>Bastrop Tx, 78602</li>
-            <li>Phone: 512-281-2661</li>
-            <li>Email: contact@greenbriarschool.org</li>
+            <li>
+              <mdb-icon icon="map-marked-alt" size="2x" class="mr-2" />
+              Greenbriar Community School
+            </li>
+            <li class="ml-4 pl-3">&nbsp;1411 Old Sayers Rd.</li>
+            <li class="ml-4 mb-3 pl-3">&nbsp;Bastrop Tx, 78602</li>
+            <li>
+              <mdb-icon icon="phone" size="2x" class="mr-2 mb-2" />
+              512-281-2661
+            </li>
+            <li>
+              <mdb-icon icon="envelope" size="2x" class="mr-2" />
+              contact@greenbriarschool.org
+            </li>
+            <li>
+              <mdb-icon fab icon="facebook-square" size="2x" class="mr-2" />
+              <!-- <i class="fab fa-facebook white-text"></i> -->
+              <!-- <mdb-icon icon="facebook" class="mr-2" /> -->
+              <a
+                target="_blank"
+                href="https://www.facebook.com/greenbriarcommunityschool/"
+              >
+                &nbsp;Follow us on Facebook
+              </a>
+            </li>
           </ul>
         </mdb-col>
         <hr class="clearfix w-100 d-md-none" />
@@ -91,7 +106,9 @@
         </mdb-col>
         <hr class="clearfix w-100 d-md-none" />
         <mdb-col md="3">
-          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Sitemap</h5>
+          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
+            Upcoming Events
+          </h5>
           <ul class="list-unstyled">
             <li v-for="event in upcomingEvents" :key="event.id">
               <nuxt-link :to="'/event/' + event.urlPath">
@@ -102,12 +119,13 @@
         </mdb-col>
       </mdb-row>
     </mdb-container>
-    <div class="p-4" style="backgroundColor: #00695c">
+    <hr class="clearfix w-100 m-0" />
+    <div class="p-4 z-depth-5" style="backgroundColor: #00695c">
       <mdb-container class="text-center">
         <p class="text-center">
           Greenbriar Community School does not and shall not discriminate on the
-          basis of race, color, religion (creed),gender, gender expression, age,
-          national origin (ancestry), disability, marital status, sexual
+          basis of race, color, religion (creed), gender, gender expression,
+          age, national origin (ancestry), disability, marital status, sexual
           orientation, or military status, in any of its activities or
           operations. These activities include, but are not limited to, hiring
           and firing of staff, selection of students, volunteers, and provision
@@ -117,7 +135,10 @@
         </p>
       </mdb-container>
     </div>
-    <div class="footer-copyright text-center py-3">
+    <div
+      class="footer-copyright text-center py-3 z-depth-5"
+      style="backgroundColor: #3E4551"
+    >
       <mdb-container fluid>
         &copy; 2019 Copyright:
         <a href="https://greenbriarschool.org">Greenbriar Community School</a>
@@ -129,13 +150,16 @@
 </template>
 
 <script>
-import { mdbFooter, mdbContainer, mdbRow, mdbCol } from 'mdbvue'
+import PayPal from '@/components/PayPal'
+import { mdbFooter, mdbContainer, mdbRow, mdbCol, mdbIcon } from 'mdbvue'
 export default {
   components: {
     mdbFooter,
     mdbContainer,
     mdbRow,
-    mdbCol
+    mdbCol,
+    mdbIcon,
+    PayPal
   },
   data() {
     return {

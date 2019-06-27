@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="z-depth-5">
     <!-- <pre>{{ $mq }}</pre> -->
     <!-- eslint-disable-next-line -->
-    <mdb-navbar dark color="success-color-dark" class="white-text" animated animation="3">
+    <mdb-navbar dark color="teal darken-3" class="white-text z-depth-5" scrolling scrollingOffset={20}  animated animation="3">
       <mdb-navbar-brand to="/">
         <!-- eslint-disable-next-line -->
         <img

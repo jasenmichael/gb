@@ -4,7 +4,7 @@
       class="card-image"
       :style="{
         // eslint-disable-next-line
-        background: '#fff url(' + '/event-logo.jpg' + ') no-repeat center center'
+        background: '#fff url(' + '/banner.jpg' + ') no-repeat center center'
       }"
     >
       <div class="text-white text-center rgba-stylish-light py-5 px-4">
