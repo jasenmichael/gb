@@ -14,10 +14,10 @@
           <h1 class="pt-3 mb-4 font-bold display-4 eventtitle">
             <strong>{{ getEvent().name.text }}</strong>
           </h1>
-          <h5
+          <h4
             class="mx-4 mb-4 font-bold eventdescription"
             v-html="getEvent().description.text"
-          ></h5>
+          ></h4>
           <mdb-btn
             outine="primary"
             class="rsvp"
@@ -31,7 +31,7 @@
         </div>
       </div>
     </mdb-card>
-    <div class="container mt-3">
+    <mdb-container class="container mt-3">
       <nuxt-link :to="'/events'">Events</nuxt-link>
       <span>&middot; {{ getEvent().urlPath }}</span>
       <div id="category">
@@ -54,18 +54,18 @@
       <div>
         <pre>{{ getEvent() }}</pre>
       </div>
-    </div>
+    </mdb-container>
   </div>
 </template>
 
 <script>
-import { mdbCard, mdbBtn } from 'mdbvue'
+import { mdbCard, mdbBtn, mdbContainer } from 'mdbvue'
 
 export default {
-  name: 'JumbotronPage',
   components: {
     mdbCard,
-    mdbBtn
+    mdbBtn,
+    mdbContainer
   },
   data() {
     return {
@@ -130,7 +130,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .rsvp {
   transition: all 0.2s ease-in-out;
 }
@@ -139,10 +139,10 @@ export default {
 }
 
 .eventtitle {
-  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.51);
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
 }
 
 .eventdescription {
-  text-shadow: 1px 1px 16px rgba(0, 0, 0, 1);
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
 }
 </style>

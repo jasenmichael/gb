@@ -1,91 +1,112 @@
 <template>
-  <mdb-container>
-    <div class="d-flex justify-content-center">
-      <form :class="'contact-form ' + sending" @submit.prevent="sendEmail">
-        <!-- <p class="h4 text-center mb-4">Write to us</p> -->
-        <div class="grey-text">
-          <mdb-input
-            v-model="first_name"
-            label="First Name*"
-            icon="user"
-            group
-            type="text"
-            validate
-            error="wrong"
-            success="right"
-          />
-          <mdb-input
-            v-model="last_name"
-            label="Last Name*"
-            icon="blank"
-            group
-            type="text"
-            validate
-            error="wrong"
-            success="right"
-          />
-          <mdb-input
-            v-model="email"
-            label="Email*"
-            icon="envelope"
-            group
-            type="email"
-            validate
-            error="wrong"
-            success="right"
-          />
-          <mdb-input
-            v-model="tel"
-            label="Phone Number"
-            icon="mobile-alt"
-            group
-            type="text"
-            error="wrong"
-            success="right"
-          />
-          <mdb-input
-            v-model="subject"
-            label="Subject*"
-            icon="tag"
-            group
-            type="text"
-            validate
-            error="wrong"
-            success="right"
-          />
-          <mdb-textarea
-            v-model="message"
-            :rows="2"
-            label="Message*"
-            icon="pencil-alt"
-          />
+  <div>
+    <mdb-card
+      class="card-image"
+      :style="{
+        // eslint-disable-next-line
+        background: '#fff url(' + '/event-logo.jpg' + ') no-repeat center center'
+      }"
+    >
+      <div class="text-white text-center rgba-stylish-light py-5 px-4">
+        <div>
+          <h1 class="pt-4 mb-4 font-bold display-4 eventtitle">
+            <strong>Contact Us</strong>
+          </h1>
+          <h4
+            class="mx-4 mb-4 font-bold eventdescription"
+            v-html="'Drop a line if you have any questions...'"
+          ></h4>
         </div>
-        <div class="text-center">
-          <mdb-btn outline="primary" :class="sending">
-            <mdb-icon icon="paper-plane" class="ml-1" />
-            {{ sendTxt }}
-          </mdb-btn>
-          <p v-if="error" class="red-text">
-            Missing or invalid information..
-          </p>
-          <p v-else>{{ '&nbsp;' }}</p>
-        </div>
-      </form>
-      <mdb-modal :show="modal" centered @close="closeModal()">
-        <mdb-modal-header>
-          <mdb-modal-title>Message sent</mdb-modal-title>
-        </mdb-modal-header>
-        <mdb-modal-body>
-          Thanks for reaching out, we will get back with you
-        </mdb-modal-body>
-        <mdb-modal-footer>
-          <mdb-btn color="secondary" @click.native="closeModal()">
-            Close
-          </mdb-btn>
-        </mdb-modal-footer>
-      </mdb-modal>
-    </div>
-  </mdb-container>
+      </div>
+    </mdb-card>
+    <mdb-container>
+      <div class="d-flex justify-content-center">
+        <form :class="'contact-form ' + sending" @submit.prevent="sendEmail">
+          <!-- <p class="h4 text-center mb-4">Write to us</p> -->
+          <div class="grey-text">
+            <mdb-input
+              v-model="first_name"
+              label="First Name*"
+              icon="user"
+              group
+              type="text"
+              validate
+              error="wrong"
+              success="right"
+            />
+            <mdb-input
+              v-model="last_name"
+              label="Last Name*"
+              icon="blank"
+              group
+              type="text"
+              validate
+              error="wrong"
+              success="right"
+            />
+            <mdb-input
+              v-model="email"
+              label="Email*"
+              icon="envelope"
+              group
+              type="email"
+              validate
+              error="wrong"
+              success="right"
+            />
+            <mdb-input
+              v-model="tel"
+              label="Phone Number"
+              icon="mobile-alt"
+              group
+              type="text"
+              error="wrong"
+              success="right"
+            />
+            <mdb-input
+              v-model="subject"
+              label="Subject*"
+              icon="tag"
+              group
+              type="text"
+              validate
+              error="wrong"
+              success="right"
+            />
+            <mdb-textarea
+              v-model="message"
+              :rows="2"
+              label="Message*"
+              icon="pencil-alt"
+            />
+          </div>
+          <div class="text-center">
+            <mdb-btn outline="primary" :class="sending">
+              <mdb-icon icon="paper-plane" class="ml-1" />
+              {{ sendTxt }}
+            </mdb-btn>
+            <p v-if="error" class="red-text">
+              Missing or invalid information..
+            </p>
+            <p v-else>{{ '&nbsp;' }}</p>
+          </div>
+        </form>
+        <mdb-modal :show="modal" centered @close="closeModal()">
+          <mdb-modal-header>
+            <mdb-modal-title>Message sent</mdb-modal-title>
+          </mdb-modal-header>
+          <mdb-modal-body>
+            Thanks for reaching out, we will get back with you
+          </mdb-modal-body>
+          <mdb-modal-footer>
+            <mdb-btn color="secondary" @click.native="closeModal()">
+              Close
+            </mdb-btn>
+          </mdb-modal-footer>
+        </mdb-modal>
+      </div>
+    </mdb-container>
+  </div>
 </template>
 
 <script>
@@ -99,7 +120,8 @@ import {
   mdbModalHeader,
   mdbModalTitle,
   mdbModalBody,
-  mdbModalFooter
+  mdbModalFooter,
+  mdbCard
 } from 'mdbvue'
 
 export default {
@@ -113,7 +135,8 @@ export default {
     mdbModalHeader,
     mdbModalTitle,
     mdbModalBody,
-    mdbModalFooter
+    mdbModalFooter,
+    mdbCard
   },
   data() {
     return {
@@ -208,6 +231,14 @@ export default {
   width: 900px;
   margin-left: 18px;
   margin-right: 18px;
+}
+
+.eventtitle {
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
+}
+
+.eventdescription {
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
 }
 
 @media only screen and (max-width: 900px) {

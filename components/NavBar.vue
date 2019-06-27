@@ -2,7 +2,7 @@
   <div>
     <!-- <pre>{{ $mq }}</pre> -->
     <!-- eslint-disable-next-line -->
-    <mdb-navbar dark color="green darken-2" class="white-text" animated animation="3">
+    <mdb-navbar dark color="success-color-dark" class="white-text" animated animation="3">
       <mdb-navbar-brand to="/">
         <!-- eslint-disable-next-line -->
         <img
