@@ -30,6 +30,10 @@ export default {
         })
     }
   },
+  env: {
+    contactApi:
+      process.env.CONTACT_API_URL || 'http://localhost/contact_api/index.php'
+  },
   dev: process.env.NODE_ENV !== 'production',
   /*
    ** Headers of the page

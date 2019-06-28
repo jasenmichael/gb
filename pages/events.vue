@@ -22,7 +22,9 @@
       </div>
     </mdb-card>
     <mdb-container>
-      <h2>Events</h2>
+      <h2 class="mt-2 mb-2">Events</h2>
+      <hr />
+      <events />
       <nuxt-link
         v-for="event in events"
         :key="event.id"
@@ -36,10 +38,11 @@
 </template>
 
 <script>
+import Events from '@/components/Events'
 import { mdbCard, mdbContainer } from 'mdbvue'
 
 export default {
-  components: { mdbCard, mdbContainer },
+  components: { mdbCard, mdbContainer, Events },
   data() {
     return {
       eventLogo: '/banner.jpg',

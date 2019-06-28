@@ -137,7 +137,7 @@
     </div>
     <div
       class="footer-copyright text-center py-3 z-depth-5"
-      style="backgroundColor: #3E4551"
+      style="backgroundColor: #004d40"
     >
       <mdb-container fluid>
         &copy; 2019 Copyright:

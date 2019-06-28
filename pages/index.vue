@@ -14,30 +14,16 @@
         learn more
       </mdb-btn>
     </div>
+
     <mdb-carousel class="crousel" :interval="5000">
-      <!-- <h1>yo</h1center> -->
-      <mdb-carousel-item
-        img
-        src="/slide/1.jpg"
-        mask="black-light"
-        alt="First slide"
-      >
-      </mdb-carousel-item>
-      <mdb-carousel-item
-        img
-        src="/slide/2.jpg"
-        mask="black-light"
-        alt="Second slide"
-      >
-      </mdb-carousel-item>
-      <mdb-carousel-item
-        img
-        src="/slide/3.jpg"
-        mask="black-light"
-        alt="Third slide"
-      >
+      <mdb-carousel-item v-for="(slide, index) in slides" :key="index">
+        <mdb-view>
+          <img :src="slide.img" class="img-fluid z-depth-5" :alt="slide.alt" />
+          <mdb-mask flex-center overlay="black-light" />
+        </mdb-view>
       </mdb-carousel-item>
     </mdb-carousel>
+
     <mdb-container>
       <h1 id="info" class="mt-4 mb-4">
         Welcome to Greenbriar Community School
@@ -65,18 +51,41 @@
 </template>
 
 <script>
-import { mdbCarousel, mdbCarouselItem, mdbBtn, mdbContainer } from 'mdbvue'
+import {
+  mdbCarousel,
+  mdbCarouselItem,
+  mdbBtn,
+  mdbContainer,
+  mdbMask,
+  mdbView
+} from 'mdbvue'
 
 export default {
   components: {
     mdbCarousel,
     mdbCarouselItem,
     mdbBtn,
-    mdbContainer
+    mdbContainer,
+    mdbMask,
+    mdbView
   },
   data() {
     return {
-      welcome: 'Greenbriar Community School'
+      welcome: 'Greenbriar Community School',
+      slides: [
+        {
+          img: '/slide/1.jpg',
+          alt: 'slide 1'
+        },
+        {
+          img: '/slide/2.jpg',
+          alt: 'slide 2'
+        },
+        {
+          img: '/slide/3.jpg',
+          alt: 'slide 3'
+        }
+      ]
     }
   },
   async fetch({ store }) {

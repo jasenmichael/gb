@@ -188,7 +188,7 @@ export default {
       this.error = false
     },
     sendEmail: async function() {
-      const url = 'http://localhost/contact_api/contact_form_email.php'
+      const url = process.env.contactApi
       const config = {
         'Content-Type': 'application/json'
       }
