@@ -10,7 +10,7 @@
       <div class="text-white text-center rgba-stylish-light py-5 px-4">
         <div>
           <h1 class="pt-4 mb-4 font-bold display-4 eventtitle">
-            <strong>Upcoming Events and Workshops</strong>
+            <strong>{{ description }}</strong>
           </h1>
           <h4
             class="mx-4 mb-4 font-bold eventdescription"
@@ -45,8 +45,18 @@ export default {
   components: { mdbCard, mdbContainer, Events },
   data() {
     return {
+      description: 'Upcoming Events and Workshops',
       eventLogo: '/banner.jpg',
       events: this.$store.state.events.list
+    }
+  },
+  head() {
+    return {
+      title: 'Events and Workshops',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.description }
+      ]
     }
   }
 }

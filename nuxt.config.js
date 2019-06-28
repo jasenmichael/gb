@@ -39,14 +39,15 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - Greenbriar Community School',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          'Celebrating 50 years of educating sustainability through communal living'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -90,6 +91,10 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  // pwa config
+  manifest: {
+    name: process.env.npm_package_title
+  },
   /*
    ** Build configuration
    */

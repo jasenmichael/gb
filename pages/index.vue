@@ -70,6 +70,7 @@ export default {
     mdbMask,
     mdbView
   },
+  head: { title: 'Welcome Home' },
   data() {
     return {
       welcome: 'Greenbriar Community School',
