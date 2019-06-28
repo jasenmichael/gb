@@ -217,7 +217,6 @@ export default {
         }
         if (res.data.error) {
           this.showError()
-          // setTimeout(this.showError, 3000)
         }
       })
       return email
