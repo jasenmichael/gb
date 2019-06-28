@@ -82,6 +82,10 @@ export default {
 </script>
 
 <style>
+a.navbar-brand {
+  outline: 0;
+  font-family: 'Domine', serif;
+}
 #brand {
   font-size: 90%;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.69);

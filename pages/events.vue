@@ -21,33 +21,21 @@
         </div>
       </div>
     </mdb-card>
-    <mdb-container>
-      <h2 class="mt-2 mb-2">Events</h2>
-      <hr />
-      <events />
-      <nuxt-link
-        v-for="event in events"
-        :key="event.id"
-        :to="'/event/' + event.urlPath"
-      >
-        {{ event.name.html }}
-        <br />
-      </nuxt-link>
-    </mdb-container>
+    <events />
   </div>
 </template>
 
 <script>
 import Events from '@/components/Events'
-import { mdbCard, mdbContainer } from 'mdbvue'
+import { mdbCard } from 'mdbvue'
 
 export default {
-  components: { mdbCard, mdbContainer, Events },
+  components: { mdbCard, Events },
   data() {
     return {
-      description: 'Upcoming Events and Workshops',
-      eventLogo: '/banner.jpg',
-      events: this.$store.state.events.list
+      description: 'Upcoming Events & Workshops',
+      eventLogo: '/banner.jpg'
+      // events: this.$store.state.events.list
     }
   },
   head() {

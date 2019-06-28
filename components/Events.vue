@@ -1,45 +1,32 @@
 <template>
-  <div class="container">
+  <div class="container mt-4">
     <div class="row text-center">
       <div class="[ col-xs-12 col-sm-offset-2 col-sm-12 col-md-12 ]">
         <ul class="event-list">
           <li>
-            <time datetime="2014-07-20">
-              <span class="day">4</span>
-              <span class="month">Jul</span>
-              <span class="year">2014</span>
-              <span class="time">ALL DAY</span>
-            </time>
-            <img
-              alt="Independence Day"
-              src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F64350658%2F312706594048%2F1%2Foriginal.20190624-125614?h=200&w=450&auto=compress&rect=214%2C0%2C2160%2C1080&s=4c542785b257fb44d22bcff71e5aee52"
-            />
-            <div class="info">
-              <h2 class="title">Independence Day</h2>
-              <p class="desc">United States Holiday</p>
-            </div>
-            <!-- <div class="social">
-              <ul>
-                <li class="facebook" style="width:33%;">
-                  <a href="#facebook">
-                    <span class="fa fa-facebook"></span>
-                  </a>
-                </li>
-                <li class="twitter" style="width:34%;">
-                  <a href="#twitter">
-                    <span class="fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="google-plus" style="width:33%;">
-                  <a href="#google-plus">
-                    <span class="fa fa-google-plus"></span>
-                  </a>
-                </li>
-              </ul>
-            </div> -->
+            <nuxt-link
+              v-for="event in events"
+              :key="event.id"
+              :to="'/event/' + event.urlPath"
+            >
+              <time datetime="2014-07-20">
+                <span class="day">4</span>
+                <span class="month">Jul</span>
+                <span class="year">2014</span>
+                <span class="time">ALL DAY</span>
+              </time>
+              <img
+                v-if="event.logo"
+                alt="Independence Day"
+                :src="event.logo == null ? eventLogo : event.logo.url"
+              />
+              <div class="info">
+                <h2 class="title">Independence Day</h2>
+                <p class="desc">United States Holiday</p>
+              </div>
+            </nuxt-link>
           </li>
-
-          <li>
+          <!-- <li>
             <time datetime="2014-07-20 0000">
               <span class="day">8</span>
               <span class="month">Jul</span>
@@ -56,7 +43,7 @@
                   </a>
                 </li>
                 <li style="width:50%;">
-                  <span class="fa fa-money"></span> $39.99
+                  <span class="fa fa-money-bill"></span> $39.99
                 </li>
               </ul>
             </div>
@@ -160,7 +147,7 @@
               <ul>
                 <li class="facebook" style="width:33%;">
                   <a href="#facebook">
-                    <span class="fa fa-facebook"></span>
+                    <span class="fa fa-facebook-square"></span>
                   </a>
                 </li>
                 <li class="twitter" style="width:34%;">
@@ -175,15 +162,40 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
+    <mdb-container>
+      <nuxt-link
+        v-for="event in events"
+        :key="event.id"
+        :to="'/event/' + event.urlPath"
+      >
+        {{ event.name.html }}
+        <br />
+      </nuxt-link>
+    </mdb-container>
+    <pre>{{ events }}</pre>
   </div>
 </template>
 
+<script>
+import { mdbContainer } from 'mdbvue'
+
+export default {
+  components: { mdbContainer },
+  data() {
+    return {
+      events: this.$store.state.events.list,
+      eventLogo: '/banner.jpg'
+    }
+  }
+}
+</script>
+
 <style scoped>
-@import url('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic');
+/* @import url('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic'); */
 @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css');
 body {
   /* padding: 60px 0px; */
@@ -196,14 +208,18 @@ body {
   margin: 0px;
   padding: 0px;
 }
-.event-list > li {
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+.event-list > li > a {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 5px rgb(51, 51, 51);
   box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
   padding: 0px;
   margin: 0px 0px 20px;
 }
-.event-list > li > time {
+.event-list > li > a > time {
   display: inline-block;
   width: 100%;
   color: rgb(255, 255, 255);
@@ -215,40 +231,40 @@ body {
 .event-list > li:nth-child(even) > time {
   background-color: rgb(165, 82, 167);
 }
-.event-list > li > time > span {
+.event-list > li > a > time > span {
   display: none;
 }
-.event-list > li > time > .day {
+.event-list > li > a > time > .day {
   display: block;
   font-size: 56pt;
   font-weight: 100;
   line-height: 1;
 }
-.event-list > li time > .month {
+.event-list > li > a time > .month {
   display: block;
   font-size: 24pt;
   font-weight: 900;
   line-height: 1;
 }
-.event-list > li > img {
+.event-list > li > a > img {
   width: 100%;
 }
-.event-list > li > .info {
+.event-list > li > a > .info {
   padding-top: 5px;
   text-align: center;
 }
-.event-list > li > .info > .title {
+.event-list > li > a > .info > .title {
   font-size: 17pt;
   font-weight: 700;
   margin: 0px;
 }
-.event-list > li > .info > .desc {
+.event-list > li > a > .info > .desc {
   font-size: 13pt;
   font-weight: 300;
   margin: 0px;
 }
-.event-list > li > .info > ul,
-.event-list > li > .social > ul {
+.event-list > li > a > .info > ul,
+.event-list > li > a > .social > ul {
   display: table;
   list-style: none;
   margin: 10px 0px 0px;
@@ -256,11 +272,11 @@ body {
   width: 100%;
   text-align: center;
 }
-.event-list > li > .social > ul {
+.event-list > li > a > .social > ul {
   margin: 0px;
 }
-.event-list > li > .info > ul > li,
-.event-list > li > .social > ul > li {
+.event-list > li > a > .info > ul > li,
+.event-list > li > a > .social > ul > li {
   display: table-cell;
   cursor: pointer;
   color: rgb(30, 30, 30);
@@ -268,20 +284,20 @@ body {
   font-weight: 300;
   padding: 3px 0px;
 }
-.event-list > li > .info > ul > li > a {
+.event-list > li > a > .info > ul > li > a {
   display: block;
   width: 100%;
   color: rgb(30, 30, 30);
   text-decoration: none;
 }
-.event-list > li > .social > ul > li {
+.event-list > li > a > .social > ul > li {
   padding: 0px;
 }
-.event-list > li > .social > ul > li > a {
+.event-list > li > a > .social > ul > li > a {
   padding: 3px 0px;
 }
-.event-list > li > .info > ul > li:hover,
-.event-list > li > .social > ul > li:hover {
+.event-list > li > a > .info > ul > li:hover,
+.event-list > li > a > .social > ul > li:hover {
   color: rgb(30, 30, 30);
   background-color: rgb(200, 200, 200);
 }
@@ -312,19 +328,19 @@ body {
 }
 
 @media (min-width: 768px) {
-  .event-list > li {
+  .event-list > li > a {
     position: relative;
     display: block;
     width: 100%;
     height: 120px;
     padding: 0px;
   }
-  .event-list > li > time,
-  .event-list > li > img {
+  .event-list > li > a > time,
+  .event-list > li > a > img {
     display: inline-block;
   }
-  .event-list > li > time,
-  .event-list > li > img {
+  .event-list > li > a > time,
+  .event-list > li > a > img {
     display: block;
     max-width: 120px;
     max-height: 120px;
@@ -333,12 +349,12 @@ body {
     /*width: 120px;*/
     float: left;
   }
-  .event-list > li > .info {
+  .event-list > li > a > .info {
     background-color: rgb(245, 245, 245);
     overflow: hidden;
   }
-  .event-list > li > time,
-  .event-list > li > img {
+  .event-list > li > a > time,
+  .event-list > li > a > img {
     display: block;
     max-width: 120px;
     height: 120px;
@@ -346,36 +362,36 @@ body {
     margin: 0px;
     object-fit: cover;
   }
-  .event-list > li > .info {
+  .event-list > li > a > .info {
     position: relative;
     height: 120px;
     text-align: left;
     padding-right: 40px;
   }
-  .event-list > li > .info > .title,
-  .event-list > li > .info > .desc {
+  .event-list > li > a > .info > .title,
+  .event-list > li > a > .info > .desc {
     padding: 0px 10px;
   }
-  .event-list > li > .info > ul {
+  .event-list > li > a > .info > ul {
     position: absolute;
     left: 0px;
     bottom: 0px;
   }
-  .event-list > li > .social {
+  .event-list > li > a > .social {
     position: absolute;
     top: 0px;
     right: 0px;
     display: block;
     width: 40px;
   }
-  .event-list > li > .social > ul {
+  .event-list > li > a > .social > ul {
     border-left: 1px solid rgb(230, 230, 230);
   }
-  .event-list > li > .social > ul > li {
+  .event-list > li > a > .social > ul > li {
     display: block;
     padding: 0px;
   }
-  .event-list > li > .social > ul > li > a {
+  .event-list > li > a > .social > ul > li > a {
     display: block;
     width: 40px;
     padding: 10px 0px 9px;

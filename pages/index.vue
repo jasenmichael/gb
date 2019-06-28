@@ -30,17 +30,17 @@
         Welcome to Greenbriar Community School
       </h1>
       <p>
+        Greenbriar Community is a model for sustainable community living by
+        consensus decision making.
+      </p>
+      <p>
         Located within 170 wooded acres east of Austin near Bastrop Texas.
         Greenbriar is a part of the free school movement that began in the
         1960's. We are an Educational community focusing on sustainability,
         homeschooling and providing an alternative learning center.
       </p>
       <p>
-        Greenbriar Community is a model for sustainable community living by
-        consensus decision making.
-      </p>
-      <p>
-        We do a variety of workshops and educational programs, while promoting
+        We host a variety of workshops and educational programs, while promoting
         and collaborating with other educators.
       </p>
       <p>

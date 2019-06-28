@@ -72,7 +72,9 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
+    'nuxt-fontawesome',
     'bootstrap-vue/nuxt',
+    '@nuxtjs/moment',
     [
       'nuxt-mq',
       {

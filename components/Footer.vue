@@ -1,6 +1,9 @@
 <template>
   <!-- Footer -->
-  <mdb-footer color="primary-color-dark" class="page-footer font-small">
+  <mdb-footer
+    color="primary-color-dark"
+    class="page-footer font-small sticky-bottom"
+  >
     <div style="backgroundColor: #00695c" class="z-depth-3">
       <hr class="clearfix w-100 m-0" />
       <mdb-container class="text-center">
@@ -110,7 +113,7 @@
             Upcoming Events
           </h5>
           <ul class="list-unstyled">
-            <li v-for="event in upcomingEvents" :key="event.id">
+            <li v-for="event in upcomingEvents" :key="event.id" class="mb-2">
               <nuxt-link :to="'/event/' + event.urlPath">
                 {{ event.name.html }}
               </nuxt-link>
