@@ -12,7 +12,7 @@
               <time datetime="2014-07-20">
                 <span class="day">4</span>
                 <span class="month">Jul</span>
-                <span class="year">2014</span>
+                <span class="year">2019</span>
                 <span class="time">ALL DAY</span>
               </time>
               <img
@@ -21,8 +21,8 @@
                 :src="event.logo == null ? eventLogo : event.logo.url"
               />
               <div class="info">
-                <h2 class="title">Independence Day</h2>
-                <p class="desc">United States Holiday</p>
+                <h2 class="title">{{ event.name.text }}</h2>
+                <p class="desc">{{ event.summary }}</p>
               </div>
             </nuxt-link>
           </li>
