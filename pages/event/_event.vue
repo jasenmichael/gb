@@ -14,19 +14,19 @@
           <h1 class="pt-3 mb-4 font-bold display-4 eventtitle">
             <strong>{{ getEvent().name.text }}</strong>
           </h1>
-          <h4
-            class="mx-4 mb-4 font-bold eventdescription"
-            v-html="getEvent().description.text"
-          ></h4>
+          <h4 class="mx-4 mb-4 font-bold eventdescription">
+            {{ getEvent().description.text }}
+          </h4>
           <mdb-btn
             outine="primary"
-            class="rsvp"
+            class="register"
             color="green"
             tag="a"
             target="_blank"
             :href="getEvent().url"
             icon="leaf"
-            >RSVP
+          >
+            {{ getEvent().is_free ? 'RSVP' : 'REGISTER' }}
           </mdb-btn>
         </div>
       </div>
@@ -131,10 +131,10 @@ export default {
 </script>
 
 <style scoped>
-.rsvp {
+.register {
   transition: all 0.2s ease-in-out;
 }
-.rsvp:hover {
+.register:hover {
   transform: scale(1.1);
 }
 

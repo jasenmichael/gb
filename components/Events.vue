@@ -6,10 +6,15 @@
           <li v-for="event in events" :key="event.id" class="event">
             <nuxt-link :to="'/event/' + event.urlPath">
               <time datetime="2014-07-20">
-                <span class="day">4</span>
-                <span class="month">Jul</span>
-                <span class="year">2019</span>
-                <span class="time">ALL DAY</span>
+                <span class="day">{{ getDate(event.start.local, 'D') }}</span>
+                <!-- eslint-disable-next-line -->
+                <span class="month">{{ getDate(event.start.local, 'MMM') }}</span>
+                <!-- eslint-disable-next-line -->
+                <span class="year">{{ getDate(event.start.local, 'YYYY') }}</span>
+                <span class="time">
+                  <!-- eslint-disable-next-line -->
+                  {{ `${getDate(event.start.local, 'h:mma')} - ${getDate(event.end.local, 'h:mma' )}` }}
+                </span>
               </time>
               <img
                 v-if="event.logo"
@@ -19,18 +24,15 @@
               <div class="info">
                 <h2 class="title">{{ event.name.text }}</h2>
                 <p class="desc">{{ event.summary }}</p>
-                <ul>
-                  <li style="width:33%;">
-                    1
-                    <span class="glyphicon glyphicon-ok"></span>
+                <ul :class="!event.logo ? 'times noimg' : 'times'">
+                  <li style="width:50%;">
+                    <span class="fa fa-calendar"></span>
+                    {{ getDate(event.start.local, 'dddd MMM Do') }}
                   </li>
-                  <li style="width:34%;">
-                    3
-                    <span class="fa fa-question"></span>
-                  </li>
-                  <li style="width:33%;">
-                    <span class="fa fa-dollar"></span>
-                    FREE
+                  <li style="width:50%; font-style:bold;">
+                    <span class="fa fa-clock"></span>
+                    <!-- eslint-disable-next-line -->
+                    {{ `${getDate(event.start.local, 'h:mma')} - ${getDate(event.end.local, 'h:mma' )}` }}
                   </li>
                 </ul>
               </div>
@@ -55,6 +57,7 @@
 
 <script>
 import { mdbContainer } from 'mdbvue'
+import moment from 'moment'
 
 export default {
   components: { mdbContainer },
@@ -62,6 +65,15 @@ export default {
     return {
       events: this.$store.state.events.list,
       eventLogo: '/banner.jpg'
+    }
+  },
+  created() {
+    // eslint-disable-next-line
+    console.log(moment('2019-07-27T19:00:00').format('YYYY MM DD'))
+  },
+  methods: {
+    getDate(date, format) {
+      return moment(date).format(format)
     }
   }
 }
@@ -71,10 +83,8 @@ export default {
 /* @import url('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic'); */
 /* @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css'); */
 body {
-  /* padding: 60px 0px; */
   background-color: rgb(220, 220, 220);
 }
-
 .event-list {
   list-style: none;
   font-family: 'Lato', sans-serif;
@@ -82,16 +92,9 @@ body {
   padding: 0px;
 }
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
 }
-/* .event-list > li > a {
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 5px rgb(51, 51, 51);
-  box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
-  padding: 0px;
-  margin: 0px 0px 20px;
-} */
 .event-list > li > a > time {
   display: inline-block;
   width: 100%;
@@ -146,8 +149,7 @@ a {
   font-weight: 300;
   margin: 0px;
 }
-.event-list > li > a > .info > ul,
-.event-list > li > a > .social > ul {
+.event-list > li > a > .info > ul {
   display: table;
   list-style: none;
   margin: 10px 0px 0px;
@@ -155,11 +157,7 @@ a {
   width: 100%;
   text-align: center;
 }
-.event-list > li > a > .social > ul {
-  margin: 0px;
-}
-.event-list > li > a > .info > ul > li,
-.event-list > li > a > .social > ul > li {
+.event-list > li > a > .info > ul > li {
   display: table-cell;
   cursor: pointer;
   color: rgb(30, 30, 30);
@@ -173,44 +171,21 @@ a {
   color: rgb(30, 30, 30);
   text-decoration: none;
 }
-.event-list > li > a > .social > ul > li {
-  padding: 0px;
-}
-.event-list > li > a > .social > ul > li > a {
-  padding: 3px 0px;
-}
-.event-list > li > a > .info > ul > li:hover,
-.event-list > li > a > .social > ul > li:hover {
-  color: rgb(30, 30, 30);
-  background-color: rgb(200, 200, 200);
-}
-/* .facebook a,
-.twitter a,
-.google-plus a {
-  display: block;
-  width: 100%;
-  color: rgb(75, 110, 168) !important;
-}
-.twitter a {
-  color: rgb(79, 213, 248) !important;
-}
-.google-plus a {
-  color: rgb(221, 75, 57) !important;
-}
-.facebook:hover a {
-  color: rgb(255, 255, 255) !important;
-  background-color: rgb(75, 110, 168) !important;
-}
-.twitter:hover a {
-  color: rgb(255, 255, 255) !important;
-  background-color: rgb(79, 213, 248) !important;
-}
-.google-plus:hover a {
-  color: rgb(255, 255, 255) !important;
-  background-color: rgb(221, 75, 57) !important;
-} */
 
 @media (min-width: 768px) {
+  .event-list > li > a > .info > .times {
+    /* background-color: aqua; */
+    text-align: left;
+    padding-left: 40px;
+  }
+  .event-list > li > a > .info > .times > li:nth-child(2) {
+    /* background-color: red; */
+    text-align: right;
+    padding-right: 40px;
+  }
+  .event-list > li > a > .info > .noimg > li:nth-child(2) {
+    padding-right: 160px;
+  }
   .event-list > li > a {
     position: relative;
     display: block;
@@ -258,6 +233,9 @@ a {
     position: absolute;
     left: 0px;
     bottom: 0px;
+  }
+  .event-list > li > a > .info > .noimg {
+    margin-left: 120px;
   }
   .event-list > li > a > .social {
     position: absolute;
