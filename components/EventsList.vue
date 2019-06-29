@@ -49,7 +49,7 @@
           </ul>
         </div>
       </div>
-      <pre>{{ status }}</pre>
+      <!-- <pre>{{ status }}</pre> -->
     </mdb-container>
   </div>
 </template>
