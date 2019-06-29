@@ -3,12 +3,8 @@
     <div class="row text-center">
       <div class="[ col-xs-12 col-sm-offset-2 col-sm-12 col-md-12 ]">
         <ul class="event-list">
-          <li>
-            <nuxt-link
-              v-for="event in events"
-              :key="event.id"
-              :to="'/event/' + event.urlPath"
-            >
+          <li v-for="event in events" :key="event.id" class="event">
+            <nuxt-link :to="'/event/' + event.urlPath">
               <time datetime="2014-07-20">
                 <span class="day">4</span>
                 <span class="month">Jul</span>
@@ -23,146 +19,23 @@
               <div class="info">
                 <h2 class="title">{{ event.name.text }}</h2>
                 <p class="desc">{{ event.summary }}</p>
+                <ul>
+                  <li style="width:33%;">
+                    1
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </li>
+                  <li style="width:34%;">
+                    3
+                    <span class="fa fa-question"></span>
+                  </li>
+                  <li style="width:33%;">
+                    <span class="fa fa-dollar"></span>
+                    FREE
+                  </li>
+                </ul>
               </div>
             </nuxt-link>
           </li>
-          <!-- <li>
-            <time datetime="2014-07-20 0000">
-              <span class="day">8</span>
-              <span class="month">Jul</span>
-              <span class="year">2014</span>
-              <span class="time">12:00 AM</span>
-            </time>
-            <div class="info">
-              <h2 class="title">One Piece Unlimited World Red</h2>
-              <p class="desc">PS Vita</p>
-              <ul>
-                <li style="width:50%;">
-                  <a href="#website">
-                    <span class="fa fa-globe"></span> Website
-                  </a>
-                </li>
-                <li style="width:50%;">
-                  <span class="fa fa-money-bill"></span> $39.99
-                </li>
-              </ul>
-            </div>
-            <div class="social">
-              <ul>
-                <li class="facebook" style="width:33%;">
-                  <a href="#facebook">
-                    <span class="fa fa-facebook"></span>
-                  </a>
-                </li>
-                <li class="twitter" style="width:34%;">
-                  <a href="#twitter">
-                    <span class="fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="google-plus" style="width:33%;">
-                  <a href="#google-plus">
-                    <span class="fa fa-google-plus"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <time datetime="2014-07-20 2000">
-              <span class="day">20</span>
-              <span class="month">Jan</span>
-              <span class="year">2014</span>
-              <span class="time">8:00 PM</span>
-            </time>
-            <img
-              alt="My 24th Birthday!"
-              src="https://farm5.staticflickr.com/4150/5045502202_1d867c8a41_q.jpg"
-            />
-            <div class="info">
-              <h2 class="title">Mouse0270's 24th Birthday!</h2>
-              <p class="desc">Bar Hopping in Erie, Pa.</p>
-              <ul>
-                <li style="width:33%;">
-                  1
-                  <span class="glyphicon glyphicon-ok"></span>
-                </li>
-                <li style="width:34%;">
-                  3
-                  <span class="fa fa-question"></span>
-                </li>
-                <li style="width:33%;">
-                  103
-                  <span class="fa fa-envelope"></span>
-                </li>
-              </ul>
-            </div>
-            <div class="social">
-              <ul>
-                <li class="facebook" style="width:33%;">
-                  <a href="#facebook">
-                    <span class="fa fa-facebook"></span>
-                  </a>
-                </li>
-                <li class="twitter" style="width:34%;">
-                  <a href="#twitter">
-                    <span class="fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="google-plus" style="width:33%;">
-                  <a href="#google-plus">
-                    <span class="fa fa-google-plus"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <time datetime="2014-07-31 1600">
-              <span class="day">31</span>
-              <span class="month">Jan</span>
-              <span class="year">2014</span>
-              <span class="time">4:00 PM</span>
-            </time>
-            <img
-              alt="Disney Junior Live On Tour!"
-              src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg"
-            />
-            <div class="info">
-              <h2 class="title">Disney Junior Live On Tour!</h2>
-              <p class="desc">Pirate and Princess Adventure</p>
-              <ul>
-                <li style="width:33%;">
-                  $49.99
-                  <span class="fa fa-male"></span>
-                </li>
-                <li style="width:34%;">
-                  $29.99
-                  <span class="fa fa-child"></span>
-                </li>
-              </ul>
-            </div>
-            <div class="social">
-              <ul>
-                <li class="facebook" style="width:33%;">
-                  <a href="#facebook">
-                    <span class="fa fa-facebook-square"></span>
-                  </a>
-                </li>
-                <li class="twitter" style="width:34%;">
-                  <a href="#twitter">
-                    <span class="fa fa-twitter"></span>
-                  </a>
-                </li>
-                <li class="google-plus" style="width:33%;">
-                  <a href="#google-plus">
-                    <span class="fa fa-google-plus"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
         </ul>
       </div>
     </div>
@@ -196,7 +69,7 @@ export default {
 
 <style scoped>
 /* @import url('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic'); */
-@import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css');
+/* @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css'); */
 body {
   /* padding: 60px 0px; */
   background-color: rgb(220, 220, 220);
@@ -212,24 +85,34 @@ a {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
 }
-.event-list > li > a {
+/* .event-list > li > a {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 5px rgb(51, 51, 51);
   box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
   padding: 0px;
   margin: 0px 0px 20px;
-}
+} */
 .event-list > li > a > time {
   display: inline-block;
   width: 100%;
   color: rgb(255, 255, 255);
-  background-color: rgb(197, 44, 102);
+  background-color: rgb(165, 82, 167);
   padding: 5px;
   text-align: center;
   text-transform: uppercase;
 }
-.event-list > li:nth-child(even) > time {
-  background-color: rgb(165, 82, 167);
+.event-list > li.event {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 1em;
+  transition: all 0.2s ease-in-out;
+}
+.event-list > li.event:hover {
+  transform: scale(1.01);
+  box-shadow: 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    6px 8px 24px 0 rgba(0, 0, 0, 0.19);
+}
+.event-list > li:nth-child(even) > a > time {
+  background-color: rgb(197, 44, 102);
 }
 .event-list > li > a > time > span {
   display: none;
@@ -301,7 +184,7 @@ a {
   color: rgb(30, 30, 30);
   background-color: rgb(200, 200, 200);
 }
-.facebook a,
+/* .facebook a,
 .twitter a,
 .google-plus a {
   display: block;
@@ -325,7 +208,7 @@ a {
 .google-plus:hover a {
   color: rgb(255, 255, 255) !important;
   background-color: rgb(221, 75, 57) !important;
-}
+} */
 
 @media (min-width: 768px) {
   .event-list > li > a {
@@ -346,7 +229,6 @@ a {
     max-height: 120px;
     width: 100%;
     height: auto;
-    /*width: 120px;*/
     float: left;
   }
   .event-list > li > a > .info {

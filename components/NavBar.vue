@@ -23,7 +23,7 @@
           Greenbriar Community School
         </strong>
       </mdb-navbar-brand>
-      <mdb-navbar-toggler>
+      <mdb-navbar-toggler class="menu">
         <mdb-navbar-nav center>
           <!-- eslint-disable-next-line -->
           <mdb-nav-item :class="isActive('/about') + ' link'" anchor-class="white-text" to="/about">
@@ -118,7 +118,10 @@ a.navbar-brand {
 }
 @media only screen and (max-width: 366px) {
   #brand {
-    font-size: 80%;
+    font-size: 70%;
+  }
+  .animated-icon3 {
+    font-size: 8%;
   }
 }
 </style>
