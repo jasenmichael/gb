@@ -19,13 +19,15 @@ export default {
 </script>
 
 <style>
+* {
+  font-family: 'Roboto', sans-serif;
+}
 h1,
 h2,
 h5 {
   font-family: 'Domine', serif;
 }
 p {
-  font-family: 'Roboto', sans-serif;
   font-size: 115%;
 }
 </style>

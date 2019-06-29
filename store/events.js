@@ -33,9 +33,10 @@ export const actions = {
       )
       .then(res => {
         if (res.status === 200) {
-          // get "live" events
+          // eslint-disable-next-line no-console
+          console.log(res.data)
           const events = res.data.events.filter(
-            event => event.status === 'live'
+            event => event.status === 'live' || 'completed'
           )
           events.map(event => {
             event.urlPath = event.name.text.replace(/\s+/g, '-').toLowerCase()

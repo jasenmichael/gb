@@ -31,14 +31,20 @@
         </div>
       </div>
     </mdb-card>
+
     <mdb-container class="container mt-3">
-      <nuxt-link :to="'/events'">Events</nuxt-link>
-      <span>&middot; {{ getEvent().urlPath }}</span>
+      <small>
+        <nuxt-link :to="'/events'">EVENTS</nuxt-link>
+        <span>/ {{ getEvent().name.text.toUpperCase() }}</span>
+      </small>
+      <h4>
+        About this Event
+      </h4>
       <div id="category">
-        <p>
+        <h5>
           Category:
           <span>{{ getCategory() }} / {{ getSubcategory() }}</span>
-        </p>
+        </h5>
       </div>
       <!-- <h1>{{ getEvent().name.text }}</h1> -->
       <div
@@ -99,17 +105,17 @@ export default {
       }
     }
   },
-  async fetch({ store }) {
-    if (store.state.events.list.length === 0) {
-      await store.dispatch('events/getEvents')
-    }
-    if (store.state.events.categories.length === 0) {
-      await store.dispatch('events/getCategories')
-    }
-    if (store.state.events.subcategories.length === 0) {
-      await store.dispatch('events/getSubcategories')
-    }
-  },
+  // async fetch({ store }) {
+  //   if (store.state.events.list.length === 0) {
+  //     await store.dispatch('events/getEvents')
+  //   }
+  //   if (store.state.events.categories.length === 0) {
+  //     await store.dispatch('events/getCategories')
+  //   }
+  //   if (store.state.events.subcategories.length === 0) {
+  //     await store.dispatch('events/getSubcategories')
+  //   }
+  // },
   mounted: function() {
     const imgs = document.getElementsByClassName('img-fluid')
     for (let index = 0; index < imgs.length; index++) {

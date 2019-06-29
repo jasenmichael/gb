@@ -27,12 +27,15 @@
 
 <script>
 import Events from '@/components/Events'
+// import PastEvents from '@/components/PastEvents'
+
 import { mdbCard } from 'mdbvue'
 
 export default {
   components: { mdbCard, Events },
   data() {
     return {
+      events: this.$store.state.events.list,
       description: 'Upcoming Events & Workshops',
       eventLogo: '/banner.jpg'
       // events: this.$store.state.events.list

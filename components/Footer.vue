@@ -1,9 +1,6 @@
 <template>
   <!-- Footer -->
-  <mdb-footer
-    color="primary-color-dark"
-    class="page-footer font-small sticky-bottom"
-  >
+  <mdb-footer color="primary-color-dark" class="page-footer font-small">
     <div style="backgroundColor: #00695c" class="z-depth-3">
       <hr class="clearfix w-100 m-0" />
       <mdb-container class="text-center">
