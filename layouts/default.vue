@@ -28,6 +28,6 @@ h5 {
   font-family: 'Domine', serif;
 }
 p {
-  font-size: 115%;
+  font-size: 110%;
 }
 </style>

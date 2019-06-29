@@ -7,7 +7,7 @@
         events...
       </h3>
     </mdb-container>
-    <mdb-container v-else>
+    <div v-else>
       <div class="row text-center">
         <div class="[ col-xs-12 col-sm-offset-2 col-sm-12 col-md-12 ]">
           <ul class="event-list">
@@ -26,7 +26,7 @@
                 </time>
                 <img
                   v-if="event.logo"
-                  alt="Independence Day"
+                  :alt="event.name.text + ' background image'"
                   :src="event.logo == null ? eventLogo : event.logo.url"
                 />
                 <div class="info">
@@ -50,7 +50,7 @@
         </div>
       </div>
       <!-- <pre>{{ status }}</pre> -->
-    </mdb-container>
+    </div>
   </div>
 </template>
 
@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 /* @import url('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic'); */
 /* @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css'); */
 
@@ -153,6 +153,11 @@ a {
 }
 .event-list > li > a > img {
   width: 100%;
+  display: block;
+  max-height: 180px;
+  width: 100%;
+  height: auto;
+  float: left;
 }
 .event-list > li > a > .info {
   padding-top: 5px;
@@ -190,7 +195,6 @@ a {
   color: rgb(30, 30, 30);
   text-decoration: none;
 }
-
 @media (min-width: 768px) {
   .event-list > li > a > .info > .times {
     /* background-color: aqua; */
@@ -274,6 +278,18 @@ a {
     display: block;
     width: 40px;
     padding: 10px 0px 9px;
+  }
+}
+@media (max-width: 1100px) {
+  .event-list > li > a > .info > .desc {
+    font-size: 12pt;
+    line-height: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .event-list > li > a > .info > .desc {
+    font-size: 13pt;
+    line-height: 100%;
   }
 }
 </style>
