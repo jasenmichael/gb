@@ -70,7 +70,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~plugins/vue-scrollto.js'],
+  plugins: ['~plugins/vue-scrollto.js', '~plugins/vue-social.js'],
   /*
    ** Nuxt.js modules
    */
