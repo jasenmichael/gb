@@ -102,7 +102,7 @@ export default {
   min-height: 400px;
 }
 body {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(240, 240, 240);
 }
 .event-list {
   list-style: none;
