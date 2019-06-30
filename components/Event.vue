@@ -20,7 +20,7 @@
           .replace(event.description.text, '')
           .replace(
             /<img/g,
-            '<img class=\'img-fluid event-image\' align=\'left\''
+            '<img class=\'img-fluid event-image z-depth-1-half\' align=\'left\''
           )
       "
     ></div>
@@ -47,21 +47,21 @@ export default {
     }
   },
   mounted() {
-    // const imgs = document.getElementsByClassName('img-fluid')
-    // for (let index = 0; index < imgs.length; index++) {
-    //   const img = imgs[index]
-    //   if (index % 2 === 0) {
-    //     // alert("Even Number");
-    //     img.classList.add('img-left')
-    //     img.parentNode.classList.add('img-max')
-    //     img.parentNode.classList.add('img-left')
-    //   } else {
-    //     // alert("Odd Number");
-    //     img.classList.add('img-right')
-    //     img.parentNode.classList.add('img-max')
-    //     img.parentNode.classList.add('img-right')
-    //   }
-    // }
+    const imgs = document.getElementsByClassName('event-image')
+    for (let index = 0; index < imgs.length; index++) {
+      const img = imgs[index]
+      if (index % 2 === 0) {
+        // alert("Even Number");
+        img.classList.add('img-right')
+        // img.parentNode.classList.add('img-max')
+        // img.parentNode.classList.add('img-left')
+      } // else {
+      // alert("Odd Number");
+      // img.classList.add('img-right')
+      // img.parentNode.classList.add('img-max')
+      // img.parentNode.classList.add('img-right')
+      // }
+    }
   }
 }
 </script>
@@ -73,24 +73,35 @@ export default {
 </style>
 
 <style>
-/* .event-image {
-} */
+.event-image {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  /* max-width: 95%; */
+}
+
 @media only screen and (min-width: 750px) {
   .event-image {
     /* max-width: 40vw; */
     clear: both;
     display: block;
     max-height: 300px;
-    border-radius: 12px;
-    padding: 0.4rem;
+    max-width: 100%;
+    border-radius: 2px;
+    /* padding: 0.4rem; */
     margin-right: 1rem;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
     /* padding-top: 0.4rem; */
   }
-  .event-image:nth-child(even) {
-    float: right;
+
+  .img-right {
+    float: none;
+    /* display: block; */
+    display: inline-block;
   }
 }
 .content {
+  /* max-width: 100%; */
   /* clear: both; */
   /* display: block; */
   overflow: auto;
