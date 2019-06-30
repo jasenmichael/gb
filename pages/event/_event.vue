@@ -47,12 +47,6 @@ export default {
     Event
   },
   head: {
-    script: [
-      {
-        src:
-          'https://maps.google.com/maps/api/js?key=AIzaSyAyKWRUE34jY8_5-DcMlPS71-UioHx4yCk'
-      }
-    ],
     link: [
       {
         rel: 'stylesheet',

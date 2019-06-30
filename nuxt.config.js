@@ -50,6 +50,13 @@ export default {
           'Celebrating 50 years of educating sustainability through communal living'
       }
     ],
+    script: [
+      {
+        src:
+          'https://maps.google.com/maps/api/js?key=' +
+          process.env.GOOGLE_MAPS_API_KEY
+      }
+    ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
