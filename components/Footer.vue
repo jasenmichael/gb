@@ -53,6 +53,7 @@
             <li class="mb-2">
               <a
                 href="http://earthaven.org"
+                target="_blank"
                 title="an intentional community based in North Carolina near Ashville, with many natural buildings, Earthhaven is off-the-grid also incorporating many other sustainable living systems."
               >
                 Earthaven Ecovillage
@@ -61,6 +62,7 @@
             <li class="mb-2">
               <a
                 href="http://schoolofintegratedliving.org"
+                target="_blank"
                 title="The mission of SOIL is to inspire and empower people to live responsible and creative lives by providing experiential education in integrated living and regenerative systems."
               >
                 School of Integrated Living - SOIL
@@ -163,7 +165,9 @@ export default {
   },
   data() {
     return {
-      upcomingEvents: this.$store.state.events.list
+      upcomingEvents: this.$store.state.events.list.filter(
+        event => event.status === 'live'
+      )
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mdb-container v-if="events.length === 0" class="noevents">
+    <mdb-container v-if="events === 0" class="noevents">
       <h3 class="mt-4">
         There are no
         {{ status === 'live' ? 'upcoming' : 'past' }}
@@ -11,7 +11,13 @@
       <div class="row text-center">
         <div class="[ col-xs-12 col-sm-offset-2 col-sm-12 col-md-12 ]">
           <ul class="event-list">
-            <li v-for="event in events" :key="event.id" class="event">
+            <li
+              v-for="(event, index) in events"
+              :key="event.id"
+              :class="
+                `event animated ${isOdd(index) ? 'zoomInLeft' : 'zoomInRight'}`
+              "
+            >
               <nuxt-link :to="'/event/' + event.urlPath">
                 <time datetime="2014-07-20">
                   <span class="day">{{ getDate(event.start.local, 'D') }}</span>
@@ -89,6 +95,9 @@ export default {
         )
         return pastEvents
       }
+    },
+    isOdd(num) {
+      return num % 2
     }
   }
 }

@@ -7,7 +7,10 @@
     <div id="category">
       <h5>
         Category:
-        <span>{{ event.category_name }} / {{ event.subcategory_name }}</span>
+        <span>
+          {{ event.category_name
+          }}{{ !event.category_id ? '' : ' / ' + event.subcategory_name }}
+        </span>
       </h5>
     </div>
     <div
@@ -15,13 +18,16 @@
       v-html="
         event.description.html
           .replace(event.description.text, '')
-          .replace(/<img/g, '<img class=\'img-fluid\'')
+          .replace(
+            /<img/g,
+            '<img class=\'img-fluid event-image\' align=\'left\''
+          )
       "
     ></div>
     <hr />
     <hr />
     <div>
-      <pre>{{ event }}</pre>
+      <!-- <pre>{{ event }}</pre> -->
     </div>
   </mdb-container>
 </template>
@@ -30,6 +36,9 @@
 import { mdbContainer } from 'mdbvue'
 
 export default {
+  components: {
+    mdbContainer
+  },
   props: {
     event: {
       type: Object,
@@ -37,56 +46,53 @@ export default {
       useDefaultForNull: true
     }
   },
-  components: {
-    mdbContainer
-  },
-  mounted: function() {
-    const imgs = document.getElementsByClassName('img-fluid')
-    for (let index = 0; index < imgs.length; index++) {
-      const img = imgs[index]
-      if (index % 2 === 0) {
-        // alert("Even Number");
-        img.classList.add('img-left')
-        img.parentNode.classList.add('img-max')
-        img.parentNode.classList.add('img-left')
-      } else {
-        // alert("Odd Number");
-        img.classList.add('img-right')
-        img.parentNode.classList.add('img-max')
-        img.parentNode.classList.add('img-right')
-      }
-    }
+  mounted() {
+    // const imgs = document.getElementsByClassName('img-fluid')
+    // for (let index = 0; index < imgs.length; index++) {
+    //   const img = imgs[index]
+    //   if (index % 2 === 0) {
+    //     // alert("Even Number");
+    //     img.classList.add('img-left')
+    //     img.parentNode.classList.add('img-max')
+    //     img.parentNode.classList.add('img-left')
+    //   } else {
+    //     // alert("Odd Number");
+    //     img.classList.add('img-right')
+    //     img.parentNode.classList.add('img-max')
+    //     img.parentNode.classList.add('img-right')
+    //   }
+    // }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .back {
   color: blue;
 }
-.img-left {
-  /* padding-right: 1rem; */
-  float: left;
-  clear: left;
-}
-
-.img-right {
-  /* padding-left: 1rem; */
-  float: right;
-  clear: right;
-}
-
-.img-max {
-  max-width: 550px;
-  max-height: auto;
-  padding: 0.8rem;
-}
 </style>
 
-<style scoped>
-img {
-  border-radius: 8px;
-  padding-bottom: 0.4rem;
-  padding-top: 0.4rem;
+<style>
+/* .event-image {
+} */
+@media only screen and (min-width: 750px) {
+  .event-image {
+    /* max-width: 40vw; */
+    clear: both;
+    display: block;
+    max-height: 300px;
+    border-radius: 12px;
+    padding: 0.4rem;
+    margin-right: 1rem;
+    /* padding-top: 0.4rem; */
+  }
+  .event-image:nth-child(even) {
+    float: right;
+  }
+}
+.content {
+  /* clear: both; */
+  /* display: block; */
+  overflow: auto;
 }
 </style>

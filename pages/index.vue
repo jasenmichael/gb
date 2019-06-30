@@ -104,7 +104,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 html {
   -ms-overflow-style: none;
   scrollbar-width: none;

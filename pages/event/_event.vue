@@ -82,6 +82,23 @@ export default {
       }
       return { subcategory_name: subcategory.name }
     }
+  },
+  mounted() {
+    // const imgs = document.getElementsByClassName('img-fluid')
+    // for (let index = 0; index < imgs.length; index++) {
+    //   const img = imgs[index]
+    //   if (index % 2 === 0) {
+    //     // alert("Even Number");
+    //     img.classList.add('img-left')
+    //     img.parentNode.classList.add('img-max')
+    //     img.parentNode.classList.add('img-left')
+    //   } else {
+    //     // alert("Odd Number");
+    //     img.classList.add('img-right')
+    //     img.parentNode.classList.add('img-max')
+    //     img.parentNode.classList.add('img-right')
+    //   }
+    // }
   }
 }
 </script>
@@ -101,4 +118,20 @@ export default {
 .eventdescription {
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
 }
+
+/* .img-left {
+  float: left;
+  clear: left;
+}
+
+.img-right {
+  float: right;
+  clear: right;
+}
+
+.img-max > img {
+  width: 250px;
+  height: 200px;
+  padding: 0.8rem;
+} */
 </style>
