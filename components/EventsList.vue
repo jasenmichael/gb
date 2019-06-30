@@ -37,7 +37,13 @@
                 />
                 <div class="info">
                   <h2 class="title">{{ event.name.text }}</h2>
-                  <p class="desc">{{ event.summary }}</p>
+                  <p class="desc">
+                    {{
+                      event.summary.length >= 80
+                        ? event.summary.slice(0, 80) + '...'
+                        : event.summary
+                    }}
+                  </p>
                   <ul :class="!event.logo ? 'times noimg' : 'times'">
                     <li style="width:50%;">
                       <span class="fa fa-calendar"></span>
@@ -103,7 +109,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* @import url('http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic'); */
 /* @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css'); */
 

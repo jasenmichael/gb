@@ -1,33 +1,64 @@
 <template>
   <div>
     <mdb-container class="container mt-3">
-      <small>
-        back to
-        <nuxt-link class="back" :to="'/events'">EVENTS</nuxt-link>
-      </small>
+      <mdb-breadcrumb>
+        <!-- <mdb-breadcrumb-item>
+          <a href="#">Home</a>
+        </mdb-breadcrumb-item> -->
+        <mdb-breadcrumb-item>
+          <n-link :to="'/events'">
+            Events
+          </n-link>
+        </mdb-breadcrumb-item>
+        <mdb-breadcrumb-item active>{{ event.name.text }}</mdb-breadcrumb-item>
+      </mdb-breadcrumb>
       <hr />
-      <mdb-col md="12">
+      <mdb-col md="12" class="mb-3">
         <mdb-row>
-          <mdb-card class="mx-auto">
+          <mdb-card class="mx-auto" style="min-width:70%;">
             <mdb-card-body class="text-center">
-              <mdb-card-title>
-                <strong>About this Event</strong>
+              <mdb-card-title v-if="event.summary.length <= 80">
+                {{ event.summary }}
+                <h1 class="text-hide">{{ event.name.text }}</h1>
               </mdb-card-title>
               <h5 class="indigo-text">
                 <strong>
                   Category:
-                  <span>
-                    {{ event.category_name
-                    }}{{
-                      !event.category_id ? '' : ' / ' + event.subcategory_name
-                    }}
-                  </span>
                 </strong>
+                <span>
+                  {{ event.category_name
+                  }}{{
+                    !event.category_id ? '' : ' / ' + event.subcategory_name
+                  }}
+                </span>
               </h5>
-              <mdb-card-text>
-                Sed ut perspiciatis unde omnis iste natus sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam.
-              </mdb-card-text>
+              <br />
+              <mdb-row>
+                <mdb-col sm="12" md="6">
+                  <div>Begins:</div>
+                  <div class="pb-4">At:</div>
+                </mdb-col>
+                <mdb-col sm="12" md="6">
+                  <div>Ends</div>
+                  <div class="pb-4">At:</div>
+                </mdb-col>
+              </mdb-row>
+              <!-- <mdb-card-text>
+
+              </mdb-card-text> -->
+              <mdb-btn
+                outine="primary"
+                class="register"
+                color="green"
+                tag="a"
+                target="_blank"
+                :href="event.url"
+                icon="leaf"
+              >
+                {{ event.is_free ? 'RSVP' : 'REGISTER' }}
+              </mdb-btn>
+              <br />
+              <hr />
               <a class="px-2 fa-lg li-ic">
                 <mdb-icon fab icon="linkedin" />
               </a>
@@ -45,7 +76,8 @@
         class="content"
         v-html="
           event.description.html
-            .replace(event.description.text, '')
+            .replace(event.summary, '')
+            .replace(/<IMG/g, '<img')
             .replace(
               /<img/g,
               '<img class=\'img-fluid event-image z-depth-1-half\' align=\'left\''
@@ -59,10 +91,10 @@
     </mdb-container>
     <mdb-google-map
       name="reg"
-      class="col-md-12"
+      class="col-md-12 map"
       style="height: 500px; width:100%; position: relative; overflow: hidden"
       :zoom="10"
-      :markerCoordinates="[
+      :marker-coordinates="[
         {
           latitude: 30.247593,
           longitude: -97.347876,
@@ -70,9 +102,9 @@
         }
       ]"
     ></mdb-google-map>
-    <!-- <div>
+    <div>
       <pre>{{ event }}</pre>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -85,8 +117,10 @@ import {
   mdbCard,
   mdbCardBody,
   mdbCardTitle,
-  mdbCardText,
-  mdbIcon
+  mdbIcon,
+  mdbBreadcrumb,
+  mdbBreadcrumbItem,
+  mdbBtn
 } from 'mdbvue'
 
 export default {
@@ -98,8 +132,11 @@ export default {
     mdbCard,
     mdbCardBody,
     mdbCardTitle,
-    mdbCardText,
-    mdbIcon
+    // mdbCardText,
+    mdbIcon,
+    mdbBreadcrumb,
+    mdbBreadcrumbItem,
+    mdbBtn
   },
   props: {
     event: {
@@ -131,7 +168,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .back {
   color: blue;
 }
@@ -144,6 +181,10 @@ export default {
   position: relative;
   /* max-width: 95%; */
 }
+.map {
+  position: absolute;
+  margin-bottom: -24px;
+}
 
 @media only screen and (min-width: 750px) {
   .event-image {
@@ -152,7 +193,7 @@ export default {
     /* float: none; */
     display: inline-block;
     max-height: 300px;
-    max-width: 100%;
+    max-width: 100vw;
     border-radius: 2px;
     /* padding: 0.4rem; */
     margin-right: 1rem;
@@ -171,6 +212,6 @@ export default {
   /* max-width: 100%; */
   /* clear: both; */
   /* display: block; */
-  overflow: auto;
+  overflow: inherit;
 }
 </style>

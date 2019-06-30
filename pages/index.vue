@@ -15,10 +15,13 @@
       </mdb-btn>
     </div>
 
-    <mdb-carousel class="crousel" :interval="5000">
-      <mdb-carousel-item v-for="(slide, index) in slides" :key="index">
+    <mdb-carousel :interval="5000">
+      <mdb-carousel-item
+        class="carousel"
+        v-for="(slide, index) in slides"
+        :key="index"
+      >
         <mdb-view>
-          <!-- <b-img alt=""></b-img> -->
           <img :src="slide.img" class="img-fluid z-depth-5" :alt="slide.alt" />
           <mdb-mask flex-center overlay="black-light" />
         </mdb-view>
@@ -105,14 +108,6 @@ export default {
 </script>
 
 <style scoped>
-html {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
 .home .pre {
   font-size: 130%;
   text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.7);
@@ -137,10 +132,25 @@ html {
 .carousel-item {
   height: 93vh;
 }
+.carousel {
+  background-color: rgb(27, 27, 27);
+  height: 93vh;
+}
 .carousel-item img {
   top: 0;
   left: 0;
   object-fit: cover;
   height: 93vh;
+}
+</style>
+
+<style>
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 </style>

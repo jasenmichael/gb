@@ -15,10 +15,10 @@
           <h1 class="pt-3 mb-4 font-bold display-4 eventtitle">
             <strong>{{ event.name.text }}</strong>
           </h1>
-          <h4 class="mx-4 mb-4 font-bold eventdescription">
+          <h4 class="mx-4 mb-4 font-bold eventdescription text-hide">
             {{ event.description.text }}
           </h4>
-          <mdb-btn
+          <!-- <mdb-btn
             outine="primary"
             class="register"
             color="green"
@@ -28,7 +28,7 @@
             icon="leaf"
           >
             {{ event.is_free ? 'RSVP' : 'REGISTER' }}
-          </mdb-btn>
+          </mdb-btn> -->
         </div>
       </div>
     </mdb-card>
@@ -38,12 +38,12 @@
 
 <script>
 import Event from '@/components/Event'
-import { mdbCard, mdbBtn } from 'mdbvue'
+import { mdbCard } from 'mdbvue'
 
 export default {
   components: {
     mdbCard,
-    mdbBtn,
+    // mdbBtn,
     Event
   },
   head: {
@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .register {
   transition: all 0.2s ease-in-out;
 }
@@ -125,6 +125,10 @@ export default {
 
 .eventdescription {
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
+}
+
+.card-image {
+  background-size: cover !important;
 }
 
 /* .img-left {
