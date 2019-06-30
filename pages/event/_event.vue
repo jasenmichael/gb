@@ -46,6 +46,20 @@ export default {
     mdbBtn,
     Event
   },
+  head: {
+    script: [
+      {
+        src:
+          'https://maps.google.com/maps/api/js?key=AIzaSyAyKWRUE34jY8_5-DcMlPS71-UioHx4yCk'
+      }
+    ],
+    link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Roboto'
+      }
+    ]
+  },
   data() {
     return {
       event: this.getEvent(),

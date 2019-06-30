@@ -29,19 +29,35 @@
       "
     ></div>
     <hr />
+    <mdb-google-map
+      name="reg"
+      class="col-md-12"
+      style="height: 500px; width:100%; position: relative; overflow: hidden"
+      :zoom="10"
+      :markerCoordinates="[
+        {
+          latitude: 30.247593,
+          longitude: -97.347876,
+          title: 'Greenbriar Community School'
+        }
+      ]"
+    >
+    </mdb-google-map>
     <hr />
     <div>
-      <!-- <pre>{{ event }}</pre> -->
+      <pre>{{ event }}</pre>
     </div>
   </mdb-container>
 </template>
 
 <script>
-import { mdbContainer } from 'mdbvue'
+import { mdbContainer, mdbGoogleMap } from 'mdbvue'
+// import { gmapApi } from 'vue2-google-maps'
 
 export default {
   components: {
-    mdbContainer
+    mdbContainer,
+    mdbGoogleMap
   },
   props: {
     event: {
@@ -50,6 +66,12 @@ export default {
       useDefaultForNull: true
     }
   },
+  data() {
+    return {}
+  },
+  // computed: {
+  //   google: gmapApi
+  // },
   mounted() {
     const imgs = document.getElementsByClassName('event-image')
     for (let index = 0; index < imgs.length; index++) {
