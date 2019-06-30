@@ -2,8 +2,46 @@
   <div>
     <mdb-container class="container mt-3">
       <small>
-        <nuxt-link class="back" :to="'/events'">back to EVENTS</nuxt-link>
+        back to
+        <nuxt-link class="back" :to="'/events'">EVENTS</nuxt-link>
       </small>
+      <hr />
+      <mdb-col md="12">
+        <mdb-row>
+          <mdb-card class="mx-auto">
+            <mdb-card-body class="text-center">
+              <mdb-card-title>
+                <strong>About this Event</strong>
+              </mdb-card-title>
+              <h5 class="indigo-text">
+                <strong>
+                  Category:
+                  <span>
+                    {{ event.category_name
+                    }}{{
+                      !event.category_id ? '' : ' / ' + event.subcategory_name
+                    }}
+                  </span>
+                </strong>
+              </h5>
+              <mdb-card-text>
+                Sed ut perspiciatis unde omnis iste natus sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam.
+              </mdb-card-text>
+              <a class="px-2 fa-lg li-ic">
+                <mdb-icon fab icon="linkedin" />
+              </a>
+              <a class="px-2 fa-lg tw-ic">
+                <mdb-icon fab icon="twitter" />
+              </a>
+              <a class="px-2 fa-lg fb-ic">
+                <mdb-icon fab icon="facebook" />
+              </a>
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-row>
+      </mdb-col>
+      <!-- <hr />
       <h4>About this Event:</h4>
       <div id="category">
         <h5>
@@ -13,7 +51,7 @@
             }}{{ !event.category_id ? '' : ' / ' + event.subcategory_name }}
           </span>
         </h5>
-      </div>
+      </div> -->
       <div
         class="content"
         v-html="
@@ -29,7 +67,6 @@
             )
         "
       ></div>
-      <hr />
     </mdb-container>
     <mdb-google-map
       name="reg"
@@ -51,13 +88,30 @@
 </template>
 
 <script>
-import { mdbContainer, mdbGoogleMap } from 'mdbvue'
+import {
+  mdbContainer,
+  mdbGoogleMap,
+  mdbCol,
+  mdbRow,
+  mdbCard,
+  mdbCardBody,
+  mdbCardTitle,
+  mdbCardText,
+  mdbIcon
+} from 'mdbvue'
 // import { gmapApi } from 'vue2-google-maps'
 
 export default {
   components: {
     mdbContainer,
-    mdbGoogleMap
+    mdbGoogleMap,
+    mdbCol,
+    mdbRow,
+    mdbCard,
+    mdbCardBody,
+    mdbCardTitle,
+    mdbCardText,
+    mdbIcon
   },
   props: {
     event: {
