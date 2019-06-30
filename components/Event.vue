@@ -31,7 +31,6 @@
       ></div>
       <hr />
     </mdb-container>
-    <hr />
     <mdb-google-map
       name="reg"
       class="col-md-12"
@@ -45,7 +44,6 @@
         }
       ]"
     ></mdb-google-map>
-    <hr />
     <div>
       <pre>{{ event }}</pre>
     </div>
