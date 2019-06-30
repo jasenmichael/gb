@@ -1,33 +1,36 @@
 <template>
-  <mdb-container class="container mt-3">
-    <small>
-      <nuxt-link class="back" :to="'/events'">back to EVENTS</nuxt-link>
-    </small>
-    <h4>About this Event:</h4>
-    <div id="category">
-      <h5>
-        Category:
-        <span>
-          {{ event.category_name
-          }}{{ !event.category_id ? '' : ' / ' + event.subcategory_name }}
-        </span>
-      </h5>
-    </div>
-    <div
-      class="content"
-      v-html="
-        event.description.html
-          .replace(event.description.text, '')
-          .replace(
-            /<img/g,
-            '<img class=\'img-fluid event-image z-depth-1-half\' align=\'left\''
-          )
-          .replace(
-            /<iframe/g,
-            '<div class=\'embed-responsive embed-responsive-16by9 z-depth-1-half\'><iframe class=\'embed-responsive-item\''
-          )
-      "
-    ></div>
+  <div>
+    <mdb-container class="container mt-3">
+      <small>
+        <nuxt-link class="back" :to="'/events'">back to EVENTS</nuxt-link>
+      </small>
+      <h4>About this Event:</h4>
+      <div id="category">
+        <h5>
+          Category:
+          <span>
+            {{ event.category_name
+            }}{{ !event.category_id ? '' : ' / ' + event.subcategory_name }}
+          </span>
+        </h5>
+      </div>
+      <div
+        class="content"
+        v-html="
+          event.description.html
+            .replace(event.description.text, '')
+            .replace(
+              /<img/g,
+              '<img class=\'img-fluid event-image z-depth-1-half\' align=\'left\''
+            )
+            .replace(
+              /<iframe/g,
+              '<div class=\'embed-responsive embed-responsive-16by9 z-depth-1-half\'><iframe class=\'embed-responsive-item\''
+            )
+        "
+      ></div>
+      <hr />
+    </mdb-container>
     <hr />
     <mdb-google-map
       name="reg"
@@ -41,13 +44,12 @@
           title: 'Greenbriar Community School'
         }
       ]"
-    >
-    </mdb-google-map>
+    ></mdb-google-map>
     <hr />
     <div>
       <pre>{{ event }}</pre>
     </div>
-  </mdb-container>
+  </div>
 </template>
 
 <script>
