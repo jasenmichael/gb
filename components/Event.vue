@@ -41,17 +41,6 @@
           </mdb-card>
         </mdb-row>
       </mdb-col>
-      <!-- <hr />
-      <h4>About this Event:</h4>
-      <div id="category">
-        <h5>
-          Category:
-          <span>
-            {{ event.category_name
-            }}{{ !event.category_id ? '' : ' / ' + event.subcategory_name }}
-          </span>
-        </h5>
-      </div> -->
       <div
         class="content"
         v-html="
@@ -81,9 +70,9 @@
         }
       ]"
     ></mdb-google-map>
-    <div>
+    <!-- <div>
       <pre>{{ event }}</pre>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -99,7 +88,6 @@ import {
   mdbCardText,
   mdbIcon
 } from 'mdbvue'
-// import { gmapApi } from 'vue2-google-maps'
 
 export default {
   components: {
@@ -123,9 +111,6 @@ export default {
   data() {
     return {}
   },
-  // computed: {
-  //   google: gmapApi
-  // },
   mounted() {
     const imgs = document.getElementsByClassName('event-image')
     for (let index = 0; index < imgs.length; index++) {
