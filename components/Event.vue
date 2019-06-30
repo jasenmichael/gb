@@ -22,6 +22,10 @@
             /<img/g,
             '<img class=\'img-fluid event-image z-depth-1-half\' align=\'left\''
           )
+          .replace(
+            /<iframe/g,
+            '<div class=\'embed-responsive embed-responsive-16by9 z-depth-1-half\'><iframe class=\'embed-responsive-item\''
+          )
       "
     ></div>
     <hr />
@@ -76,6 +80,7 @@ export default {
 .event-image {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+  position: relative;
   /* max-width: 95%; */
 }
 
@@ -83,7 +88,8 @@ export default {
   .event-image {
     /* max-width: 40vw; */
     clear: both;
-    display: block;
+    /* float: none; */
+    display: inline-block;
     max-height: 300px;
     max-width: 100%;
     border-radius: 2px;
