@@ -25,7 +25,7 @@
           Greenbriar Community School
         </strong>
       </mdb-navbar-brand>
-      <mdb-navbar-toggler v-if="!loading" class="menu">
+      <mdb-navbar-toggler class="menu">
         <mdb-navbar-nav center>
           <!-- eslint-disable-next-line -->
           <mdb-nav-item :class="isActive('/about') + ' link'" anchor-class="white-text" to="/about">
