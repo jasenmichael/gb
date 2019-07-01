@@ -1,6 +1,7 @@
 <template>
   <div>
-    <mdb-container v-if="events === 0" class="noevents">
+    <pre>{{ pageCount + '  current page:' + currentPage }}</pre>
+    <mdb-container v-if="events === []" class="noevents">
       <h3 class="mt-4">
         There are no
         {{ status === 'live' ? 'upcoming' : 'past' }}
@@ -62,15 +63,40 @@
         </div>
       </div>
       <mdb-pagination circle>
-        <mdb-page-item disabled>First</mdb-page-item>
-        <mdb-page-nav prev disabled></mdb-page-nav>
-        <mdb-page-item active>1</mdb-page-item>
-        <mdb-page-item>2</mdb-page-item>
+        <mdb-page-item
+          @click.native.prevent="changePage(1)"
+          :disabled="1 === currentPage"
+        >
+          First
+        </mdb-page-item>
+        <mdb-page-nav
+          :disabled="currentPage === 1"
+          prev
+          @click.native.prevent="changePage(currentPage - 1)"
+        ></mdb-page-nav>
+        <mdb-page-item
+          v-for="(current, index) in pageCount"
+          :key="index"
+          :active="index + 1 === currentPage"
+          @click.native.prevent="changePage(index + 1)"
+        >
+          {{ index + 1 }}
+        </mdb-page-item>
+        <!-- <mdb-page-item>2</mdb-page-item>
         <mdb-page-item>3</mdb-page-item>
         <mdb-page-item>4</mdb-page-item>
-        <mdb-page-item>5</mdb-page-item>
-        <mdb-page-nav next></mdb-page-nav>
-        <mdb-page-item>Last</mdb-page-item>
+        <mdb-page-item>5</mdb-page-item> -->
+        <mdb-page-nav
+          :disabled="pageCount === currentPage"
+          next
+          @click.native.prevent="changePage(currentPage + 1)"
+        ></mdb-page-nav>
+        <mdb-page-item
+          @click.native.prevent="changePage(pageCount)"
+          :disabled="pageCount === currentPage"
+        >
+          Last
+        </mdb-page-item>
       </mdb-pagination>
       <!-- <pre>{{ status }}</pre> -->
     </div>
@@ -94,25 +120,30 @@ export default {
     return {
       currentPage: 1,
       perPage: 6,
-      currentPageEvents: this.paginate(),
-      allEvents: this.getEvents(),
-      // events: this.paginate(1, 6)
+      pageCount: null,
+      allEvents: [],
       events: []
     }
   },
   beforeMount() {
     this.paginate()
+    this.getPageCount()
   },
   methods: {
-    // paginate(currentPage, perPage) {
     paginate() {
-      // this.currentPage = this.currentPage - 1
       const currentPage = this.currentPage - 1
       const perPage = this.perPage
       this.events = this.getEvents().slice(
         currentPage * perPage,
         (currentPage + 1) * perPage
       )
+    },
+    changePage(page) {
+      this.currentPage = page
+      this.paginate()
+    },
+    getPageCount() {
+      this.pageCount = Math.ceil(this.getEvents().length / this.perPage)
     },
     getDate(date, format) {
       return moment(date).format(format)

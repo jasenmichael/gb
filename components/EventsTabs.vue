@@ -1,5 +1,5 @@
 <template>
-  <mdb-container>
+  <mdb-container md="10">
     <mdb-tabs
       :active="0"
       default
