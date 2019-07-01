@@ -7,6 +7,7 @@
         <!-- eslint-disable-next-line -->
         <img
           v-if="$mq === 'sm' ? true : false"
+          style="color:transparent;"
           id="icon"
           src="/icon.png"
           height="30"
@@ -14,6 +15,7 @@
         />
         <img
           v-else
+          style="color:transparent;"
           id="icon"
           src="/icon.png"
           height="80"
@@ -23,7 +25,7 @@
           Greenbriar Community School
         </strong>
       </mdb-navbar-brand>
-      <mdb-navbar-toggler class="menu">
+      <mdb-navbar-toggler v-if="!loading" class="menu">
         <mdb-navbar-nav center>
           <!-- eslint-disable-next-line -->
           <mdb-nav-item :class="isActive('/about') + ' link'" anchor-class="white-text" to="/about">

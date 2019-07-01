@@ -16,7 +16,8 @@
               v-for="(event, index) in events"
               :key="event.id"
               :class="
-                `event animated ${isOdd(index) ? 'zoomInLeft' : 'zoomInRight'}`
+                `event animated
+                  ${isOdd(index) ? 'slideInLeft' : 'slideInRight'}`
               "
             >
               <nuxt-link :to="'/event/' + event.urlPath">
