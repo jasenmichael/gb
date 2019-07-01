@@ -133,7 +133,8 @@ export default {
   height: 93vh;
 }
 .carousel {
-  background-color: rgb(27, 27, 27);
+  background-image: linear-gradient(rgb(75, 82, 81), rgb(27, 27, 27));
+  /* background-color: rgb(27, 27, 27); */
   height: 93vh;
 }
 .carousel-item img {
