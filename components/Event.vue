@@ -94,6 +94,7 @@
       class="col-md-12 map"
       style="height: 500px; width:100%; position: relative; overflow: hidden"
       :zoom="10"
+      type="satellite"
       :marker-coordinates="[
         {
           latitude: 30.247593,
@@ -102,9 +103,9 @@
         }
       ]"
     ></mdb-google-map>
-    <div>
+    <!-- <div>
       <pre>{{ event }}</pre>
-    </div>
+    </div> -->
   </div>
 </template>
 
