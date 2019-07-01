@@ -7,16 +7,16 @@
         <!-- eslint-disable-next-line -->
         <img
           v-if="$mq === 'sm' ? true : false"
-          style="color:transparent;"
           id="icon"
+          style="color:transparent;"
           src="/icon.png"
           height="30"
           alt="an image of a greenbriar vine"
         />
         <img
           v-else
-          style="color:transparent;"
           id="icon"
+          style="color:transparent;"
           src="/icon.png"
           height="80"
           alt="an image of a greenbriar vine"

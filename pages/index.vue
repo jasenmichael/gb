@@ -17,9 +17,9 @@
 
     <mdb-carousel :interval="5000">
       <mdb-carousel-item
-        class="carousel"
         v-for="(slide, index) in slides"
         :key="index"
+        class="carousel"
       >
         <mdb-view>
           <img :src="slide.img" class="img-fluid z-depth-5" :alt="slide.alt" />

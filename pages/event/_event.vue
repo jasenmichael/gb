@@ -60,6 +60,7 @@ export default {
       eventLogo: '/banner.jpg'
     }
   },
+  mounted() {},
   methods: {
     getEvent() {
       const eventPath = this.$nuxt.$route.params.event
@@ -90,23 +91,6 @@ export default {
       }
       return { subcategory_name: subcategory.name }
     }
-  },
-  mounted() {
-    // const imgs = document.getElementsByClassName('img-fluid')
-    // for (let index = 0; index < imgs.length; index++) {
-    //   const img = imgs[index]
-    //   if (index % 2 === 0) {
-    //     // alert("Even Number");
-    //     img.classList.add('img-left')
-    //     img.parentNode.classList.add('img-max')
-    //     img.parentNode.classList.add('img-left')
-    //   } else {
-    //     // alert("Odd Number");
-    //     img.classList.add('img-right')
-    //     img.parentNode.classList.add('img-max')
-    //     img.parentNode.classList.add('img-right')
-    //   }
-    // }
   }
 }
 </script>
