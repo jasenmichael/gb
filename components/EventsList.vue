@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pre>{{ pageCount + '  current page:' + currentPage }}</pre>
+    <!-- <pre>{{ pageCount + '  current page:' + currentPage }}</pre> -->
     <mdb-container v-if="events === []" class="noevents">
       <h3 class="mt-4">
         There are no

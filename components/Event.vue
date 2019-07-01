@@ -271,7 +271,7 @@ export default {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   position: relative;
-  /* max-width: 95%; */
+  /* max-width: 100vw; */
 }
 .map {
   position: absolute;
@@ -304,6 +304,6 @@ export default {
   /* max-width: 100%; */
   /* clear: both; */
   /* display: block; */
-  overflow: inherit;
+  overflow: hidden;
 }
 </style>
