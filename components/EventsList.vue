@@ -7,7 +7,7 @@
         events...
       </h3>
     </mdb-container>
-    <div v-else>
+    <div v-else class="events">
       <div class="row text-center">
         <div class="[ col-xs-12 col-sm-offset-2 col-sm-12 col-md-12 ]">
           <ul class="event-list">
@@ -61,17 +61,28 @@
           </ul>
         </div>
       </div>
+      <mdb-pagination circle>
+        <mdb-page-item disabled>First</mdb-page-item>
+        <mdb-page-nav prev disabled></mdb-page-nav>
+        <mdb-page-item active>1</mdb-page-item>
+        <mdb-page-item>2</mdb-page-item>
+        <mdb-page-item>3</mdb-page-item>
+        <mdb-page-item>4</mdb-page-item>
+        <mdb-page-item>5</mdb-page-item>
+        <mdb-page-nav next></mdb-page-nav>
+        <mdb-page-item>Last</mdb-page-item>
+      </mdb-pagination>
       <!-- <pre>{{ status }}</pre> -->
     </div>
   </div>
 </template>
 
 <script>
-import { mdbContainer } from 'mdbvue'
+import { mdbContainer, mdbPagination, mdbPageItem, mdbPageNav } from 'mdbvue'
 import moment from 'moment'
 
 export default {
-  components: { mdbContainer },
+  components: { mdbContainer, mdbPagination, mdbPageItem, mdbPageNav },
   props: {
     status: {
       type: String,
@@ -81,10 +92,28 @@ export default {
   },
   data() {
     return {
-      events: this.getEvents()
+      currentPage: 1,
+      perPage: 6,
+      currentPageEvents: this.paginate(),
+      allEvents: this.getEvents(),
+      // events: this.paginate(1, 6)
+      events: []
     }
   },
+  beforeMount() {
+    this.paginate()
+  },
   methods: {
+    // paginate(currentPage, perPage) {
+    paginate() {
+      // this.currentPage = this.currentPage - 1
+      const currentPage = this.currentPage - 1
+      const perPage = this.perPage
+      this.events = this.getEvents().slice(
+        currentPage * perPage,
+        (currentPage + 1) * perPage
+      )
+    },
     getDate(date, format) {
       return moment(date).format(format)
     },
@@ -115,6 +144,10 @@ export default {
 
 .noevents {
   min-height: 400px;
+}
+.events {
+  overflow: visible;
+  height: auto;
 }
 body {
   background-color: rgb(240, 240, 240);

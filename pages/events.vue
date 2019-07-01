@@ -21,7 +21,7 @@
         </div>
       </div>
     </mdb-card>
-    <events />
+    <events class="clearfix" />
   </div>
 </template>
 
