@@ -86,6 +86,8 @@ export default {
     'nuxt-fontawesome',
     'bootstrap-vue/nuxt',
     '@nuxtjs/moment',
+    '@nuxtjs/robots',
+    // '@nuxtjs/sitemap',
     [
       'nuxt-mq',
       {
@@ -99,18 +101,31 @@ export default {
       }
     ]
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
+  robots: { UserAgent: '*' },
+  sitemap: {
+    hostname: 'https://greenbriarschool.org'
+    // gzip: true
+    // filter({ routes }) {
+    //   return routes.map(route => {
+    //     if (!route.url.endsWith('.xml') && !route.url.endsWith('/')) {
+    //       route.url = `${route.url}/`
+    //     }
+    //     return route
+    //   })
+    // }
+  },
   axios: {},
   // pwa config
   manifest: {
-    name: process.env.npm_package_title
+    short_name: 'GB School',
+    name: process.env.npm_package_title,
+    start_url: '/',
+    // background_color: '#303030',
+    // theme_color: '#263238',
+    display: 'standalone',
+    lang: 'en'
   },
-  /*
-   ** Build configuration
-   */
+
   build: {
     /*
      ** You can extend webpack config here
