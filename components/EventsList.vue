@@ -172,7 +172,7 @@ export default {
 /* @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css'); */
 
 .noevents {
-  min-height: 200px;
+  min-height: 110px;
 }
 .events {
   overflow: visible;

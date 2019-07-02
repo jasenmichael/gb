@@ -54,7 +54,8 @@ export default {
       {
         src:
           'https://maps.google.com/maps/api/js?key=' +
-          process.env.GOOGLE_MAPS_API_KEY
+          process.env.GOOGLE_MAPS_API_KEY,
+        async: true
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
