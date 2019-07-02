@@ -1,7 +1,8 @@
 <template>
   <div>
+    <!-- <pre>{{ events.length }}</pre> -->
     <!-- <pre>{{ pageCount + '  current page:' + currentPage }}</pre> -->
-    <mdb-container v-if="events === []" class="noevents">
+    <mdb-container v-if="events.length === 0" class="noevents">
       <h3 class="mt-4">
         There are no
         {{ status === 'live' ? 'upcoming' : 'past' }}
@@ -171,7 +172,7 @@ export default {
 /* @import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css'); */
 
 .noevents {
-  min-height: 400px;
+  min-height: 200px;
 }
 .events {
   overflow: visible;
