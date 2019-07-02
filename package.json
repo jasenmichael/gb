@@ -1,6 +1,6 @@
 {
   "title": "Greenbriar Community School",
-  "name": "gb",
+  "name": "greenbriar",
   "version": "1.0.0",
   "description": "Intentional community and model for sustainable community living by consensus decision making.",
   "author": "jasenmichael",
@@ -13,7 +13,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy-local": "rm -rf /var/www/public_html && nuxt generate && mv dist /var/www/public_html && cp -r ../contact_api /var/www/public_html/contact_api",
+    "deploy-local": "rm -rf /var/www/public_html && nuxt generate && mv dist /var/www/public_html && cp -r ../gb-api /var/www/public_html/gb-api",
     "deploy-staging": "node plugins/deploy-staging.js"
   },
   "dependencies": {
@@ -32,7 +32,6 @@
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-mq": "^2.0.0",
     "vue-scrollto": "^2.15.0",
-    "vue2-google-maps": "^0.10.6",
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {

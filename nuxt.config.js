@@ -32,7 +32,7 @@ export default {
   },
   env: {
     contactApi:
-      process.env.CONTACT_API_URL || 'http://localhost/contact_api/index.php'
+      process.env.CONTACT_API_URL || 'http://localhost/gb-api/index.php'
   },
   dev: process.env.NODE_ENV !== 'production',
   /*
