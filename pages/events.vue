@@ -22,7 +22,7 @@
       </div>
     </mdb-card>
     <events class="clearfix" />
-    <pre>{{ events }}</pre>
+    <!-- <pre>{{ events }}</pre> -->
   </div>
 </template>
 
