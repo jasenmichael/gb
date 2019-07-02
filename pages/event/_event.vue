@@ -33,13 +33,28 @@ export default {
     mdbCard,
     Event
   },
-  head: {
-    link: [
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Roboto'
-      }
-    ]
+  // head: {
+  //   link: [
+  //     {
+  //       rel: 'stylesheet',
+  //       href: 'https://fonts.googleapis.com/css?family=Roboto'
+  //     }
+  //   ]
+  // },
+  head() {
+    return {
+      title: 'Events and Workshops',
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: this.description }
+      ]
+      // link: [
+      //   {
+      //     rel: 'stylesheet',
+      //     href: 'https://fonts.googleapis.com/css?family=Roboto'
+      //   }
+      // ]
+    }
   },
   data() {
     return {
