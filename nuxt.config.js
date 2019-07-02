@@ -58,7 +58,10 @@ export default {
         async: true
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'dns-prefetch', href: 'https://maps.googleapis.com' }
+    ]
   },
   /*
    ** Customize the progress-bar color
