@@ -1,7 +1,7 @@
 <template>
   <div>
     <mdb-card
-      v-if="event"
+      v-if="event.length != 0"
       class="card-image"
       :style="{
         background:
@@ -18,17 +18,6 @@
           <h4 class="mx-4 mb-4 font-bold eventdescription text-hide">
             {{ event.description.text }}
           </h4>
-          <!-- <mdb-btn
-            outine="primary"
-            class="register"
-            color="green"
-            tag="a"
-            target="_blank"
-            :href="event.url"
-            icon="leaf"
-          >
-            {{ event.is_free ? 'RSVP' : 'REGISTER' }}
-          </mdb-btn> -->
         </div>
       </div>
     </mdb-card>
@@ -38,12 +27,11 @@
 
 <script>
 import Event from '@/components/Event'
-import { mdbCard } from 'mdbvue'
+// import { mdbCard } from 'mdbvue'
 
 export default {
   components: {
-    mdbCard,
-    // mdbBtn,
+    // mdbCard,
     Event
   },
   head: {
@@ -60,7 +48,17 @@ export default {
       eventLogo: '/banner.jpg'
     }
   },
-  mounted() {},
+  validate({ params, store }) {
+    const event = store.state.events.list.find(
+      event => event.urlPath === params.event
+    )
+    // eslint-disable-next-line
+    console.log('yo', event)
+    return event !== undefined
+  },
+  // beforeMount() {
+  //   this.event = this.getEvent()
+  // },
   methods: {
     getEvent() {
       const eventPath = this.$nuxt.$route.params.event
@@ -77,7 +75,7 @@ export default {
       const category = this.$store.state.events.categories.find(
         category => category.id === event.category_id
       )
-      if (!category) {
+      if (!category.name) {
         return { category_name: 'Educational' }
       }
       return { category_name: category.name }
@@ -86,7 +84,7 @@ export default {
       const subcategory = this.$store.state.events.subcategories.find(
         subcategory => subcategory.id === event.subcategory_id
       )
-      if (!subcategory) {
+      if (!subcategory.name) {
         return { subcategory_name: 'Educational' }
       }
       return { subcategory_name: subcategory.name }

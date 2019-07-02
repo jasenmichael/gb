@@ -64,10 +64,10 @@
           </ul>
         </div>
       </div>
-      <mdb-pagination circle v-if="pageCount > 1">
+      <mdb-pagination v-if="pageCount > 1" circle>
         <mdb-page-item
-          @click.native.prevent="changePage(1)"
           :disabled="1 === currentPage"
+          @click.native.prevent="changePage(1)"
         >
           First
         </mdb-page-item>
@@ -90,8 +90,8 @@
           @click.native.prevent="changePage(currentPage + 1)"
         ></mdb-page-nav>
         <mdb-page-item
-          @click.native.prevent="changePage(pageCount)"
           :disabled="pageCount === currentPage"
+          @click.native.prevent="changePage(pageCount)"
         >
           Last
         </mdb-page-item>
