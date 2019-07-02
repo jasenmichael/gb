@@ -1,7 +1,6 @@
 <template>
   <div>
     <mdb-card
-      v-if="event.length != 0"
       class="card-image"
       :style="{
         background:
@@ -27,11 +26,11 @@
 
 <script>
 import Event from '@/components/Event'
-// import { mdbCard } from 'mdbvue'
+import { mdbCard } from 'mdbvue'
 
 export default {
   components: {
-    // mdbCard,
+    mdbCard,
     Event
   },
   head: {
