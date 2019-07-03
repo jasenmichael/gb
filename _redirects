@@ -3,4 +3,4 @@
 # Redirect default Netlify subdomain to primary domain
 https://greenbriarschool.netlify.com/* https://greenbriarschool.org/:splat 301!
 
-https://greenbriarschool.org/resident/* https://resident.greenbriarschool.org 200
+/resident/* https://resident.greenbriarschool.org/:splat 200!
