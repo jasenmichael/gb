@@ -218,7 +218,7 @@ export default {
       this.sendTxt = 'Sending..'
       this.sending = 'disabled'
       const email = await this.$axios({
-        method: 'POST',
+        method: 'post',
         url,
         data: formData,
         headers: config
