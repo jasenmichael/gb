@@ -1,14 +1,14 @@
 const fs = require('fs')
 require('dotenv').config()
 
+// instructions
 // add custom redirects to netlify environmental variables...
 //    with key names... "REDIRECT_1, REDIRECT_2" etc..
-//    example netlify environmental variables
+//    example netlify environmental variable
 //    REDIRECT_1="https://netlify-is-awesome.netlify.com/* https://netlify-is-awesome.org/:splat 301!""
-
-
-// change build command on netlify to
+// change build command on netlify to...
 //    npm run generate && node plugins/create-redirects.js
+
 const redirectsFile = 'dist/_redirects'
 
 const getRedirects = () => {
