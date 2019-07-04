@@ -48,7 +48,9 @@
       </p>
       <p>
         Check our upcoming
-        <nuxt-link to="/events">Events & Workshops</nuxt-link>
+        <nuxt-link class="events-link" to="/events">
+          Events & Workshops
+        </nuxt-link>
       </p>
     </mdb-container>
   </div>
@@ -79,15 +81,15 @@ export default {
       welcome: 'Greenbriar Community School',
       slides: [
         {
-          img: '/slide/1.jpg',
+          img: 'slide/1.jpg',
           alt: 'slide 1'
         },
         {
-          img: '/slide/2.jpg',
+          img: 'slide/2.jpg',
           alt: 'slide 2'
         },
         {
-          img: '/slide/3.jpg',
+          img: 'slide/3.jpg',
           alt: 'slide 3'
         }
       ]
@@ -142,6 +144,13 @@ export default {
   left: 0;
   object-fit: cover;
   height: 93vh;
+}
+
+.events-link {
+  color: #0d47a1;
+  text-decoration-color: #1f6bdd;
+  font-weight: 405;
+  font-style: italic;
 }
 </style>
 

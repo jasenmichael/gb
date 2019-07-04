@@ -35,7 +35,8 @@ export default {
   },
   dev: process.env.NODE_ENV !== 'production',
   router: {
-    base: process.env.NODE_ENV !== 'production' ? '/' : process.env.BASE_URL
+    // base: process.env.NODE_ENV !== 'production' ? '/' : process.env.BASE_URL || '/'
+    base: (process.env.NODE_ENV === 'production' && process.env.BASE_URL) || '/'
   },
   /*
    ** Headers of the page

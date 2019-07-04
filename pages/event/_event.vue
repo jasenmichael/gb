@@ -67,7 +67,7 @@ export default {
       event => event.urlPath === params.event
     )
     // eslint-disable-next-line
-    console.log('yo', event)
+    // console.log('yo', event)
     return event !== undefined
   },
   // beforeMount() {

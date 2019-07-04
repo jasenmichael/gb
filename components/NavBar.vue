@@ -9,7 +9,7 @@
           v-if="$mq === 'sm' ? true : false"
           id="icon"
           style="color:transparent;"
-          src="/icon.png"
+          src="icon.png"
           height="30"
           alt="an image of a greenbriar vine"
         />
@@ -17,7 +17,7 @@
           v-else
           id="icon"
           style="color:transparent;"
-          src="/icon.png"
+          src="icon.png"
           height="80"
           alt="an image of a greenbriar vine"
         />

@@ -34,7 +34,7 @@ export const actions = {
       .then(res => {
         if (res.status === 200) {
           // eslint-disable-next-line no-console
-          console.log(res.data)
+          console.log(res.data.pagination)
           const events = res.data.events.filter(
             event => event.status === 'live' || 'completed'
           )
