@@ -31,10 +31,13 @@ export default {
     }
   },
   env: {
-    contactApi:
-      process.env.CONTACT_API_URL || 'http://localhost/gb-api/index.php'
+    contactApi: process.env.CONTACT_API_URL
   },
   dev: process.env.NODE_ENV !== 'production',
+  router: {
+    base:
+      process.env.NODE_ENV !== 'production' ? '/' : `/${process.env.BASE_URL}/`
+  },
   /*
    ** Headers of the page
    */

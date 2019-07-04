@@ -13,7 +13,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy-local": "rm -rf /var/www/public_html && nuxt generate && mv dist /var/www/public_html && cp -r ../gb-api /var/www/public_html/gb-api",
+    "deploy-local": "rm -rf /var/www/public_html/gb && nuxt generate && mv dist /var/www/public_html/gb && cp -r ../gb-api /var/www/public_html/gb-api",
     "deploy-staging": "node plugins/deploy-staging.js"
   },
   "dependencies": {
