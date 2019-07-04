@@ -81,6 +81,7 @@
             />
           </div>
           <div class="text-center">
+            <div data-netlify-recaptcha="true"></div>
             <mdb-btn outline="primary" :class="sending">
               <mdb-icon icon="paper-plane" class="ml-1" />
               {{ sendTxt }}
