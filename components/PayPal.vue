@@ -20,6 +20,7 @@
     <a
       target="_blank"
       href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PT5FP247TBA4&source=url"
+      title="Make a donation online with paypal or credit card"
       rel="noopener"
     >
     </a>
