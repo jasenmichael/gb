@@ -50,58 +50,18 @@
             Community Network
           </h5>
           <ul class="list-unstyled">
-            <li class="mb-2">
+            <li
+              v-for="(link, index) in communityLinks"
+              :key="index"
+              class="mb-2"
+            >
               <a
-                href="http://earthaven.org"
+                :href="link.href"
                 target="_blank"
-                title="an intentional community based in North Carolina near Ashville, with many natural buildings, Earthhaven is off-the-grid also incorporating many other sustainable living systems."
+                :title="link.title"
+                rel="noopener"
               >
-                Earthaven Ecovillage
-              </a>
-            </li>
-            <li class="mb-2">
-              <a
-                href="http://schoolofintegratedliving.org"
-                target="_blank"
-                title="The mission of SOIL is to inspire and empower people to live responsible and creative lives by providing experiential education in integrated living and regenerative systems."
-              >
-                School of Integrated Living - SOIL
-              </a>
-            </li>
-            <li class="mb-2">
-              <a
-                href="http://www.thefarm.org"
-                target="_blank"
-                title="The Farm in Tennessee"
-              >
-                The Farm
-              </a>
-            </li>
-            <li class="mb-2">
-              <a
-                href="http://ic.org"
-                target="_blank"
-                title="Networking site for intentional communities"
-              >
-                Fellowship for Intentional Community
-              </a>
-            </li>
-            <li class="mb-2">
-              <a
-                href="http://dancingrabbit.org"
-                target="_blank"
-                title="Dancing Rabbit is an ecovillage and intentional community of about 70 people set amid the hills and prairies of rural northeastern Missouri. Our goal is to live ecologically sustainable and socially rewarding lives, and to share the skills and ideas behind that lifestyle. - See more at: http://www.dancingrabbit.org/#sthash.I2U5NokQ.dpuf"
-              >
-                Dancing Rabbit Ecovillage
-              </a>
-            </li>
-            <li class="mb-2">
-              <a
-                href="http://ecovillage.org"
-                target="_blank"
-                title=" inspiring examples of how people and communities can live healthy, cooperative, genuinely happy and meaningful lifestyles."
-              >
-                Global Ecovillage Network
+                {{ link.label }}
               </a>
             </li>
           </ul>
@@ -169,6 +129,42 @@ export default {
   },
   data() {
     return {
+      communityLinks: [
+        {
+          href: 'http://earthaven.org',
+          title:
+            'an intentional community based in North Carolina near Ashville, with many natural buildings, Earthhaven is off-the-grid also incorporating many other sustainable living systems.',
+          label: 'Earthaven Ecovillage'
+        },
+        {
+          href: 'http://schoolofintegratedliving.org',
+          title:
+            'The mission of SOIL is to inspire and empower people to live responsible and creative lives by providing experiential education in integrated living and regenerative systems.',
+          label: 'School of Integrated Living - SOIL'
+        },
+        {
+          href: 'http://www.thefarm.org',
+          title: 'The Farm in Tennessee',
+          label: 'The Farm'
+        },
+        {
+          href: 'http://ic.org',
+          title: 'Networking site for intentional communities',
+          label: 'Fellowship for Intentional Community'
+        },
+        {
+          href: 'http://dancingrabbit.org',
+          title:
+            'Dancing Rabbit is an ecovillage and intentional community of about 70 people set amid the hills and prairies of rural northeastern Missouri. Our goal is to live ecologically sustainable and socially rewarding lives, and to share the skills and ideas behind that lifestyle. - See more at: http://www.dancingrabbit.org/#sthash.I2U5NokQ.dpuf',
+          label: 'Dancing Rabbit Ecovillage'
+        },
+        {
+          href: 'http://ecovillage.org',
+          title:
+            'inspiring examples of how people and communities can live healthy, cooperative, genuinely happy and meaningful lifestyles.',
+          label: 'Global Ecovillage Network'
+        }
+      ],
       upcomingEvents: this.$store.state.events.list.filter(
         event => event.status === 'live'
       )
