@@ -68,7 +68,7 @@
                         .replace(/<IMG/g, '<img')
                         .replace(
                           /<img/g,
-                          '<img class=\'img-fluid event-image z-depth-1-half\' align=\'left\''
+                          '<img class=\'img-fluid event-image lazyload z-depth-1-half\' align=\'left\''
                         )
                         .replace(
                           /<iframe/g,

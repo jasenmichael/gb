@@ -5,22 +5,34 @@
     <mdb-navbar dark color="teal darken-3" class="white-text z-depth-5" scrolling :scrollingOffset='20'  animated animation="3">
       <mdb-navbar-brand to="/">
         <!-- eslint-disable-next-line -->
-        <img
-          v-if="$mq === 'sm' ? true : false"
-          id="icon"
-          style="color:transparent;"
-          src="icon.png"
-          height="30"
-          alt="an image of a greenbriar vine"
-        />
-        <img
-          v-else
-          id="icon"
-          style="color:transparent;"
-          src="icon.png"
-          height="80"
-          alt="an image of a greenbriar vine"
-        />
+        <picture v-if="$mq === 'sm' ? true : false">
+          <source data-srcset="icon.png?webp" type="image/webp" />
+          <source data-srcset="icon.png" type="image/png" />
+          <!-- eslint-disable-next-line -->
+          <!-- <img data-src="icon.png" class="lazyload" alt="an image of a greenbriar vine" /> -->
+          <img
+            id="icon"
+            style="color:transparent;"
+            src="icon.png"
+            height="30"
+            alt="an image of a greenbriar vine"
+            class="lazyload"
+          />
+        </picture>
+        <picture v-else>
+          <source data-srcset="icon.png?webp" type="image/webp" />
+          <source data-srcset="icon.png" type="image/png" />
+          <!-- eslint-disable-next-line -->
+          <!-- <img data-src="icon.png" class="lazyload" alt="an image of a greenbriar vine" /> -->
+          <img
+            id="icon"
+            style="color:transparent;"
+            src="icon.png"
+            height="80"
+            alt="an image of a greenbriar vine"
+            class="lazyload"
+          />
+        </picture>
         <strong id="brand">
           Greenbriar Community School
         </strong>

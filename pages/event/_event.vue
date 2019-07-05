@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       event: this.getEvent(),
-      eventLogo: '/banner.jpg'
+      eventLogo: '/banner.jpg?webp'
     }
   },
   validate({ params, store }) {

@@ -22,12 +22,28 @@
         class="carousel"
       >
         <mdb-view>
-          <img :src="slide.img" class="img-fluid z-depth-5" :alt="slide.alt" />
-          <mdb-mask flex-center overlay="black-light" />
+          <figure class="">
+            <picture>
+              <source :data-srcset="slide.img + '?webp'" type="image/webp" />
+              <source :data-srcset="slide.img" type="image/png" />
+              <img
+                :data-src="slide.img"
+                class="lazyload img-fluid"
+                :alt="slide.alt"
+              />
+              <mdb-mask flex-center overlay="black-light" />
+            </picture>
+          </figure>
+          <!-- eslint-disable-next-line -->
+          <!-- <img 
+            :src="slide.img"
+            class="img-fluid lazyload"
+            :alt="slide.alt"
+          /> -->
+          <!-- <mdb-mask flex-center overlay="black-light" /> -->
         </mdb-view>
       </mdb-carousel-item>
     </mdb-carousel>
-
     <mdb-container>
       <h1 id="info" class="mt-4 mb-4">
         Welcome to Greenbriar Community School
@@ -95,17 +111,6 @@ export default {
       ]
     }
   }
-  // async fetch({ store }) {
-  //   if (store.state.events.list.length === 0) {
-  //     await store.dispatch('events/getEvents')
-  //   }
-  //   if (store.state.events.categories.length === 0) {
-  //     await store.dispatch('events/getCategories')
-  //   }
-  //   if (store.state.events.subcategories.length === 0) {
-  //     await store.dispatch('events/getSubcategories')
-  //   }
-  // }
 }
 </script>
 

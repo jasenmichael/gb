@@ -37,6 +37,7 @@
                   v-if="event.logo"
                   :alt="event.name.text + ' background image'"
                   :src="event.logo == null ? eventLogo : event.logo.url"
+                  class="lazyload"
                 />
                 <div class="info">
                   <h2 class="title">{{ event.name.text }}</h2>

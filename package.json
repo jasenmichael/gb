@@ -17,6 +17,7 @@
     "deploy-live": "node plugins/deploy-live.js"
   },
   "dependencies": {
+    "@bazzite/nuxt-optimized-images": "^0.2.1",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/moment": "^1.2.0",
@@ -26,6 +27,10 @@
     "bootstrap": "^4.3.1",
     "bootstrap-css-only": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.24",
+    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "lazysizes": "^5.1.0",
     "mdbvue": "^5.5.0",
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",

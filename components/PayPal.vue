@@ -7,7 +7,7 @@
       <!-- eslint-disable-next-line -->
       <input
         type="image"
-        src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+        :src="require('~/assets/donate.gif')"
         border="0"
         name="submit"
         title="PayPal - The safer, easier way to pay online!"
