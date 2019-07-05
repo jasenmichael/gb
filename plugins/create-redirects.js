@@ -18,15 +18,11 @@ const getRedirects = () => {
     const redirect = eval('process.env.REDIRECT_' + (i + 1))
     if (redirect) {
       redirects.push(redirect)
-      // eslint-disable-next-line
-    //   console.log(eval('process.env.REDIRECT_' + (i + 1)))
     }
   }
-  //   console.log(redirects)
   return redirects
 }
 
-// delete _redirect if exist
 const deleteRedirectsFile = () => {
   fs.unlink(redirectsFile, function(err) {
     if (err) {
@@ -43,7 +39,7 @@ const deleteRedirectsFile = () => {
 const createRedirects = redirects => {
   for (let i = 0; i < redirects.length; i++) {
     const redirect = redirects[i]
-    fs.appendFile(redirectsFile, redirect + '\r\n', function (err) {
+    fs.appendFile(redirectsFile, redirect + '\r\n', function(err) {
       if (err) throw err
       // eslint-disable-next-line no-console
       console.log('SAVED REDIRECT \r\n', redirect)
