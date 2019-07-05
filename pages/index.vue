@@ -22,7 +22,7 @@
         class="carousel"
       >
         <mdb-view>
-          <figure class="">
+          <figure class="picture">
             <picture>
               <source :data-srcset="slide.img + '?webp'" type="image/webp" />
               <source :data-srcset="slide.img" type="image/png" />

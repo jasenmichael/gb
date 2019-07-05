@@ -30,14 +30,20 @@
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.0.0",
+    "jimp": "^0.6.4",
     "lazysizes": "^5.1.0",
+    "lqip-loader": "^2.2.0",
     "mdbvue": "^5.5.0",
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-mq": "^2.0.0",
+    "responsive-loader": "^1.2.0",
+    "sqip-loader": "^0.2.0",
     "vue-scrollto": "^2.15.0",
-    "vuelidate": "^0.7.4"
+    "vuelidate": "^0.7.4",
+    "webp-loader": "^0.5.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
