@@ -19,6 +19,13 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  font-display: auto;
+  src: local('Arvo'),
+    url(https://fonts.gstatic.com/s/arvo/v9/rC7kKhY-eUDY-ucISTIf5PesZW2xOQ-xsNqO47m55DA.woff2)
+      format('woff2');
+}
 * {
   font-family: 'Roboto', sans-serif;
 }

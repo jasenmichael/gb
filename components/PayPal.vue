@@ -14,12 +14,13 @@
         alt="Donate with PayPal button"
       />
       <!-- eslint-disable-next-line -->
-      <img alt border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      <img alt="Make a donation online with paypal or credit card" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </form>
     <!-- eslint-disable-next-line -->
     <a
       target="_blank"
       href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PT5FP247TBA4&source=url"
+      rel="noopener"
     >
     </a>
   </div>

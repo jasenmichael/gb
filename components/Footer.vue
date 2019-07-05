@@ -38,6 +38,7 @@
               <a
                 target="_blank"
                 href="https://www.facebook.com/greenbriarcommunityschool/"
+                rel="noopener"
               >
                 &nbsp;Follow us on Facebook
               </a>
