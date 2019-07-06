@@ -14,9 +14,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "deploy-local": "rm -rf /var/www/public_html/gb && nuxt generate && mv dist /var/www/public_html/gb && cp -r ../gb-api /var/www/public_html/gb-api",
-    "deploy-live": "node plugins/deploy-live.js",
+    "deploy-live": "node utils/deploy-live.js",
     "functions-serve": "netlify-lambda serve functions", 
-    "functions-build": "netlify-lambda build functions" 
+    "functions-build": "netlify-lambda build functions"
   },
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",

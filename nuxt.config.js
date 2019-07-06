@@ -30,8 +30,16 @@ export default {
         })
     }
   },
+  // functionsUrls: {
+  //   local: 'http://localhost:9000/',
+  //   netlify: '/.netlify/functions/'
+  // },
   env: {
-    contactApi: process.env.CONTACT_API_URL
+    contactApi: process.env.CONTACT_API_URL,
+    contactApiTest:
+      process.env.LOCAL || process.env.NODE_ENV === 'production'
+        ? '/.netlify/functions/'
+        : 'http://localhost:9000/.netlify/functions/'
   },
   dev: process.env.NODE_ENV !== 'production',
   router: {

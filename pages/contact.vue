@@ -170,6 +170,8 @@ export default {
   },
   mounted() {
     this.sending = ''
+    // eslint-disable-next-line
+    console.log(process.env.contactApiTest)
   },
   methods: {
     reset: function() {
