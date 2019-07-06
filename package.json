@@ -13,8 +13,8 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy-local": "rm -rf /var/www/public_html/gb && nuxt generate && mv dist /var/www/public_html/gb && cp -r ../gb-api /var/www/public_html/gb-api",
-    "deploy-live": "node utils/deploy-live.js",
+    "deploy-local": "npm run functions-build && rm -rf /var/www/public_html/gb && nuxt generate && mv dist /var/www/public_html/gb && cp -r ../gb-api /var/www/public_html/gb-api",
+    "deploy-live": "npm run functions-build && git push origin master && node utils/deploy-live.js",
     "functions-serve": "netlify-lambda serve functions", 
     "functions-build": "netlify-lambda build functions"
   },
