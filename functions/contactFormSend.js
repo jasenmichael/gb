@@ -33,6 +33,7 @@ exports.handler = function(event, context, callback){
 
   // hit api and get response
   const sendEmail = () => {
+    console.log('______________________\r\n', context)
     // axios.get(URL)
     //   .then(res => response(res.data))
     //   .catch(err => response(err));
@@ -49,8 +50,8 @@ exports.handler = function(event, context, callback){
     response(responseBody)
   }
 
-  // if(event.httpMethod == 'GET') {
-  if(event.httpMethod == 'POST') {
+  if(event.httpMethod == 'GET') {
+  // if(event.httpMethod == 'POST' || 'GET') {
     sendEmail()
   } else {
     error = {
