@@ -44,18 +44,22 @@
         </mdb-view>
       </mdb-carousel-item>
     </mdb-carousel>
-    <mdb-container>
-      <h1 id="info" class="mt-4 mb-4">
+    <mdb-container style="font-size:125%;">
+      <h1 id="info" class="mt-4 mb-4 text-center">
         Welcome to Greenbriar Community School
       </h1>
-      <p>
-        Greenbriar Community is a model for sustainable community living by
-        consensus decision making.
-      </p>
+      <h4 class="text-center ml-4 mr-4" style="font-style:italic;">
+        "Greenbriar Community School is a model for sustainable community living
+        <br />
+        by consensus decision making."
+      </h4>
       <p>
         Located within 170 wooded acres east of Austin near Bastrop Texas.
-        Greenbriar is a part of the free school movement that began in the
-        1960's. We are an Educational community focusing on sustainability,
+        Greenbriar was a part of the free school movement that began in the
+        1960's
+        <span style="font-size:130%;">☮</span>
+        <br />
+        We are an Educational community focusing on sustainability,
         homeschooling and providing an alternative learning center.
       </p>
       <p>
@@ -63,10 +67,11 @@
         and collaborating with other educators.
       </p>
       <p>
-        Check our upcoming
-        <nuxt-link class="events-link" to="/events">
-          Events & Workshops
+        For more information, history and current programs visit the
+        <nuxt-link class="link" to="/about">
+          About
         </nuxt-link>
+        page.
       </p>
     </mdb-container>
   </div>
@@ -151,11 +156,11 @@ export default {
   height: 93vh;
 }
 
-.events-link {
+.link {
   color: #0d47a1;
   text-decoration-color: #1f6bdd;
-  font-weight: 405;
-  font-style: italic;
+  font-weight: 400;
+  /* font-style: italic; */
 }
 </style>
 

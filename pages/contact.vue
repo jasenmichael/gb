@@ -66,8 +66,10 @@
             <mdb-input
               v-model="subject"
               label="Subject*"
+              class="capitalize"
               icon="tag"
               group
+              :disabled="subectDisabled"
               type="text"
               validate
               error="wrong"
@@ -107,6 +109,7 @@
         </mdb-modal>
       </div>
     </mdb-container>
+    <!-- <pre>{{ this.$route.query.subject }}</pre> -->
   </div>
 </template>
 
@@ -145,7 +148,15 @@ export default {
       last_name: '',
       email: '',
       tel: '',
-      subject: '',
+      subject: this.$route.query.subject
+        ? this.$route.query.subject
+            .split('-')
+            .map(w => w.substring(0, 1).toUpperCase() + w.substring(1))
+            .join(' ')
+        : '',
+      subectDisabled:
+        this.$route.query.subject ===
+        ('facilities-usage' | 'volunteer' | 'homeschool'),
       message: '',
       // misc
       sending: '',
@@ -254,6 +265,10 @@ export default {
 
 .eventdescription {
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 @media only screen and (max-width: 900px) {

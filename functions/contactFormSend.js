@@ -37,7 +37,7 @@ exports.handler = function(event, context, callback){
     // axios.get(URL)
     //   .then(res => response(res.data))
     //   .catch(err => response(err));
-    let reqBody = event.body == '' ? JSON.parse(event.body) : ''
+    let reqBody = event.body   // == '' ? JSON.parse(event.body) : ''
 
     // the body to send a msg back to the client
     const responseBody = {
