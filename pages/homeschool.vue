@@ -1,6 +1,6 @@
 <template>
   <mdb-container>
-    <!-- <school-schedule /> -->
+    <school-schedule />
     <hr />
     <div
       class="calendar-container embed-responsive embed-responsive-4by3 z-depth-1-half desk-cal mt-5"
@@ -35,9 +35,10 @@
 
 <script>
 import { mdbContainer } from 'mdbvue'
-// import SchoolSchedule from '@/components/SchoolSchedule'
+import SchoolSchedule from '@/components/SchoolSchedule'
+
 export default {
-  components: { mdbContainer }
+  components: { mdbContainer, SchoolSchedule }
 }
 </script>
 

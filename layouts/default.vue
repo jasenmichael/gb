@@ -11,6 +11,16 @@ import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
 
 export default {
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://greenbriarschool.org' + this.$route.path,
+        },
+      ],
+    }
+  },
   components: {
     NavBar,
     Footer

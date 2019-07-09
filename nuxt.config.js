@@ -133,16 +133,17 @@ export default {
   },
   robots: { UserAgent: '*' },
   sitemap: {
-    hostname: 'https://greenbriarschool.org'
-    // gzip: true
-    // filter({ routes }) {
-    //   return routes.map(route => {
-    //     if (!route.url.endsWith('.xml') && !route.url.endsWith('/')) {
-    //       route.url = `${route.url}/`
-    //     }
-    //     return route
-    //   })
-    // }
+    hostname: 'https://greenbriarschool.org',
+    generate: true,
+    gzip: true,
+    filter({ routes }) {
+      return routes.map(route => {
+        if (!route.url.endsWith('.xml') && !route.url.endsWith('/')) {
+          route.url = `${route.url}/`
+        }
+        return route
+      })
+    }
   },
   axios: {},
   // pwa config
