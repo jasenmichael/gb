@@ -1,3 +1,6 @@
+import path from 'path'
+import PurgecssPlugin from 'purgecss-webpack-plugin'
+import glob from 'glob-all'
 import axios from 'axios'
 require('dotenv').config()
 
@@ -30,10 +33,6 @@ export default {
         })
     }
   },
-  // functionsUrls: {
-  //   local: 'http://localhost:9000/',
-  //   netlify: '/.netlify/functions/'
-  // },
   env: {
     contactApi: process.env.CONTACT_API_URL,
     contactApiTest:
@@ -43,12 +42,8 @@ export default {
   },
   dev: process.env.NODE_ENV !== 'production',
   router: {
-    // base: process.env.NODE_ENV !== 'production' ? '/' : process.env.BASE_URL || '/'
     base: (process.env.NODE_ENV === 'production' && process.env.BASE_URL) || '/'
   },
-  /*
-   ** Headers of the page
-   */
   head: {
     titleTemplate: '%s - Greenbriar Community School',
     meta: [
@@ -74,23 +69,10 @@ export default {
       { rel: 'dns-prefetch', href: 'https://maps.googleapis.com' }
     ]
   },
-  /*
-   ** Customize the progress-bar color
-   */
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
   css: ['bootstrap-css-only/css/bootstrap.min.css', 'mdbvue/build/css/mdb.css'],
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: ['~plugins/vue-scrollto.js', '~/plugins/vue-lazysizes.client.js'],
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
@@ -100,6 +82,7 @@ export default {
     '@nuxtjs/robots',
     '@bazzite/nuxt-optimized-images',
     // '@nuxtjs/sitemap',
+    // 'nuxt-purgecss',
     [
       'nuxt-mq',
       {
@@ -113,6 +96,9 @@ export default {
       }
     ]
   ],
+  // purgeCSS: {
+  //   whitelist: ['']
+  // },
   optimizedImages: {
     inlineImageLimit: -1,
     handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
@@ -158,14 +144,26 @@ export default {
   },
 
   build: {
-    /*
-     ** You can extend webpack config here
-     */
+    extractCSS: true,
     // eslint-disable-next-line prettier/prettier
     extend(config, { isDev, isClient, loaders: { vue } }) {
       if (isClient) {
         vue.transformAssetUrls.img = ['data-src', 'src']
         vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+      }
+      if (isDev && isClient) {
+        // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
+        // for more information about purgecss.
+        config.plugins.push(
+          new PurgecssPlugin({
+            paths: glob.sync([
+              path.join(__dirname, './pages/**/*.vue'),
+              path.join(__dirname, './layouts/**/*.vue'),
+              path.join(__dirname, './components/**/*.vue')
+            ]),
+            whitelist: ['html', 'body']
+          })
+        )
       }
     },
     transpile: ['mdbvue']

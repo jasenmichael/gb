@@ -16,9 +16,9 @@ export default {
       link: [
         {
           rel: 'canonical',
-          href: 'https://greenbriarschool.org' + this.$route.path,
-        },
-      ],
+          href: 'https://greenbriarschool.org' + this.$route.path
+        }
+      ]
     }
   },
   components: {
