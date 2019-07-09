@@ -8,13 +8,14 @@
         <br />
         Our land stewardship program maintains and provides a space for a
         variety of
-        <a href="#" v-scroll-to="'#educational-programs'" class="thislink">
+        <a v-scroll-to="'#educational-programs'" href="#" class="thislink">
           Educational Programs, Workshops and Events
         </a>
-        . Participation in community life is an integral part of our learning
+        <br />
+        Participation in community life is an integral part of our learning
         process.
       </p>
-      <p class="text-center">
+      <p class="">
         <!-- <a href="https://marsalom.com" target="_blank">Marsalom Inc.</a> -->
         Marsalom Inc. / Greenbriar School was established in 1969.
         <!-- <br /> -->
@@ -66,8 +67,9 @@
         <span style="font-weight: 401;">
           2001 Fire at the Main -
         </span>
-        In 2001 the "Main" building structure burned to ground. Many important
-        documents were lost, aside from losing our primary community facility.
+        In 2001 the "Main" building structure burned to the ground. Many
+        important documents were lost, aside from losing our primary community
+        facility.
       </p>
       <p>
         <span style="font-weight: 401;">
