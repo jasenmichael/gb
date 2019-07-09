@@ -8,7 +8,7 @@
         <br />
         Our land stewardship program maintains and provides a space for a
         variety of
-        <a href="/about#educational-programs">
+        <a href="#" v-scroll-to="'#educational-programs'">
           Educational Programs, Workshops and Events
         </a>
         . Participation in community life is an integral part of our learning
