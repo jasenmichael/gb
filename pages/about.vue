@@ -8,7 +8,7 @@
         <br />
         Our land stewardship program maintains and provides a space for a
         variety of
-        <a href="#" v-scroll-to="'#educational-programs'">
+        <a href="#" v-scroll-to="'#educational-programs'" class="link">
           Educational Programs, Workshops and Events
         </a>
         . Participation in community life is an integral part of our learning
@@ -97,7 +97,7 @@
         together in a community environment. We have created a facility, and a
         regular scheduled program. If you would like to participate or have any
         questions, visit the
-        <nuxt-link to="/contact?subject=homeschool">
+        <nuxt-link to="/contact?subject=homeschool" class="link">
           Homeschool Enrichment Program
         </nuxt-link>
         page.
@@ -117,7 +117,7 @@
       </ul>
       <p class="ml-0">
         For more information, and workshop registration, visit the
-        <nuxt-link to="/events">Upcoming Events & Workshops</nuxt-link>
+        <nuxt-link to="/events" class="link">Upcoming Events & Workshops</nuxt-link>
         page.
       </p>
       <hr id="volunteer" />
@@ -125,7 +125,7 @@
       <p>
         If you would like to volunteer at one of our workshops or events, please
         visit the
-        <nuxt-link to="/contact/?subject=volunteer">Volunteer</nuxt-link>
+        <nuxt-link to="/contact/?subject=volunteer" class="link">Volunteer</nuxt-link>
         page.
       </p>
       <hr id="facility-usage" />
@@ -133,7 +133,7 @@
       <p>
         If you interested in hosting an event or Educational workshop, please
         visit the
-        <nuxt-link to="/contact?subject=facilities-usage">
+        <nuxt-link to="/contact?subject=facilities-usage" class="link">
           Facilities Usage
         </nuxt-link>
         page.
@@ -158,3 +158,12 @@ export default {
   components: { mdbContainer }
 }
 </script>
+
+<style scoped>
+.link {
+  color: #0d47a1;
+  text-decoration-color: #1f6bdd;
+  font-weight: 400;
+  /* font-style: italic; */
+}
+</style>
