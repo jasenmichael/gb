@@ -68,7 +68,7 @@
       </p>
       <p>
         For more information, history and current programs visit the
-        <nuxt-link class="link" to="/about">
+        <nuxt-link class="thislink" to="/about">
           About
         </nuxt-link>
         page.
@@ -156,7 +156,7 @@ export default {
   height: 93vh;
 }
 
-.link {
+.thislink {
   color: #0d47a1;
   text-decoration-color: #1f6bdd;
   font-weight: 400;
