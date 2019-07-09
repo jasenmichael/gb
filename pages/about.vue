@@ -66,7 +66,8 @@
         <span style="font-weight: 401;">
           2001 Fire at the Main -
         </span>
-        blah blah blah fire.......
+        In 2001 the "Main" building structure burned to ground. We lost many
+        important documents, aside from losing our primary community facility.
       </p>
       <p>
         <span style="font-weight: 401;">
