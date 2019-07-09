@@ -15,8 +15,8 @@
         process.
       </p>
       <p class="text-center">
-        <a href="https://marsalom.com" target="_blank">Marsalom Inc.</a>
-        / Greenbriar School was established in 1969.
+        <!-- <a href="https://marsalom.com" target="_blank">Marsalom Inc.</a> -->
+        Marsalom Inc. / Greenbriar School was established in 1969.
         <!-- <br /> -->
       </p>
       <hr />
@@ -83,7 +83,7 @@
       <p>
         We have developed a dynamic and flexible student centered curriculum. We
         provide a space and facility that is constantly changing to meet the
-        needs of our students based on their current interests.
+        needs of our students, based on their current interests.
       </p>
 
       <hr />

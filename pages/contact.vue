@@ -153,6 +153,7 @@ export default {
             .split('-')
             .map(w => w.substring(0, 1).toUpperCase() + w.substring(1))
             .join(' ')
+            .replace(/Homeschool/g, 'Homeschool Enrichment Program')
         : '',
       subectDisabled:
         this.$route.query.subject ===
@@ -182,7 +183,7 @@ export default {
   mounted() {
     this.sending = ''
     // eslint-disable-next-line
-    console.log(process.env.contactApiTest)
+    // console.log(process.env.contactApiTest)
   },
   methods: {
     reset: function() {
@@ -238,7 +239,7 @@ export default {
         headers: config
       }).then(res => {
         // eslint-disable-next-line
-        console.log('DATA-', res.data)
+        // console.log('DATA-', res.data)
         if (res.data.success) {
           setTimeout(this.showModal, 3000)
         }
