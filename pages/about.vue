@@ -48,7 +48,7 @@
         The school evolved as the property began to deveolp, many contributors
         in those days moved to the property and began to building roads, and
         structures. For years there was no electricity, eventually the power
-        grid was tied in, while one side of the property remains "off the grid".
+        grid was tied in, while one side of the property remains "off the grid"
         to this day. Later a water well and pump was installed. Most of the
         original buildings were built with entirely recycled, salvaged, or
         donated materials.
@@ -66,8 +66,8 @@
         <span style="font-weight: 401;">
           2001 Fire at the Main -
         </span>
-        In 2001 the "Main" building structure burned to ground. We lost many
-        important documents, aside from losing our primary community facility.
+        In 2001 the "Main" building structure burned to ground. Many important
+        documents were lost, aside from losing our primary community facility.
       </p>
       <p>
         <span style="font-weight: 401;">
@@ -86,8 +86,8 @@
         needs of our students, based on their current interests.
       </p>
 
-      <hr />
-      <h2 id="educational-programs">Educational Programs</h2>
+      <hr id="educational-programs" />
+      <h2>Educational Programs</h2>
       <h6>Current programs offered</h6>
       <h5 id="homeschool-enrichment-program" class="mt-4">
         Homeschool Enrichment Program:
@@ -102,8 +102,8 @@
         </nuxt-link>
         page.
       </p>
-      <br />
-      <h5 id="educational-workshops">Educational Workshops:</h5>
+      <br id="educational-workshops" />
+      <h5>Educational Workshops:</h5>
       <span>Our workshops include topics such as..</span>
       <ul class="mb-1">
         <li>Communal living</li>
@@ -120,16 +120,16 @@
         <nuxt-link to="/events">Upcoming Events & Workshops</nuxt-link>
         page.
       </p>
-      <hr />
-      <h2 id="volunteer">Volunteer Opportunities</h2>
+      <hr id="volunteer" />
+      <h2>Volunteer Opportunities</h2>
       <p>
         If you would like to volunteer at one of our workshops or events, please
         visit the
         <nuxt-link to="/contact/?subject=volunteer">Volunteer</nuxt-link>
         page.
       </p>
-      <hr />
-      <h2 id="facility-usage">Facilities Usage</h2>
+      <hr id="facility-usage" />
+      <h2>Facilities Usage</h2>
       <p>
         If you interested in hosting an event or Educational workshop, please
         visit the
