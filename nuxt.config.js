@@ -144,7 +144,7 @@ export default {
   },
 
   build: {
-    extractCSS: true,
+    extractCSS: process.env.NODE_ENV === 'production',
     // eslint-disable-next-line prettier/prettier
     extend(config, { isDev, isClient, loaders: { vue } }) {
       if (isClient) {
