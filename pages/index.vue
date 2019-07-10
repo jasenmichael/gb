@@ -44,8 +44,8 @@
         </mdb-view>
       </mdb-carousel-item>
     </mdb-carousel>
-    <mdb-container style="font-size:125%;">
-      <h1 id="info" class="mt-4 mb-4 text-center">
+    <mdb-container id="info" style="font-size:120%;" class="mt-4">
+      <h1 class="pt-4 mb-4 text-center">
         Welcome to Greenbriar Community School
       </h1>
       <h4 class="text-center ml-4 mr-4" style="font-style:italic;">
@@ -54,9 +54,9 @@
         by consensus decision making."
       </h4>
       <p>
-        Located within 170 wooded acres east of Austin near Bastrop Texas.
-        Greenbriar was a part of the free school movement that began in the
-        1960's
+        Located within 170 wooded acres east of Austin, between Elgin and
+        Bastrop Texas. Greenbriar was a part of the free school movement that
+        began in the 1960's
         <span style="font-size:130%;">☮</span>
         <br />
         We are an Educational community focusing on sustainability,

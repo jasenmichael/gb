@@ -21,7 +21,8 @@
     </mdb-card>
     <mdb-container>
       <div class="d-flex justify-content-center">
-        <form :class="'contact-form ' + sending" @submit.prevent="sendEmail">
+        <!-- <form :class="'contact-form ' + sending" @submit.prevent="sendEmail"> -->
+        <form :class="'contact-form ' + sending" @submit.prevent="onSubmit">
           <!-- <p class="h4 text-center mb-4">Write to us</p> -->
           <div class="grey-text">
             <mdb-input
@@ -82,16 +83,17 @@
               icon="pencil-alt"
             />
           </div>
+          <p v-if="error" class="text-center red-text">
+            Missing or invalid information..
+          </p>
+          <p v-else>{{ '&nbsp;' }}</p>
           <div class="text-center">
-            <div data-netlify-recaptcha="true"></div>
-            <mdb-btn outline="primary" :class="sending">
-              <mdb-icon icon="paper-plane" class="ml-1" />
-              {{ sendTxt }}
-            </mdb-btn>
-            <p v-if="error" class="red-text">
-              Missing or invalid information..
-            </p>
-            <p v-else>{{ '&nbsp;' }}</p>
+            <recaptcha
+              style="display:inline-block;"
+              @error="onError"
+              @success="onSuccess"
+              @expired="onExpired"
+            />
           </div>
         </form>
         <mdb-modal :show="modal" centered @close="closeModal()">
@@ -108,12 +110,26 @@
           </mdb-modal-footer>
         </mdb-modal>
       </div>
+      <div class="text-center">
+        <!-- <div class="text-center"> -->
+        <mdb-btn
+          outline="primary"
+          :disabled="sendDisabled"
+          :class="sending"
+          @click.native="sendEmail"
+        >
+          <mdb-icon icon="paper-plane" class="ml-1" />
+          {{ sendTxt }}
+        </mdb-btn>
+      </div>
     </mdb-container>
     <!-- <pre>{{ this.$route.query.subject }}</pre> -->
   </div>
 </template>
 
 <script>
+// import VueProgrammaticInvisibleGoogleRecaptcha from 'vue-programmatic-invisible-google-recaptcha'
+// import VueRecaptcha from 'vue-recaptcha'
 import {
   mdbInput,
   mdbBtn,
@@ -162,6 +178,7 @@ export default {
       // misc
       sending: '',
       sendTxt: 'Send',
+      sendDisabled: true,
       sent: false,
       error: false,
       modal: false
@@ -177,11 +194,19 @@ export default {
           name: 'description',
           content: 'Contact Greenbriar Community School'
         }
+      ],
+      script: [
+        {
+          src: 'https://www.google.com/recaptcha/api.js?render=explicit',
+          async: true,
+          defer: true
+        }
       ]
     }
   },
-  mounted() {
+  async mounted() {
     this.sending = ''
+    await this.$recaptcha.init()
     // eslint-disable-next-line
     // console.log(process.env.contactApiTest)
   },
@@ -214,6 +239,30 @@ export default {
     },
     hideError: function() {
       this.error = false
+    },
+    onError(error) {
+      // eslint-disable-next-line
+      console.log('Error happened:', error)
+    },
+    async onSubmit() {
+      try {
+        const token = await this.$recaptcha.execute('login')
+        // eslint-disable-next-line
+        console.log('ReCaptcha token:', token)
+      } catch (error) {
+        // eslint-disable-next-line
+        console.log('Login error:', error)
+      }
+    },
+    onSuccess(token) {
+      // eslint-disable-next-line
+      console.log('Succeeded:', token)
+      this.sendDisabled = false
+    },
+    onExpired() {
+      // eslint-disable-next-line
+      console.log('Expired')
+      this.sendDisabled = true
     },
     sendEmail: async function() {
       const url = process.env.contactApi

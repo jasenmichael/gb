@@ -53,7 +53,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Celebrating 50 years of educating sustainability through communal living'
+          'Founded in 1969, Greenbriar Community School is a model for sustainable community living by consensus decision making.'
       }
     ],
     script: [
@@ -61,7 +61,8 @@ export default {
         src:
           'https://maps.google.com/maps/api/js?key=' +
           process.env.GOOGLE_MAPS_API_KEY,
-        async: true
+        async: true,
+        defer: true
       }
     ],
     link: [
@@ -81,6 +82,7 @@ export default {
     '@nuxtjs/moment',
     '@nuxtjs/robots',
     '@bazzite/nuxt-optimized-images',
+    '@nuxtjs/recaptcha',
     // '@nuxtjs/sitemap',
     // 'nuxt-purgecss',
     [
@@ -96,6 +98,11 @@ export default {
       }
     ]
   ],
+  recaptcha: {
+    hideBadge: false,
+    siteKey: process.env.RECAPTCHA_KEY,
+    version: 2
+  },
   // purgeCSS: {
   //   whitelist: ['']
   // },
