@@ -45,6 +45,7 @@
     "nuxt-purgecss": "^0.2.1",
     "responsive-loader": "^1.2.0",
     "sqip-loader": "^0.2.0",
+    "vue-recaptcha": "^1.2.0",
     "vue-scrollto": "^2.15.0",
     "vuelidate": "^0.7.4",
     "webp-loader": "^0.5.0"
