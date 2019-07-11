@@ -1,7 +1,6 @@
 <template>
   <mdb-container>
     <school-schedule />
-    <hr />
     <div
       class="calendar-container embed-responsive embed-responsive-4by3 z-depth-1-half desk-cal mt-5"
     >
