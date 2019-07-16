@@ -77,14 +77,38 @@ exports.handler = function(event, context, callback){
   }
   // Create class
   const createClass = (token, newClass) => {
-    console.log("class created", newClass)
-    const config = {
-      headers: {'Authorization': token}
-    }
-    axios.post(url + "/classes", newClass, config)
-      .then(res => response(res.data))
-      .catch(err => response(err))
+    axios.all([getTeachers(), getDays()])
+    .then(axios.spread(function(teachers, days){
+      console.log(newClass.teachers.replace(/, /g, ',').split(','))
+      let formattedClass = {
+        name: newClass.name,
+        starts_at: newClass.starts_at,
+        ends_at: newClass.ends_at,
+        teachers: getIdsObjArr(newClass.teachers, teachers), //to array of ids
+        days: getIdsObjArr(newClass.days, days), // to array of ids
+        ages: newClass.ages
+      }
+      const config = {
+        headers: {'Authorization': token}
+      }
+      axios.post(url + "/classes", formattedClass, config)
+        .then(res => {
+          let createdClass = {
+            _id: res.data._id,
+            name: res.data.name,
+            starts_at: res.data.starts_at,
+            ends_at: res.data.ends_at,
+            ages: res.data.ages,
+            teachers: getNamesArray(res.data.teachers).toString().replace(/,/g, ', '),
+            days: getNamesArray(res.data.days)
+          }
+
+          response(createdClass)
+        })
+        .catch(err => response(err))
+    }))
   }
+
   // Update - update a gingle class
   const updateClass = (token, id, updatedClass) => {
     const config = {
@@ -141,18 +165,11 @@ exports.handler = function(event, context, callback){
   // takes an array of string names, returns obj array with {_id:"value"}
   // used to reconstruct array of string names to objects with _id for create/update
   const getIdsObjArr = (namesArr, objList) => {
+    // console.log(namesArr)
     let results = objList.filter(item => namesArr.includes(item.name)).map(item => ({_id: item._id}))
-    console.log(results)
+    console.log("RESULTS-- ", results)
     return results
   }
-
-  ///////// TEST----------------------------
-  // getTeachers().then( teachers => {
-  //   // console.log(teachers)
-  //   getIdsObjArr(['Kerry', 'Laura', 'Dave'], teachers)
-  // }).catch(err => console.log(err))
-
-
 
   // ---------------- ROUTES ----------------------------
   // GET ------
@@ -203,19 +220,16 @@ exports.handler = function(event, context, callback){
     deleteClass(token, id)
   }
 
-
-
-
   // dev log
-  // const log = () => {
-  //   let reqBody = event.body   // == '' ? JSON.parse(event.body) : ''
-  //   const info = {
-  //     message: "yo",
-  //     context,
-  //     event,
-  //     reqBody: reqBody != '' ? reqBody : '{}'    // : JSON.parse(event.body)
-  //   }
-  //   console.log(info)
-  // }
-  // log()
+  const log = () => {
+    let reqBody = event.body   // == '' ? JSON.parse(event.body) : ''
+    const info = {
+      message: "yo",
+      context,
+      event,
+      reqBody: reqBody != '' ? reqBody : '{}'    // : JSON.parse(event.body)
+    }
+    console.log(info)
+  }
+  log()
 }
