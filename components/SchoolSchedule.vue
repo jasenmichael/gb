@@ -37,7 +37,6 @@ export default {
   data() {
     return {
       daysClassesHeld: [],
-      // classes: {
       columns: [
         {
           label: 'Starts At',
@@ -167,20 +166,19 @@ export default {
       //     days: ['Wednesday', 'Friday']
       //   }
       // ]
-      // }
     }
   },
   beforeMount() {
     this.daysClassesHeld = this.getDaysClassesHeld
   },
   mounted() {
-    return axios
-      .get('http://localhost:9000/.netlify/functions/classes')
-      .then(res => {
-        // eslint-disable-next-line
-        console.log('YOOOOOOOOOOO', res)
-        this.classes = res.data
-      })
+    const url = process.env.apiUrl
+    // const url = 'http://localhost:9000/.netlify/functions/'
+    return axios.get(url + 'classes').then(res => {
+      // eslint-disable-next-line
+      console.log('YOOOOOOOOOOO', res)
+      this.classes = res.data
+    })
   },
   methods: {
     getDaysClassesHeld: function() {

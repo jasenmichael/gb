@@ -35,6 +35,7 @@ export default {
   },
   env: {
     contactApi: process.env.CONTACT_API_URL,
+    apiUrl: process.env.API_URL || '/.netlify/functions/',
     contactApiTest:
       process.env.LOCAL || process.env.NODE_ENV === 'production'
         ? '/.netlify/functions/'
