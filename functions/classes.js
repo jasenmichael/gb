@@ -44,16 +44,6 @@ exports.handler = function(event, context, callback){
   }
 
   // crud route methods for - classes
-  // Create class
-  const createClass = (token, newClass) => {
-    console.log("class created", newClass)
-    const config = {
-      headers: {'Authorization': token}
-    }
-    axios.post(url + "/classes", newClass, config)
-      .then(res => response(res.data))
-      .catch(err => response(err))
-  }
   // Read - list classes
   const getClasses = () => {
     axios.get(url + "/classes")
@@ -82,6 +72,16 @@ exports.handler = function(event, context, callback){
   // Read - get single class
   const getClassById = id => {
     axios.get(url + "/classes/" + id)
+      .then(res => response(res.data))
+      .catch(err => response(err))
+  }
+  // Create class
+  const createClass = (token, newClass) => {
+    console.log("class created", newClass)
+    const config = {
+      headers: {'Authorization': token}
+    }
+    axios.post(url + "/classes", newClass, config)
       .then(res => response(res.data))
       .catch(err => response(err))
   }
