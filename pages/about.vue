@@ -43,7 +43,7 @@
         <span style="font-weight: 401;">
           The 1970s and early 1980s -
         </span>
-        For better part of a decade, Greenbriar School bused many children to
+        For better part of a decade, Greenbriar School bussed many children to
         and from Austin Texas, to the 170 acre wooded property. As the growth of
         Austin happened, other "Alternative Education" options became available.
         The school evolved as the property began to deveolp, many contributors
