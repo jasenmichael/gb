@@ -121,7 +121,7 @@ export default {
       perPage: 6,
       pageCount: null,
       allEvents: [],
-      events: []
+      events: this.getEvents()
     }
   },
   beforeMount() {
