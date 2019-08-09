@@ -35,8 +35,8 @@ export default {
   },
   env: {
     contactApi: process.env.CONTACT_API_URL,
-    apiUrl: process.env.API_URL || '/.netlify/functions/',
-    contactApiTest:
+    // apiUrl: process.env.API_URL || '/.netlify/functions/',
+    netlifyFunctionsApiUrl:
       process.env.LOCAL || process.env.NODE_ENV === 'production'
         ? '/.netlify/functions/'
         : 'http://localhost:9000/.netlify/functions/'
@@ -84,6 +84,7 @@ export default {
     '@nuxtjs/robots',
     '@bazzite/nuxt-optimized-images',
     '@nuxtjs/recaptcha',
+    '@nuxtjs/auth',
     // '@nuxtjs/sitemap',
     // 'nuxt-purgecss',
     [
@@ -99,6 +100,21 @@ export default {
       }
     ]
   ],
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: process.env.STRAPI_URL + '/auth/local',
+            method: 'post',
+            propertyName: 'jwt'
+          },
+          user: false,
+          logout: false
+        }
+      }
+    }
+  },
   recaptcha: {
     hideBadge: false,
     siteKey: process.env.RECAPTCHA_KEY,
@@ -125,7 +141,11 @@ export default {
       quality: 85
     }
   },
-  robots: { UserAgent: '*' },
+  robots: {
+    UserAgent: '*',
+    Disallow: '/staff',
+    Disallow: '/login'
+  },
   sitemap: {
     hostname: 'https://greenbriarschool.org',
     generate: true,
@@ -139,7 +159,9 @@ export default {
       })
     }
   },
-  axios: {},
+  // axios: {
+  //   baseURL: process.env.STRAPI_URL || 'http://localhost:1337'
+  // },
   // pwa config
   manifest: {
     short_name: 'GB School',

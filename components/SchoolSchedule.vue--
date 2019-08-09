@@ -66,30 +66,32 @@ export default {
     this.daysClassesHeld = this.getDaysClassesHeld
   },
   mounted() {
-    // const url = process.env.apiUrl
+    // const url = '/data/'
+    // const url = 'https://gb-strapi.herokuapp.com/'
     const url = 'http://localhost:1337/'
     // const url = 'http://localhost:9000/.netlify/functions/'
+    // return axios.get(url + 'classes.json').then(res => {
     return axios.get(url + 'classes').then(res => {
       const classes = res.data
       // eslint-disable-next-line
-      console.log('YOOOOOOOOOOO', res)
+      console.log('YOOOOOOOOOOO', classes)
       const formattedClasses = []
       for (let i = 0; i < classes.length; i++) {
         const course = classes[i]
         formattedClasses.push({
           _id: course._id,
           name: course.name,
-          starts_at: course.starts_at,
-          ages: course.ages || 'All',
+          starts_at: this.formatTime(course.starts_at),
+          ages: course.ages || 'all',
           teachers: this.getNamesArray(course.teachers)
             .toString()
+            .replace(/,Rotating/g, '/Rotating')
             .replace(/,/g, ', '),
-          ends_at: course.ends_at,
+          ends_at: this.formatTime(course.ends_at),
           days: this.getNamesArray(course.days)
         })
       }
       this.classes = formattedClasses
-      // this.classes = res.data
     })
   },
   methods: {
@@ -115,10 +117,46 @@ export default {
       let sortableTime = parseInt(
         course.starts_at.slice(0, -3).replace(':', '')
       )
-      if (parseInt(sortableTime) < 700) {
+      // let sortableTime = parseInt(course.starts_at)
+      if (parseInt(sortableTime) < 1300 && parseInt(sortableTime) > 1159) {
         sortableTime = sortableTime + 1200
       }
       return sortableTime
+    },
+    formatTime: time => {
+      const amPm = time < 1159 ? 'AM' : 'PM'
+      const trimmedTime = time => {
+        return time.charAt(0) === '0' ? time.substr(1) : time
+      }
+      const insertColin = trimTime => {
+        return trimTime.length === 3
+          ? `${trimTime}`.slice(0, 2) +
+              ':' +
+              `${trimTime}`.slice(1, 3) +
+              ` ${amPm}`
+          : `${trimTime}`.slice(0, 1) +
+              ':' +
+              `${trimTime}`.slice(1, 3) +
+              ` ${amPm}`
+      }
+      const formattedTime = time => {
+        if (trimmedTime(time) > 1259) {
+          const trimTime = trimmedTime(time) - 1200
+          //   return trimTime.length === 3
+          //     ? `${trimTime}`.slice(0, 2) +
+          //         ':' +
+          //         `${trimTime}`.slice(1, 3) +
+          //         ` ${amPm}`
+          //     : `${trimTime}`.slice(0, 1) +
+          //         ':' +
+          //         `${trimTime}`.slice(1, 3) +
+          //         ` ${amPm}`
+          // }
+          return insertColin(trimTime)
+        }
+        return trimmedTime(time) + ` ${amPm}`
+      }
+      return formattedTime(time)
     },
     getNamesArray: objList => {
       const names = objList.map(obj => obj.name)

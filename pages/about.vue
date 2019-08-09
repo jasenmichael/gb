@@ -99,7 +99,7 @@
         together in a community environment. We have created a facility, and a
         regular scheduled program. If you would like to participate or have any
         questions, visit the
-        <nuxt-link to="/contact?subject=homeschool" class="thislink">
+        <nuxt-link to="/homeschool" class="thislink">
           Homeschool Enrichment Program
         </nuxt-link>
         page.

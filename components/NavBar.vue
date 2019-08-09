@@ -48,9 +48,22 @@
             Contact
           </mdb-nav-item>
           <!-- eslint-disable-next-line -->
-          <mdb-nav-item :class="isActive('/events') + ' link'" anchor-class="white-text" to="/events">
+          <!-- <mdb-nav-item :class="isActive('/events') + ' link'" anchor-class="white-text" to="/events">
             Events & Workshops
-          </mdb-nav-item>
+          </mdb-nav-item> -->
+          <mdb-dropdown tag="li" class="nav-item">
+            <mdb-dropdown-toggle slot="toggle" tag="a" nav-link waves-fixed>
+              Educational Programs
+            </mdb-dropdown-toggle>
+            <mdb-dropdown-menu>
+              <mdb-dropdown-item anchor-class="white-text" to="/homeschool">
+                Homeschool Enrichment Program
+              </mdb-dropdown-item>
+              <mdb-dropdown-item anchor-class="white-text" to="/events">
+                Events & Workshops
+              </mdb-dropdown-item>
+            </mdb-dropdown-menu>
+          </mdb-dropdown>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>
@@ -64,7 +77,11 @@ import {
   mdbNavbarBrand,
   mdbNavbarToggler,
   mdbNavbarNav,
-  mdbNavItem
+  mdbNavItem,
+  mdbDropdown,
+  mdbDropdownMenu,
+  mdbDropdownToggle,
+  mdbDropdownItem
 } from 'mdbvue'
 
 export default {
@@ -73,7 +90,11 @@ export default {
     mdbNavbarBrand,
     mdbNavbarToggler,
     mdbNavbarNav,
-    mdbNavItem
+    mdbNavItem,
+    mdbDropdown,
+    mdbDropdownMenu,
+    mdbDropdownToggle,
+    mdbDropdownItem
   },
 
   data() {

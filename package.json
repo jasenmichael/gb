@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",
+    "@nuxtjs/auth": "^4.8.1",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/moment": "^1.2.0",

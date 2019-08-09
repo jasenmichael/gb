@@ -58,7 +58,7 @@ exports.handler = function(event, context, callback){
             name: course.name,
             starts_at: course.starts_at,
             ages: course.ages || 'all',
-            teachers: getNamesArray(course.teachers).toString(),
+            teachers: getNamesArray(course.teachers).toString().replace(/,Rotating/g, '\/Rotating').replace(/,/g, ', '),
             ends_at: course.ends_at,
             days: getNamesArray(course.days)
           })
