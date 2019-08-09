@@ -66,9 +66,8 @@ export default {
     this.daysClassesHeld = this.getDaysClassesHeld
   },
   mounted() {
-    // const url = process.env.apiUrl
-    const url = 'http://localhost:1337/'
-    // const url = 'http://localhost:9000/.netlify/functions/'
+    // const url = 'http://localhost:1337/'
+    const url = 'https://gb-strapi.herokuapp.com/'
     return axios.get(url + 'classes').then(res => {
       const classes = res.data
       // eslint-disable-next-line
