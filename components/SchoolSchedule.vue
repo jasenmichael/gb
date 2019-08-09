@@ -18,7 +18,7 @@
         :pagination="false"
         :sorting="false"
         :tfoot="false"
-        :max-height="'490px'"
+        :max-height="'600px'"
       />
       <hr
         v-if="`getDaysClassesHeld-${index}` !== getDaysClassesHeld().length"
