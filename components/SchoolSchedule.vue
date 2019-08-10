@@ -17,13 +17,10 @@
       </option>
     </select>
     <hr />
-    <div
-      v-for="(day, index) in getDaysClassesHeld()"
-      :key="`getDaysClassesHeld-${index}`"
-    >
+    <div v-for="(day, index) in getDaysClassesHeld()" :key="index">
       <h4>{{ day }}s</h4>
       <mdb-datatable
-        class="pt-4"
+        :class="'pt-4'"
         :data="{ columns, rows: getClassesOn(day) }"
         responsive
         striped
@@ -85,8 +82,9 @@ export default {
   },
   mounted() {
     // const url = 'http://localhost:1337/'
-    const url = 'https://gb-strapi.herokuapp.com/'
-    return axios.get(url + 'classes').then(res => {
+    // const url = 'https://gb-strapi.herokuapp.com/'
+    // return axios.get(url + 'classes').then(res => {
+    return axios.get('/data/classes.json').then(res => {
       const classes = res.data
       const formattedClasses = []
       for (let i = 0; i < classes.length; i++) {
