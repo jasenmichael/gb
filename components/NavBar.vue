@@ -51,25 +51,26 @@
           <!-- <mdb-nav-item :class="isActive('/events') + ' link'" anchor-class="white-text" to="/events">
             Events & Workshops
           </mdb-nav-item> -->
-          <mdb-dropdown tag="li" class="nav-item">
-            <mdb-dropdown-toggle
-              slot="toggle"
-              tag="a"
-              nav-link
-              link
-              waves-fixed
-            >
-              Educational Programs
-            </mdb-dropdown-toggle>
-            <mdb-dropdown-menu>
-              <mdb-dropdown-item anchor-class="white-text" to="/homeschool">
-                Homeschool Enrichment Program
-              </mdb-dropdown-item>
-              <mdb-dropdown-item anchor-class="white-text" to="/events">
-                Events & Workshops
-              </mdb-dropdown-item>
-            </mdb-dropdown-menu>
-          </mdb-dropdown>
+          <div class="">
+            <mdb-dropdown tag="li" class="drop">
+              <mdb-dropdown-toggle
+                slot="toggle"
+                class="link white-text drop"
+                tag="a"
+                nav-link
+              >
+                Educational Programs
+              </mdb-dropdown-toggle>
+              <mdb-dropdown-menu>
+                <mdb-dropdown-item anchor-class="white-text" to="/homeschool">
+                  Homeschool Enrichment Program
+                </mdb-dropdown-item>
+                <mdb-dropdown-item anchor-class="white-text" to="/events">
+                  Events & Workshops
+                </mdb-dropdown-item>
+              </mdb-dropdown-menu>
+            </mdb-dropdown>
+          </div>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>
@@ -138,8 +139,13 @@ a.navbar-brand {
 }
 
 .link {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.69);
+}
+
+.drop {
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -154,7 +160,7 @@ a.navbar-brand {
     margin-right: 10px;
   }
   .link:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
   }
 }
 @media only screen and (max-width: 366px) {
