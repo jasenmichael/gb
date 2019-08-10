@@ -1,7 +1,21 @@
 <template>
   <div class="top mt-4">
     <h1 class="text-center">Homeschool Enrichment Program</h1>
-    <h2 class="text-center">Spring 2019 Schedule</h2>
+    <h2 class="text-center">Fall 2019 Schedule</h2>
+    <h4 class="text-center">Begins August 19th</h4>
+    <hr />
+    <br />
+    <h5>Filter by Age Group</h5>
+    <select class="browser-default custom-select">
+      <option
+        v-for="(ages, index) in ageGroups"
+        :key="index"
+        :selected="index === 0 ? true : false"
+        @click="setSelected(index)"
+      >
+        {{ ages === '4-17' ? 'All Ages' : ages }}
+      </option>
+    </select>
     <hr />
     <div
       v-for="(day, index) in getDaysClassesHeld()"
@@ -59,9 +73,13 @@ export default {
           field: 'ends_at'
         }
       ],
-      classes: []
+      classes: [],
+      allClasses: [],
+      ageGroups: ['4-17', '4-7', '8-11', '12-17'],
+      selected: '0'
     }
   },
+  computed: {},
   beforeMount() {
     this.daysClassesHeld = this.getDaysClassesHeld
   },
@@ -70,8 +88,6 @@ export default {
     const url = 'https://gb-strapi.herokuapp.com/'
     return axios.get(url + 'classes').then(res => {
       const classes = res.data
-      // eslint-disable-next-line
-      console.log('YOOOOOOOOOOO', res)
       const formattedClasses = []
       for (let i = 0; i < classes.length; i++) {
         const course = classes[i]
@@ -88,10 +104,18 @@ export default {
         })
       }
       this.classes = formattedClasses
-      // this.classes = res.data
+      this.allClasses = formattedClasses
     })
   },
   methods: {
+    setSelected: function(selected) {
+      this.selected = selected
+      // eslint-disable-next-line
+      console.log('selected', this.ageGroups[selected])
+      // eslint-disable-next-line
+      console.log('selected', this.selected)
+    },
+    getClassesByAgeGroup: function(ageGroup) {},
     getDaysClassesHeld: function() {
       const daysClassesHeld = []
       this.classes.forEach(course => {
