@@ -52,7 +52,13 @@
             Events & Workshops
           </mdb-nav-item> -->
           <mdb-dropdown tag="li" class="nav-item">
-            <mdb-dropdown-toggle slot="toggle" tag="a" nav-link waves-fixed>
+            <mdb-dropdown-toggle
+              slot="toggle"
+              tag="a"
+              nav-link
+              link
+              waves-fixed
+            >
               Educational Programs
             </mdb-dropdown-toggle>
             <mdb-dropdown-menu>
