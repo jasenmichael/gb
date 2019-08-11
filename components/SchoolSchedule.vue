@@ -2,7 +2,7 @@
   <div class="top mt-4">
     <h1 class="text-center">Homeschool Enrichment Program</h1>
     <h2 class="text-center">Fall 2019 Schedule</h2>
-    <h4 class="text-center">Begins August 19th</h4>
+    <h4 class="text-center">Classes begin August 19th</h4>
     <hr />
     <br />
     <h5>Filter by Age Group</h5>
@@ -17,23 +17,30 @@
       </option>
     </select>
     <hr />
-    <div v-for="(day, index) in getDaysClassesHeld()" :key="index">
-      <h4>{{ day }}s</h4>
-      <mdb-datatable
-        :class="'pt-4'"
-        :data="{ columns, rows: getClassesOn(day) }"
-        responsive
-        striped
-        bordered
-        :searching="false"
-        :pagination="false"
-        :sorting="false"
-        :tfoot="false"
-        :max-height="'600px'"
-      />
-      <hr
-        v-if="`getDaysClassesHeld-${index}` !== getDaysClassesHeld().length"
-      />
+    <div v-for="(ageGroup, index) in ageGroups" :key="index">
+      <div
+        v-for="(day, dayIndex) in getDaysClassesHeld(filteredClasses)"
+        v-show="selected === index"
+        :key="dayIndex"
+      >
+        <h4>{{ day }}s {{ ageGroups[index] }}</h4>
+        <mdb-datatable
+          :class="'pt-4'"
+          :data="{
+            columns,
+            rows: getClassesOn(day, classesByAgeGroup(ageGroups[index]))
+          }"
+          responsive
+          striped
+          bordered
+          :searching="false"
+          :pagination="false"
+          :sorting="false"
+          :tfoot="false"
+          :max-height="'600px'"
+        />
+        <hr />
+      </div>
     </div>
   </div>
 </template>
@@ -70,53 +77,74 @@ export default {
           field: 'ends_at'
         }
       ],
-      classes: [],
+      filteredClasses: [],
       allClasses: [],
       ageGroups: ['4-17', '4-7', '8-11', '12-17'],
-      selected: '0'
+      selected: 0
     }
   },
   computed: {},
-  beforeMount() {
-    this.daysClassesHeld = this.getDaysClassesHeld
+  watch: {
+    selected: function() {
+      // this.filteredClasses = this.classesByAgeGroup()
+      // // eslint-disable-next-line
+      // console.log('yo wazz', this.selected)
+    }
   },
   mounted() {
     // const url = 'http://localhost:1337/'
     // const url = 'https://gb-strapi.herokuapp.com/'
     // return axios.get(url + 'classes').then(res => {
-    return axios.get('/data/classes.json').then(res => {
-      const classes = res.data
-      const formattedClasses = []
-      for (let i = 0; i < classes.length; i++) {
-        const course = classes[i]
-        formattedClasses.push({
-          _id: course._id,
-          name: course.name,
-          starts_at: course.starts_at,
-          ages: course.ages || 'All',
-          teachers: this.getNamesArray(course.teachers)
-            .toString()
-            .replace(/,/g, ', '),
-          ends_at: course.ends_at,
-          days: this.getNamesArray(course.days)
-        })
-      }
-      this.classes = formattedClasses
-      this.allClasses = formattedClasses
-    })
+    return this.getClasses()
   },
   methods: {
+    classesByAgeGroup: function(ages) {
+      const filtered = this.allClasses.filter(course => {
+        // // eslint-disable-next-line
+        // console.log('yo', ages)
+        // // eslint-disable-next-line
+        // console.log('ages passed', ages)
+        // // eslint-disable-next-line
+        // console.log('ages--', course.ages)
+        // // eslint-disable-next-line
+        // console.log(ages === course.ages)
+        // eslint-disable-next-line
+        return ages === course.ages || ages === this.ageGroups[0]
+      })
+      // eslint-disable-next-line
+      // console.log('filtered--', filtered)
+      return filtered
+    },
+    getClasses: function() {
+      return axios.get('/data/classes.json').then(res => {
+        const classes = res.data
+        const formattedClasses = []
+        for (let i = 0; i < classes.length; i++) {
+          const course = classes[i]
+          formattedClasses.push({
+            _id: course._id,
+            name: course.name,
+            starts_at: course.starts_at,
+            ages: course.ages || 'All',
+            teachers: this.getNamesArray(course.teachers)
+              .toString()
+              .replace(/,/g, ', '),
+            ends_at: course.ends_at,
+            days: this.getNamesArray(course.days)
+          })
+        }
+        this.filteredClasses = formattedClasses
+        this.allClasses = formattedClasses
+      })
+    },
     setSelected: function(selected) {
       this.selected = selected
       // eslint-disable-next-line
-      console.log('selected', this.ageGroups[selected])
-      // eslint-disable-next-line
-      console.log('selected', this.selected)
+      // console.log('selected', this.selected, this.ageGroups[this.selected])
     },
-    getClassesByAgeGroup: function(ageGroup) {},
-    getDaysClassesHeld: function() {
+    getDaysClassesHeld: function(classes) {
       const daysClassesHeld = []
-      this.classes.forEach(course => {
+      classes.forEach(course => {
         course.days.forEach(day => {
           if (!daysClassesHeld.includes(day)) {
             daysClassesHeld.push(day)
@@ -125,8 +153,8 @@ export default {
       })
       return daysClassesHeld
     },
-    getClassesOn: function(day) {
-      const classes = this.classes.filter(el => el.days.includes(day))
+    getClassesOn: function(day, filterClasses) {
+      const classes = filterClasses.filter(el => el.days.includes(day))
       return classes.sort(this.sortByEarliest)
     },
     sortByEarliest: function(a, b) {

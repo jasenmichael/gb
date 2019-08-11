@@ -14,7 +14,6 @@
       >
       </iframe>
     </div>
-    <hr />
     <div
       class="calendar-container embed-responsive embed-responsive-4by3 z-depth-1-half mobile-cal"
     >
