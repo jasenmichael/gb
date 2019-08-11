@@ -109,7 +109,8 @@ export default {
         // // eslint-disable-next-line
         // console.log(ages === course.ages)
         // eslint-disable-next-line
-        return ages === course.ages || ages === this.ageGroups[0]
+        let page = ages === course.ages || ages === this.ageGroups[0] || course.ages === 'All'
+        return page
       })
       // eslint-disable-next-line
       // console.log('filtered--', filtered)
