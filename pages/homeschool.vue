@@ -40,7 +40,8 @@ import { mdbContainer } from 'mdbvue'
 import SchoolSchedule from '@/components/SchoolSchedule'
 
 export default {
-  components: { mdbContainer, SchoolSchedule }
+  components: { mdbContainer, SchoolSchedule },
+  head: { title: 'Homeschool Enrichment Program Schedule' }
 }
 </script>
 
