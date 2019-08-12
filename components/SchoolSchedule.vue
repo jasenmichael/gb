@@ -1,9 +1,5 @@
 <template>
-  <div class="top mt-4">
-    <h1 class="text-center">Homeschool Enrichment Program</h1>
-    <h2 class="text-center">Fall 2019 Schedule</h2>
-    <h4 class="text-center">Classes begin August 19th</h4>
-    <hr />
+  <div>
     <br />
     <h5>Filter by Age Group</h5>
     <select class="browser-default custom-select">
@@ -37,7 +33,7 @@
           :pagination="false"
           :sorting="false"
           :tfoot="false"
-          :max-height="'600px'"
+          :max-height="'700px'"
         />
         <hr />
       </div>
@@ -92,23 +88,20 @@ export default {
     }
   },
   mounted() {
-    // const url = 'http://localhost:1337/'
-    // const url = 'https://gb-strapi.herokuapp.com/'
-    // return axios.get(url + 'classes').then(res => {
     return this.getClasses()
   },
   methods: {
     classesByAgeGroup: function(ages) {
-      const minAge = ages.split('-')[0]
-      const maxAge = ages.split('-')[1]
+      const minAge = Number(ages.split('-')[0])
+      const maxAge = Number(ages.split('-')[1])
       const filtered = this.allClasses.filter(course => {
-        const courseMinAge = course.ages.split('-')[0]
-        const courseMaxAge = course.ages.split('-')[1]
+        const courseMinAge = Number(course.ages.split('-')[0])
+        const courseMaxAge = Number(course.ages.split('-')[1])
         const thing =
           // eslint-disable-next-line
           ((courseMinAge >= minAge && minAge <= courseMaxAge) && (maxAge <= courseMaxAge && maxAge >= courseMinAge)) ||
           courseMinAge === minAge ||
-          ages === course.ages ||
+          courseMaxAge === maxAge ||
           ages === this.ageGroups[0] ||
           course.ages === 'All'
         // eslint-disable-next-line
@@ -128,6 +121,9 @@ export default {
       return filtered
     },
     getClasses: function() {
+      // const url = 'http://localhost:1337/'
+      // const url = 'https://gb-strapi.herokuapp.com/'
+      // return axios.get(url + 'classes').then(res => {
       return axios.get('/data/classes.json').then(res => {
         const classes = res.data
         const formattedClasses = []
@@ -188,9 +184,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.top {
-  padding-top: 35px;
-}
-</style>

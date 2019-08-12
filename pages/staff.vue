@@ -1,15 +1,22 @@
 <template>
-  <div>
-    yo staff
-    <br />
+  <mdb-container class="pt-4">
+    <h2 class="pt-4">Staff Admin Panel</h2>
+    <hr />
     <mdb-btn gradient="aqua" rounded @click="logout">Logout</mdb-btn>
-  </div>
+    <hr />
+    <p>
+      Add/Edit/Delete Homeschool Classes
+    </p>
+    <school-schedule />
+  </mdb-container>
 </template>
 
 <script>
-import { mdbBtn } from 'mdbvue'
+import { mdbBtn, mdbContainer } from 'mdbvue'
+import SchoolSchedule from '@/components/SchoolSchedule'
+
 export default {
-  components: { mdbBtn },
+  components: { mdbBtn, mdbContainer, SchoolSchedule },
   middleware: 'auth',
   data() {
     return {

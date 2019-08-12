@@ -1,5 +1,9 @@
 <template>
-  <mdb-container>
+  <mdb-container class="top mt-4">
+    <h1 class="text-center">Homeschool Enrichment Program</h1>
+    <h2 class="text-center">Fall 2019 Schedule</h2>
+    <h4 class="text-center">Classes begin August 19th</h4>
+    <hr />
     <school-schedule />
     <div
       class="calendar-container embed-responsive embed-responsive-4by3 z-depth-1-half desk-cal mt-5"
@@ -55,17 +59,8 @@ export default {
   max-width: 800px;
   margin: auto;
 }
-/* .calendar-container {
-  position: relative;
-  padding-bottom: 75% !important;
-  height: 0;
-  overflow: hidden;
+
+.top {
+  padding-top: 35px;
 }
-.calendar-container > iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-} */
 </style>
