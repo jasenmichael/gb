@@ -23,7 +23,7 @@
         v-show="selected === index"
         :key="dayIndex"
       >
-        <h4>{{ day }}s {{ ageGroups[index] }}</h4>
+        <h4>{{ day }}s</h4>
         <mdb-datatable
           :class="'pt-4'"
           :data="{
@@ -99,18 +99,29 @@ export default {
   },
   methods: {
     classesByAgeGroup: function(ages) {
+      const minAge = ages.split('-')[0]
+      const maxAge = ages.split('-')[1]
       const filtered = this.allClasses.filter(course => {
-        // // eslint-disable-next-line
-        // console.log('yo', ages)
-        // // eslint-disable-next-line
-        // console.log('ages passed', ages)
-        // // eslint-disable-next-line
-        // console.log('ages--', course.ages)
-        // // eslint-disable-next-line
-        // console.log(ages === course.ages)
+        const courseMinAge = course.ages.split('-')[0]
+        const courseMaxAge = course.ages.split('-')[1]
+        const thing =
+          // eslint-disable-next-line
+          ((courseMinAge >= minAge && minAge <= courseMaxAge) && (maxAge <= courseMaxAge && maxAge >= courseMinAge)) ||
+          courseMinAge === minAge ||
+          ages === course.ages ||
+          ages === this.ageGroups[0] ||
+          course.ages === 'All'
         // eslint-disable-next-line
-        let page = ages === course.ages || ages === this.ageGroups[0] || course.ages === 'All'
-        return page
+        console.log(
+          'ages: ' + ages,
+          // '\nselectedAges: ' + this.ageGroups[this.selected],
+          '\nthing: ' + thing,
+          '\nminAge: ' + minAge,
+          '\nmaxAge: ' + maxAge,
+          '\ncourseMinAge: ' + courseMinAge,
+          '\ncourseMaxAge: ' + courseMaxAge
+        )
+        return thing
       })
       // eslint-disable-next-line
       // console.log('filtered--', filtered)
