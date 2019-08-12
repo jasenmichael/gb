@@ -2,12 +2,12 @@
   <div>
     <br />
     <h5>Filter by Age Group</h5>
-    <select class="browser-default custom-select">
+    <select class="custom-select">
       <option
         v-for="(ages, index) in ageGroups"
         :key="index"
         :selected="index === 0 ? true : false"
-        @click="setSelected(index)"
+        v-on:click="setSelected(index)"
       >
         {{ ages === '4-17' ? 'All Ages' : ages }}
       </option>
