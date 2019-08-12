@@ -2,16 +2,35 @@
   <div>
     <br />
     <h5>Filter by Age Group</h5>
-    <select class="custom-select">
+    <mdb-dropdown class="text-center" style="margin:auto;">
+      <mdb-dropdown-toggle
+        slot="toggle"
+        size="lg"
+        style="width:300px; margin:auto;"
+      >
+        {{ ageGroups[selected] === '4-17' ? 'All Ages' : ageGroups[selected] }}
+      </mdb-dropdown-toggle>
+      <mdb-dropdown-menu>
+        <mdb-dropdown-item
+          v-for="(ages, index) in ageGroups"
+          :key="index"
+          :selected="index === 0 ? true : false"
+          @click.prevent="setSelected(index)"
+        >
+          {{ ages === '4-17' ? 'ALL AGES' : ages }}
+        </mdb-dropdown-item>
+      </mdb-dropdown-menu>
+    </mdb-dropdown>
+    <!-- <select class="custom-select">
       <option
         v-for="(ages, index) in ageGroups"
         :key="index"
         :selected="index === 0 ? true : false"
-        v-on:click="setSelected(index)"
+        @click="setSelected(index)"
       >
         {{ ages === '4-17' ? 'All Ages' : ages }}
       </option>
-    </select>
+    </select> -->
     <hr />
     <div v-for="(ageGroup, index) in ageGroups" :key="index">
       <div
@@ -42,11 +61,21 @@
 </template>
 <script>
 import axios from 'axios'
-import { mdbDatatable } from 'mdbvue'
+import {
+  mdbDatatable,
+  mdbDropdown,
+  mdbDropdownItem,
+  mdbDropdownMenu,
+  mdbDropdownToggle
+} from 'mdbvue'
 export default {
   name: 'DatatablePage',
   components: {
-    mdbDatatable
+    mdbDatatable,
+    mdbDropdown,
+    mdbDropdownItem,
+    mdbDropdownMenu,
+    mdbDropdownToggle
   },
   data() {
     return {
@@ -147,7 +176,7 @@ export default {
     },
     setSelected: function(selected) {
       this.selected = selected
-      // eslint-disable-next-line
+      // // eslint-disable-next-line
       // console.log('selected', this.selected, this.ageGroups[this.selected])
     },
     getDaysClassesHeld: function(classes) {
