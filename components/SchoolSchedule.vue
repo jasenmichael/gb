@@ -112,15 +112,15 @@ export default {
           ages === this.ageGroups[0] ||
           course.ages === 'All'
         // eslint-disable-next-line
-        console.log(
-          'ages: ' + ages,
-          // '\nselectedAges: ' + this.ageGroups[this.selected],
-          '\nthing: ' + thing,
-          '\nminAge: ' + minAge,
-          '\nmaxAge: ' + maxAge,
-          '\ncourseMinAge: ' + courseMinAge,
-          '\ncourseMaxAge: ' + courseMaxAge
-        )
+        // console.log(
+        //   'ages: ' + ages,
+        //   // '\nselectedAges: ' + this.ageGroups[this.selected],
+        //   '\nthing: ' + thing,
+        //   '\nminAge: ' + minAge,
+        //   '\nmaxAge: ' + maxAge,
+        //   '\ncourseMinAge: ' + courseMinAge,
+        //   '\ncourseMaxAge: ' + courseMaxAge
+        // )
         return thing
       })
       // eslint-disable-next-line
