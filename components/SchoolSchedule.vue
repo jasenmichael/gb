@@ -1,12 +1,12 @@
 <template>
   <div>
-    <mdb-row style="max-width:420px;">
-      <mdb-col col="md">
-        <h5>
+    <mdb-row>
+      <mdb-col col="md-3">
+        <h5 class="mt-2 pt-1">
           Filter by Age Group
         </h5>
       </mdb-col>
-      <mdb-col col="md">
+      <mdb-col col="md-3 pl-0">
         <mdb-dropdown>
           <mdb-dropdown-toggle
             slot="toggle"
