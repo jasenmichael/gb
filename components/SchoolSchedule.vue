@@ -1,29 +1,38 @@
 <template>
   <div>
-    <div class="text-center">
-      <h5>Filter by Age Group</h5>
-      <mdb-dropdown>
-        <mdb-dropdown-toggle
-          slot="toggle"
-          size="lg"
-          style="width:250px; margin:auto;"
-        >
-          {{
-            ageGroups[selected] === '4-17' ? 'All Ages' : ageGroups[selected]
-          }}
-        </mdb-dropdown-toggle>
-        <mdb-dropdown-menu>
-          <mdb-dropdown-item
-            v-for="(ages, index) in ageGroups"
-            :key="index"
-            :selected="index === 0 ? true : false"
-            @click.prevent="setSelected(index)"
+    <mdb-row style="max-width:420px;">
+      <mdb-col col="md">
+        <h5>
+          Filter by Age Group
+        </h5>
+      </mdb-col>
+      <mdb-col col="md">
+        <mdb-dropdown>
+          <mdb-dropdown-toggle
+            slot="toggle"
+            class="btn btn-lg btn-block z-depth-0"
+            hoverable="false"
+            size="lg"
           >
-            {{ ages === '4-17' ? 'ALL AGES' : ages }}
-          </mdb-dropdown-item>
-        </mdb-dropdown-menu>
-      </mdb-dropdown>
-    </div>
+            {{
+              ageGroups[selected] === '4-17'
+                ? 'All Ages'
+                : `AGES ${ageGroups[selected]}`
+            }}
+          </mdb-dropdown-toggle>
+          <mdb-dropdown-menu>
+            <mdb-dropdown-item
+              v-for="(ages, index) in ageGroups"
+              :key="index"
+              :selected="index === 0 ? true : false"
+              @click.native.prevent="setSelected(index)"
+            >
+              {{ ages === '4-17' ? 'ALL AGES' : ages }}
+            </mdb-dropdown-item>
+          </mdb-dropdown-menu>
+        </mdb-dropdown>
+      </mdb-col>
+    </mdb-row>
     <!-- <select class="custom-select">
       <option
         v-for="(ages, index) in ageGroups"
@@ -66,6 +75,8 @@
 import axios from 'axios'
 import {
   mdbDatatable,
+  mdbRow,
+  mdbCol,
   mdbDropdown,
   mdbDropdownItem,
   mdbDropdownMenu,
@@ -75,6 +86,8 @@ export default {
   name: 'DatatablePage',
   components: {
     mdbDatatable,
+    mdbRow,
+    mdbCol,
     mdbDropdown,
     mdbDropdownItem,
     mdbDropdownMenu,
