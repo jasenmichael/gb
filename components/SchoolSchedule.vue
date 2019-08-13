@@ -1,26 +1,29 @@
 <template>
   <div>
-    <br />
-    <h5>Filter by Age Group</h5>
-    <mdb-dropdown class="text-center" style="margin:auto;">
-      <mdb-dropdown-toggle
-        slot="toggle"
-        size="lg"
-        style="width:300px; margin:auto;"
-      >
-        {{ ageGroups[selected] === '4-17' ? 'All Ages' : ageGroups[selected] }}
-      </mdb-dropdown-toggle>
-      <mdb-dropdown-menu>
-        <mdb-dropdown-item
-          v-for="(ages, index) in ageGroups"
-          :key="index"
-          :selected="index === 0 ? true : false"
-          @click.prevent="setSelected(index)"
+    <div class="text-center">
+      <h5>Filter by Age Group</h5>
+      <mdb-dropdown>
+        <mdb-dropdown-toggle
+          slot="toggle"
+          size="lg"
+          style="width:250px; margin:auto;"
         >
-          {{ ages === '4-17' ? 'ALL AGES' : ages }}
-        </mdb-dropdown-item>
-      </mdb-dropdown-menu>
-    </mdb-dropdown>
+          {{
+            ageGroups[selected] === '4-17' ? 'All Ages' : ageGroups[selected]
+          }}
+        </mdb-dropdown-toggle>
+        <mdb-dropdown-menu>
+          <mdb-dropdown-item
+            v-for="(ages, index) in ageGroups"
+            :key="index"
+            :selected="index === 0 ? true : false"
+            @click.prevent="setSelected(index)"
+          >
+            {{ ages === '4-17' ? 'ALL AGES' : ages }}
+          </mdb-dropdown-item>
+        </mdb-dropdown-menu>
+      </mdb-dropdown>
+    </div>
     <!-- <select class="custom-select">
       <option
         v-for="(ages, index) in ageGroups"
