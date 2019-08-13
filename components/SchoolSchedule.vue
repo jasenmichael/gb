@@ -64,7 +64,7 @@
           :pagination="false"
           :sorting="false"
           :tfoot="false"
-          :max-height="'700px'"
+          :max-height="'800px'"
         />
         <hr />
       </div>
