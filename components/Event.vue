@@ -20,10 +20,16 @@
           <mdb-row>
             <mdb-card class="mx-auto" style="min-width:90%;">
               <mdb-card-body class="text-center">
-                <h2 v-if="event.summary.length <= 80">
-                  <!-- {{ event.summary }} - -->
+                <h2 v-if="!isMultiDay()" class="pb-0">
                   {{ getDate(event.start.local, 'dddd, MMMM Do YYYY') }}
                 </h2>
+                <div v-if="isMultiDay()">
+                  <h2>
+                    {{ getDate(event.start.local, 'dddd, MMMM Do YYYY') }}
+                    <p class="m-0 p-0">-</p>
+                    {{ getDate(event.end.local, 'dddd, MMMM Do YYYY') }}
+                  </h2>
+                </div>
                 <mdb-card-title>
                   <h3>{{ event.summary }}</h3>
                   <!-- {{ getDate(event.start.local, 'dddd MMMM Do') }} -->
@@ -203,6 +209,9 @@ export default {
     }
   },
   methods: {
+    isMultiDay() {
+      return true
+    },
     getDate(date, format) {
       return moment(date).format(format)
     }

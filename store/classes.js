@@ -3,52 +3,54 @@
 
 export const state = () => ({
   list: [],
-  categories: [],
-  subcategories: []
+  teachers: [],
+  days: []
 })
 
 export const mutations = {
-  setEvents(state, events) {
-    state.list = events
+  setClasses(state, classes) {
+    state.list = classes
+    // eslint-disable-next-line no-console
+    console.log('set classes', classes.length)
   },
-  setCategories(state, categories) {
-    state.categories = categories
+  setTeachers(state, teachers) {
+    state.categories = teachers
   },
-  setSubcategories(state, subcategories) {
-    state.subcategories = subcategories
+  setDays(state, days) {
+    state.subcategories = days
   }
 }
 
 export const actions = {
-  async getEvents({ commit }) {
-    // const config = {
-    //   headers: {
-    //     Authorization: 'Bearer ' + process.env.EVENTBRITE_KEY
-    //   }
-    // }
+  async getClasses({ commit }) {
+    // const url = 'http://localhost:1337'
+    const url = process.env.STRAPI_URL
     await this.$axios
-      .get(process.env.STRAPI_URL + '/events')
+      .get(url + '/classes')
+      // .get('/data/classes.json')
       .then(res => {
         if (res.status === 200) {
+          // eslint-disable-next-line no-console
+          // console.log('yoyo', url)
           return res.data
         }
       })
-      .then(events => {
-        commit('setEvents', events)
+      .then(classes => {
+        commit('setClasses', classes)
       })
   },
 
-  async getCategories({ commit }) {
+  async getTeachers({ commit }) {
     const config = {
       headers: {
         Authorization: 'Bearer ' + process.env.EVENTBRITE_KEY
       }
     }
-    const categories = await this.$axios.$get(
+    const teachers = await this.$axios.$get(
       'https://www.eventbriteapi.com/v3/categories',
       config
     )
-    commit('setCategories', categories.categories)
+    commit('setTeachers', teachers)
   },
 
   async getSubcategories({ commit }) {

@@ -2,9 +2,7 @@
   <div>
     <mdb-row>
       <mdb-col col="md-3">
-        <h5 class="mt-2 pt-1">
-          Filter by Age Group
-        </h5>
+        <h5 class="mt-2 pt-1">Filter by Age Group</h5>
       </mdb-col>
       <mdb-col col="md-3 pl-0">
         <mdb-dropdown>
@@ -42,11 +40,11 @@
       >
         {{ ages === '4-17' ? 'All Ages' : ages }}
       </option>
-    </select> -->
+    </select>-->
     <hr />
     <div v-for="(ageGroup, index) in ageGroups" :key="index">
       <div
-        v-for="(day, dayIndex) in getDaysClassesHeld(filteredClasses)"
+        v-for="(day, dayIndex) in getDaysClassesHeld(classes)"
         v-show="selected === index"
         :key="dayIndex"
       >
@@ -72,7 +70,7 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import {
   mdbDatatable,
   mdbRow,
@@ -118,8 +116,8 @@ export default {
           field: 'ends_at'
         }
       ],
-      filteredClasses: [],
-      allClasses: [],
+      unFormattedClasses: this.$store.state.classes.list,
+      classes: [],
       ageGroups: ['4-17', '4-7', '8-11', '12-17'],
       selected: 0
     }
@@ -132,63 +130,50 @@ export default {
       // console.log('yo wazz', this.selected)
     }
   },
-  mounted() {
-    return this.getClasses()
+  beforeMount() {
+    this.getClasses()
   },
   methods: {
     classesByAgeGroup: function(ages) {
       const minAge = Number(ages.split('-')[0])
       const maxAge = Number(ages.split('-')[1])
-      const filtered = this.allClasses.filter(course => {
+      const filtered = this.classes.filter(course => {
         const courseMinAge = Number(course.ages.split('-')[0])
         const courseMaxAge = Number(course.ages.split('-')[1])
-        const thing =
+        const classAgeGroup =
           // eslint-disable-next-line
-          ((courseMinAge >= minAge && minAge <= courseMaxAge) && (maxAge <= courseMaxAge && maxAge >= courseMinAge)) ||
+          (courseMinAge >= minAge &&
+            minAge <= courseMaxAge &&
+            (maxAge <= courseMaxAge && maxAge >= courseMinAge)) ||
           courseMinAge === minAge ||
           courseMaxAge === maxAge ||
           ages === this.ageGroups[0] ||
           course.ages === 'All'
-        // eslint-disable-next-line
-        // console.log(
-        //   'ages: ' + ages,
-        //   // '\nselectedAges: ' + this.ageGroups[this.selected],
-        //   '\nthing: ' + thing,
-        //   '\nminAge: ' + minAge,
-        //   '\nmaxAge: ' + maxAge,
-        //   '\ncourseMinAge: ' + courseMinAge,
-        //   '\ncourseMaxAge: ' + courseMaxAge
-        // )
-        return thing
+        return classAgeGroup
       })
       // eslint-disable-next-line
       // console.log('filtered--', filtered)
       return filtered
     },
     getClasses: function() {
-      // const url = 'http://localhost:1337/'
-      // const url = 'https://gb-strapi.herokuapp.com/'
-      // return axios.get(url + 'classes').then(res => {
-      return axios.get('/data/classes.json').then(res => {
-        const classes = res.data
-        const formattedClasses = []
-        for (let i = 0; i < classes.length; i++) {
-          const course = classes[i]
-          formattedClasses.push({
-            _id: course._id,
-            name: course.name,
-            starts_at: course.starts_at,
-            ages: course.ages || 'All',
-            teachers: this.getNamesArray(course.teachers)
-              .toString()
-              .replace(/,/g, ', '),
-            ends_at: course.ends_at,
-            days: this.getNamesArray(course.days)
-          })
-        }
-        this.filteredClasses = formattedClasses
-        this.allClasses = formattedClasses
-      })
+      const classes = this.unFormattedClasses
+      const formattedClasses = []
+      for (let i = 0; i < classes.length; i++) {
+        const course = classes[i]
+        formattedClasses.push({
+          _id: course._id,
+          name: course.name,
+          starts_at: course.starts_at,
+          ages: course.ages || 'All',
+          teachers: this.getNamesArray(course.teachers)
+            .toString()
+            .replace(/,/g, ', '),
+          ends_at: course.ends_at,
+          days: this.getNamesArray(course.days)
+        })
+      }
+      this.classes = formattedClasses
+      // })
     },
     setSelected: function(selected) {
       this.selected = selected
