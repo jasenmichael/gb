@@ -20,10 +20,10 @@
           <mdb-row>
             <mdb-card class="mx-auto" style="min-width:90%;">
               <mdb-card-body class="text-center">
-                <h2 v-if="!isMultiDay()" class="pb-0">
+                <h2 v-if="!isMultiDay(event)" class="pb-0">
                   {{ getDate(event.start.local, 'dddd, MMMM Do YYYY') }}
                 </h2>
-                <div v-if="isMultiDay()">
+                <div v-if="isMultiDay(event)">
                   <h2>
                     {{ getDate(event.start.local, 'dddd, MMMM Do YYYY') }}
                     <p class="m-0 p-0">-</p>
@@ -209,8 +209,15 @@ export default {
     }
   },
   methods: {
-    isMultiDay() {
-      return true
+    isMultiDay(event) {
+      if (
+        this.getDate(event.start.local, 'dddd, MMMM Do YYYY') ===
+        this.getDate(event.end.local, 'dddd, MMMM Do YYYY')
+      ) {
+        // eslint-disable-next-line no-console
+        console.log('yoyoy')
+        return false
+      } else return true
     },
     getDate(date, format) {
       return moment(date).format(format)
