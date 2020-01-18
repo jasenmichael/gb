@@ -19,7 +19,7 @@ export default {
         .get('https://www.eventbriteapi.com/v3/users/me/events', config)
         .then(res => {
           const events = res.data.events.filter(
-            event => event.status === 'live'
+            event => event.status === 'live' || 'completed'
           )
           return events.map(event => {
             const liveEvents = {
