@@ -152,13 +152,20 @@ export default {
         const liveEvents = this.$store.state.events.list.filter(
           event => event.status === 'live'
         )
-        return liveEvents
+        // return liveEvents
+        return liveEvents.sort((a, b) => a.start.local <= b.end.local)
       }
       if (this.status === 'completed') {
         const pastEvents = this.$store.state.events.list.filter(
           event => event.status === 'completed'
         )
-        return pastEvents
+        // eslint-disable-next-line no-console
+        // console.log(
+        //   'yo',
+        //   pastEvents.sort((a, b) => a.start.local >= b.end.local)
+        // )
+        // return pastEvents
+        return pastEvents.sort((a, b) => a.start.local <= b.end.local)
       }
     },
     isOdd(num) {
