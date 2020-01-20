@@ -66,6 +66,7 @@
                     <!-- <mdb-icon far icon="clock" size="3x" /> -->
                     <h1>{{ getDate(event.end.local, 'h:mma') }}</h1>
                   </mdb-col>
+                  <!-- eslint-disable-->
                   <div
                     class="content ml-4 mr-4 text-left"
                     v-html="
@@ -82,6 +83,7 @@
                         )
                     "
                   ></div>
+                  <!-- eslint-enable-->
                 </mdb-row>
                 <mdb-btn
                   v-if="event.status !== 'completed'"
@@ -214,8 +216,7 @@ export default {
         this.getDate(event.start.local, 'dddd, MMMM Do YYYY') ===
         this.getDate(event.end.local, 'dddd, MMMM Do YYYY')
       ) {
-        // eslint-disable-next-line no-console
-        console.log('yoyoy')
+        // console.log('yoyoy')
         return false
       } else return true
     },
