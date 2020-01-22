@@ -161,8 +161,7 @@ export default {
         )
         // eslint-disable-next-line no-console
         // console.log(
-        //   'yo',
-        //   pastEvents.sort((a, b) => a.start.local >= b.end.local)
+        //   'yo', pastEvents.sort((a, b) => a.start.local >= b.end.local)
         // )
         // return pastEvents
         return pastEvents.sort((a, b) => a.start.local <= b.end.local)
