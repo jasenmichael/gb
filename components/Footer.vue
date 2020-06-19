@@ -132,6 +132,11 @@ export default {
     return {
       communityLinks: [
         {
+          href: 'https://www.ic.org/directory/greenbriar-community-school/',
+          title: 'Foundation for Intentional Community',
+          label: 'Foundation for Intentional Community'
+        },
+        {
           href: 'http://earthaven.org',
           title:
             'an intentional community based in North Carolina near Ashville, with many natural buildings, Earthhaven is off-the-grid also incorporating many other sustainable living systems.',
@@ -147,11 +152,6 @@ export default {
           href: 'http://www.thefarm.org',
           title: 'The Farm in Tennessee',
           label: 'The Farm'
-        },
-        {
-          href: 'http://ic.org',
-          title: 'Networking site for intentional communities',
-          label: 'Fellowship for Intentional Community'
         },
         {
           href: 'http://dancingrabbit.org',
