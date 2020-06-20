@@ -44,6 +44,16 @@
               </a>
             </li>
           </ul>
+          <div>
+            <nuxt-link to="/contact">
+              <mdb-btn block color="primary">Contact Form</mdb-btn>
+            </nuxt-link>
+            <br />
+            <nuxt-link to="/student-interest-form">
+              <mdb-btn block color="secondary">Student Interest Form</mdb-btn>
+            </nuxt-link>
+          </div>
+          <br />
         </mdb-col>
         <hr class="clearfix w-100 d-md-none" />
         <mdb-col md="3">
@@ -72,9 +82,26 @@
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
             Upcoming Events
           </h5>
-          <ul class="list-unstyled">
+          <ul v-if="upcomingEvents.length !== 0" class="list-unstyled">
             <li
               v-for="event in upcomingEvents.slice(0, 6)"
+              :key="event.id"
+              class="mb-2"
+            >
+              <nuxt-link :to="'/event/' + event.urlPath">
+                {{ event.name.html }}
+              </nuxt-link>
+            </li>
+          </ul>
+          <div v-else>
+            No upcoming events, check back later.
+          </div>
+          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
+            Past Events
+          </h5>
+          <ul class="list-unstyled">
+            <li
+              v-for="event in pastEvents.slice(0, 6).reverse()"
               :key="event.id"
               class="mb-2"
             >
@@ -118,7 +145,14 @@
 
 <script>
 import PayPal from '@/components/PayPal'
-import { mdbFooter, mdbContainer, mdbRow, mdbCol, mdbIcon } from 'mdbvue'
+import {
+  mdbFooter,
+  mdbContainer,
+  mdbBtn,
+  mdbRow,
+  mdbCol,
+  mdbIcon
+} from 'mdbvue'
 export default {
   components: {
     mdbFooter,
@@ -126,6 +160,7 @@ export default {
     mdbRow,
     mdbCol,
     mdbIcon,
+    mdbBtn,
     PayPal
   },
   data() {
@@ -168,6 +203,9 @@ export default {
       ],
       upcomingEvents: this.$store.state.events.list.filter(
         event => event.status === 'live'
+      ),
+      pastEvents: this.$store.state.events.list.filter(
+        event => event.status === 'completed'
       )
     }
   }

@@ -2,12 +2,20 @@
   <mdb-container class="top mt-4">
     <h1 class="text-center">Homeschool Enrichment Program</h1>
     <h2 class="text-center">Fall 2019 Schedule</h2>
+    <nuxt-link to="/student-interest-form">
+      <div class="text-center">
+        <mdb-btn>Student Interest Form</mdb-btn>
+      </div>
+    </nuxt-link>
     <h4 class="text-center">Classes begin August 19th</h4>
     <hr />
     <school-schedule />
     <nuxt-link to="/student-interest-form">
-      <mdb-btn>Student Interest Form</mdb-btn>
+      <div class="text-center">
+        <mdb-btn>Student Interest Form</mdb-btn>
+      </div>
     </nuxt-link>
+
     <div
       class="calendar-container embed-responsive embed-responsive-4by3 z-depth-1-half desk-cal mt-5"
     >
