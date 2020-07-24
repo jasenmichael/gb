@@ -3,15 +3,13 @@
     <div class="home">
       <h1 class="display-6 pre">Celebrating 50 years!</h1>
       <h1 class="display-4 title">{{ welcome }}</h1>
-      <br />
       <mdb-btn
         v-scroll-to="{ el: '#info', duration: 800 }"
         tag="a"
         href="#"
         icon="angle-double-right"
         color="blue darken-4"
-      >
-        learn more
+        >learn more
       </mdb-btn>
     </div>
 
@@ -28,8 +26,8 @@
               <source :data-srcset="slide.img" type="image/png" />
               <img
                 :data-src="slide.img"
-                class="lazyload img-fluid"
                 :alt="slide.alt"
+                class="lazyload img-fluid"
               />
               <mdb-mask flex-center overlay="black-light" />
             </picture>
@@ -39,12 +37,26 @@
             :src="slide.img"
             class="img-fluid lazyload"
             :alt="slide.alt"
-          /> -->
+          />-->
           <!-- <mdb-mask flex-center overlay="black-light" /> -->
         </mdb-view>
       </mdb-carousel-item>
     </mdb-carousel>
     <mdb-container id="info" style="font-size:120%;" class="mt-4">
+      <div class="text-center pt-4 mb-4">
+        <mdb-btn @click.native="covidmodal = true" color="red darken-2"
+          >Covid-19 Statement</mdb-btn
+        >
+        <!-- covid-modal -->
+      </div>
+      <mdb-modal :show="covidmodal" @close="covidmodal = false" size="lg">
+        <mdb-modal-body>
+          <covid class="p-4 m-4" />
+        </mdb-modal-body>
+        <mdb-btn @click.native="covidmodal = false" color="secondary"
+          >Close</mdb-btn
+        >
+      </mdb-modal>
       <h1 class="pt-4 mb-4 text-center">
         Welcome to Greenbriar Community School
       </h1>
@@ -58,8 +70,7 @@
         Bastrop Texas. Greenbriar was a part of the free school movement that
         began in the 1960's
         <span style="font-size:130%;">☮</span>
-        <br />
-        We are an Educational community focusing on sustainability,
+        <br />We are an Educational community focusing on sustainability,
         homeschooling and providing an alternative learning center.
       </p>
       <p>
@@ -68,17 +79,16 @@
       </p>
       <p>
         For more information, history and current programs visit the
-        <nuxt-link class="thislink" to="/about">
-          About
-        </nuxt-link>
-        page.
+        <nuxt-link class="thislink" to="/about">About</nuxt-link> page.
       </p>
     </mdb-container>
   </div>
 </template>
 
 <script>
+import Covid from '@/components/Covid'
 import {
+  mdbModal,
   mdbCarousel,
   mdbCarouselItem,
   mdbBtn,
@@ -89,6 +99,8 @@ import {
 
 export default {
   components: {
+    Covid,
+    mdbModal,
     mdbCarousel,
     mdbCarouselItem,
     mdbBtn,
@@ -99,6 +111,7 @@ export default {
   head: { title: 'Welcome Home' },
   data() {
     return {
+      covidmodal: false,
       welcome: 'Greenbriar Community School',
       slides: [
         {

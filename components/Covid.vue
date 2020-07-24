@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h3 class="text-center">Covid-19 Statement and Protocols</h3>
+    <h3 class="text-center">
+      Greenbriar School - Covid-19 Statement and Protocols
+    </h3>
     <p>
       As COVID-19 remains a threat and we get closer to the Greenbriar School
       fall season, prospective parents and students would normally be planning
@@ -28,6 +30,7 @@
       who choose not to participate when standard health protocols are not
       available or being enforced.
     </p>
+    <hr />
     <p>
       We have been hard at work exploring ways that we can open our doors and
       return to our campus as safely as possible in the fall.
@@ -44,7 +47,7 @@
         and inspiration in learning
       </li>
       <li>A lot more outdoor education/play in the gardens and shady spaces</li>
-      <li>Even more hands on, project based learning</li>
+      <li>Even more hands-on project based learning</li>
     </ul>
     <p>
       There is more to come in our evolving framework. We are passionate about
@@ -54,9 +57,9 @@
     </p>
     <p>
       We currently have a few spots available for the k-12 homeschool enrichment
-      program. If you are interested, please fill out
-      <nuxt-link to="/contact/?subject=homeschool">this form</nuxt-link>, and
-      will hear from someone on our team ASAP. <br />~Greenbriar School
+      program. If you are interested, please fill out the
+      <nuxt-link to="/student-interest-form">student interest form</nuxt-link>,
+      and will hear from someone on our team ASAP. <br />~Greenbriar School
       Administration
     </p>
   </div>
