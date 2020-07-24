@@ -5,6 +5,7 @@ import axios from 'axios'
 require('dotenv').config()
 
 export default {
+  // target: 'static',
   mode: 'universal',
   server: { port: '3030' },
   generate: {
@@ -15,22 +16,29 @@ export default {
           Authorization: 'Bearer ' + process.env.EVENTBRITE_KEY
         }
       }
-      return axios
-        .get('https://www.eventbriteapi.com/v3/users/me/events', config)
-        .then(res => {
-          const events = res.data.events.filter(
-            event => event.status === 'live' || 'completed'
+      return (
+        axios
+          // .get('https://www.eventbriteapi.com/v3/users/me/events', config)
+          .get(
+            'https://www.eventbriteapi.com/v3/organizations/312706594048/events',
+            config
           )
-          return events.map(event => {
-            const liveEvents = {
-              route:
-                '/event/' + event.name.text.replace(/\s+/g, '-').toLowerCase(),
-              // route: '/event/' + event.id,
-              payload: event
-            }
-            return liveEvents
+          .then(res => {
+            const events = res.data.events.filter(
+              event => event.status === 'live' || 'completed'
+            )
+            return events.map(event => {
+              const liveEvents = {
+                route:
+                  '/event/' +
+                  event.name.text.replace(/\s+/g, '-').toLowerCase(),
+                // route: '/event/' + event.id,
+                payload: event
+              }
+              return liveEvents
+            })
           })
-        })
+      )
     }
   },
   env: {
