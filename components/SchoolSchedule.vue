@@ -55,14 +55,14 @@
             columns,
             rows: getClassesOn(day, classesByAgeGroup(ageGroups[index]))
           }"
+          :searching="false"
+          :sorting="false"
+          :pagination="false"
+          :tfoot="false"
+          :max-height="'800px'"
           responsive
           striped
           bordered
-          :searching="false"
-          :pagination="false"
-          :sorting="false"
-          :tfoot="false"
-          :max-height="'800px'"
         />
         <hr />
       </div>
@@ -144,7 +144,8 @@ export default {
           // eslint-disable-next-line
           (courseMinAge >= minAge &&
             minAge <= courseMaxAge &&
-            (maxAge <= courseMaxAge && maxAge >= courseMinAge)) ||
+            maxAge <= courseMaxAge &&
+            maxAge >= courseMinAge) ||
           courseMinAge === minAge ||
           courseMaxAge === maxAge ||
           ages === this.ageGroups[0] ||
