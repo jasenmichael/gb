@@ -29,7 +29,7 @@
             </li>
             <li>
               <mdb-icon icon="envelope" size="2x" class="mr-2" />
-              contact@greenbriarschool.org
+              contactus@greenbriarschool.org
             </li>
             <li>
               <mdb-icon fab icon="facebook-square" size="2x" class="mr-2" />
@@ -76,6 +76,19 @@
               </a>
             </li>
           </ul>
+          <!-- <img
+            class="wp-image-179897 alignright"
+            src="http://www.ic.org/wp-content/uploads/2015/02/5.jpg"
+            alt="FIC Membership"
+            srcset="
+              https://www.ic.org/wp-content/uploads/2015/02/5.jpg         288w,
+              https://www.ic.org/wp-content/uploads/2015/02/5-200x180.jpg 200w,
+              https://www.ic.org/wp-content/uploads/2015/02/5-75x67.jpg    75w
+            "
+            sizes="(max-width: 218px) 100vw, 218px"
+            width="218"
+            height="196"
+          /> -->
         </mdb-col>
         <hr class="clearfix w-100 d-md-none" />
         <mdb-col md="3">

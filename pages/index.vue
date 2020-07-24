@@ -49,9 +49,9 @@
         Welcome to Greenbriar Community School
       </h1>
       <h4 class="text-center ml-4 mr-4" style="font-style:italic;">
-        "Greenbriar Community School is a model for sustainable community living
-        <br />
-        by consensus decision making."
+        "Greenbriar Community School is an educational institution for students
+        ages five years or more, and a model for sustainable community living by
+        consensus decision making."
       </h4>
       <p>
         Located within 170 wooded acres east of Austin, between Elgin and
