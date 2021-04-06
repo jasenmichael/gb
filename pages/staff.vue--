@@ -2,11 +2,9 @@
   <mdb-container class="pt-4">
     <h2 class="pt-4">Staff Admin Panel</h2>
     <hr />
-    <mdb-btn gradient="aqua" rounded @click="logout">Logout</mdb-btn>
+    <mdb-btn @click="logout" gradient="aqua" rounded>Logout</mdb-btn>
     <hr />
-    <p>
-      Add/Edit/Delete Homeschool Classes
-    </p>
+    <p>Add/Edit/Delete Homeschool Classes</p>
     <school-schedule />
   </mdb-container>
 </template>

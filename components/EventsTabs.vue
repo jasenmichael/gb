@@ -2,9 +2,9 @@
   <mdb-container md="10">
     <mdb-tabs
       :active="0"
-      default
       :links="[{ text: 'Upcoming Events' }, { text: 'Past Events' }]"
       :transition-duration="0.5"
+      default
       transition-style="linear"
     >
       <template :slot="'Upcoming Events'">

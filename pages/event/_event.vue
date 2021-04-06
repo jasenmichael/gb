@@ -1,13 +1,13 @@
 <template>
   <div>
     <mdb-card
-      class="card-image"
       :style="{
         background:
           '#fff url(' +
           (event.logo == null ? eventLogo : event.logo.original.url) +
           ') no-repeat center center'
       }"
+      class="card-image"
     >
       <div class="text-white text-center rgba-stylish-light py-5 px-4">
         <div>

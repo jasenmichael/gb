@@ -7,9 +7,7 @@
             <a href="#">Home</a>
           </mdb-breadcrumb-item> -->
           <mdb-breadcrumb-item>
-            <n-link :to="'/events'">
-              Events
-            </n-link>
+            <n-link :to="'/events'"> Events </n-link>
           </mdb-breadcrumb-item>
           <mdb-breadcrumb-item active>
             {{ event.name.text }}
@@ -18,7 +16,7 @@
         <!-- <hr /> -->
         <mdb-col md="12" class="mb-3">
           <mdb-row>
-            <mdb-card class="mx-auto" style="min-width:90%;">
+            <mdb-card class="mx-auto" style="min-width: 90%">
               <mdb-card-body class="text-center">
                 <h2 v-if="!isMultiDay(event)" class="pb-0">
                   {{ getDate(event.start.local, 'dddd, MMMM Do YYYY') }}
@@ -38,9 +36,7 @@
                   </h1>
                 </mdb-card-title>
                 <h5 class="indigo-text">
-                  <strong>
-                    Category:
-                  </strong>
+                  <strong> Category: </strong>
                   <span>
                     {{ event.category_name
                     }}{{
@@ -87,24 +83,24 @@
                 </mdb-row>
                 <mdb-btn
                   v-if="event.status !== 'completed'"
+                  :href="event.url"
                   outine="primary"
                   class="register"
                   color="blue"
                   tag="a"
                   target="_blank"
-                  :href="event.url"
                   icon="leaf"
                 >
                   {{ event.is_free ? 'RSVP' : 'REGISTER' }}
                 </mdb-btn>
                 <mdb-btn
                   v-if="event.status === 'completed'"
+                  :href="event.url"
                   outine="primary"
                   class="register"
                   color="blue"
                   tag="a"
                   target="_blank"
-                  :href="event.url"
                   icon="leaf"
                 >
                   Event Info
@@ -137,11 +133,7 @@
         </mdb-col>
       </mdb-container>
       <mdb-google-map
-        name="reg"
-        class="col-md-12 map"
-        style="height: 500px; width:100%; position: relative; overflow: hidden"
         :zoom="10"
-        type="satellite"
         :marker-coordinates="[
           {
             latitude: 30.247593,
@@ -149,6 +141,10 @@
             title: 'Greenbriar Community School'
           }
         ]"
+        name="reg"
+        class="col-md-12 map"
+        style="height: 500px; width: 100%; position: relative; overflow: hidden"
+        type="satellite"
       ></mdb-google-map>
     </div>
   </div>

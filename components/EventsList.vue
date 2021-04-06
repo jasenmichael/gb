@@ -25,12 +25,21 @@
                 <time datetime="2014-07-20">
                   <span class="day">{{ getDate(event.start.local, 'D') }}</span>
                   <!-- eslint-disable-next-line -->
-                  <span class="month">{{ getDate(event.start.local, 'MMM') }}</span>
+                  <span class="month">{{
+                    getDate(event.start.local, 'MMM')
+                  }}</span>
                   <!-- eslint-disable-next-line -->
-                  <span class="year">{{ getDate(event.start.local, 'YYYY') }}</span>
+                  <span class="year">{{
+                    getDate(event.start.local, 'YYYY')
+                  }}</span>
                   <span class="time">
                     <!-- eslint-disable-next-line -->
-                    {{ `${getDate(event.start.local, 'h:mma')} - ${getDate(event.end.local, 'h:mma' )}` }}
+                    {{
+                      `${getDate(event.start.local, 'h:mma')} - ${getDate(
+                        event.end.local,
+                        'h:mma'
+                      )}`
+                    }}
                   </span>
                 </time>
                 <img
@@ -49,14 +58,19 @@
                     }}
                   </p>
                   <ul :class="!event.logo ? 'times noimg' : 'times'">
-                    <li style="width:50%;">
+                    <li style="width: 50%">
                       <span class="fa fa-calendar"></span>
                       {{ getDate(event.start.local, 'dddd MMM Do') }}
                     </li>
-                    <li style="width:50%; font-style:bold;">
+                    <li style="width: 50%; font-style: bold">
                       <span class="fa fa-clock"></span>
                       <!-- eslint-disable-next-line -->
-                      {{ `${getDate(event.start.local, 'h:mma')} - ${getDate(event.end.local, 'h:mma' )}` }}
+                      {{
+                        `${getDate(event.start.local, 'h:mma')} - ${getDate(
+                          event.end.local,
+                          'h:mma'
+                        )}`
+                      }}
                     </li>
                   </ul>
                 </div>
@@ -74,8 +88,8 @@
         </mdb-page-item>
         <mdb-page-nav
           :disabled="currentPage === 1"
-          prev
           @click.native.prevent="changePage(currentPage - 1)"
+          prev
         ></mdb-page-nav>
         <mdb-page-item
           v-for="(current, index) in pageCount"
@@ -87,8 +101,8 @@
         </mdb-page-item>
         <mdb-page-nav
           :disabled="pageCount === currentPage"
-          next
           @click.native.prevent="changePage(currentPage + 1)"
+          next
         ></mdb-page-nav>
         <mdb-page-item
           :disabled="pageCount === currentPage"

@@ -2,7 +2,7 @@
   <!-- Material form login -->
   <mdb-container>
     <div id="login">
-      <form method="post" @submit.prevent="login">
+      <form @submit.prevent="login" method="post">
         <p class="h4 text-center mb-4">Staff Login</p>
         <div class="grey-text">
           <mdb-input v-model="user" label="Username" icon="user" type="text" />

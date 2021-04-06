@@ -1,11 +1,11 @@
 <template>
   <div>
     <mdb-card
-      class="card-image"
       :style="{
         // eslint-disable-next-line
         background: '#fff url(' + 'banner.jpg?webp' + ') no-repeat center center'
       }"
+      class="card-image"
     >
       <div class="text-white text-center rgba-stylish-light py-5 px-4">
         <div>
@@ -13,8 +13,8 @@
             <strong>Contact Us</strong>
           </h1>
           <h4
-            class="mx-4 mb-4 font-bold eventdescription"
             v-html="'Drop a line if you have any questions...'"
+            class="mx-4 mb-4 font-bold eventdescription"
           ></h4>
         </div>
       </div>
@@ -66,11 +66,11 @@
             />
             <mdb-input
               v-model="subject"
+              :disabled="subectDisabled"
               label="Subject*"
               class="capitalize"
               icon="tag"
               group
-              :disabled="subectDisabled"
               type="text"
               validate
               error="wrong"
@@ -89,14 +89,14 @@
           <p v-else>{{ '&nbsp;' }}</p>
           <div class="text-center">
             <recaptcha
-              style="display:inline-block;"
               @error="onError"
               @success="onSuccess"
               @expired="onExpired"
+              style="display:inline-block;"
             />
           </div>
         </form>
-        <mdb-modal :show="modal" centered @close="closeModal()">
+        <mdb-modal :show="modal" @close="closeModal()" centered>
           <mdb-modal-header>
             <mdb-modal-title>Message sent</mdb-modal-title>
           </mdb-modal-header>
@@ -104,7 +104,7 @@
             Thanks for reaching out, we will get back with you
           </mdb-modal-body>
           <mdb-modal-footer>
-            <mdb-btn color="secondary" @click.native="closeModal()">
+            <mdb-btn @click.native="closeModal()" color="secondary">
               Close
             </mdb-btn>
           </mdb-modal-footer>
@@ -113,10 +113,10 @@
       <div class="text-center">
         <!-- <div class="text-center"> -->
         <mdb-btn
-          outline="primary"
           :disabled="sendDisabled"
           :class="sending"
           @click.native="sendEmail"
+          outline="primary"
         >
           <mdb-icon icon="paper-plane" class="ml-1" />
           {{ sendTxt }}

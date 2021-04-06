@@ -2,7 +2,15 @@
   <div class="z-depth-5">
     <!-- <pre>{{ $mq }}</pre> -->
     <!-- eslint-disable-next-line -->
-    <mdb-navbar dark color="teal darken-3" class="white-text z-depth-5" scrolling :scrollingOffset='20'  animated animation="3">
+    <mdb-navbar
+      :scrollingOffset="20"
+      dark
+      color="teal darken-3"
+      class="white-text z-depth-5"
+      scrolling
+      animated
+      animation="3"
+    >
       <mdb-navbar-brand to="/">
         <!-- eslint-disable-next-line -->
         <picture v-if="$mq === 'sm' ? true : false">
@@ -12,7 +20,7 @@
           <!-- <img data-src="icon.png" class="lazyload" alt="an image of a greenbriar vine" /> -->
           <img
             id="icon"
-            style="color:transparent;"
+            style="color: transparent"
             src="icon.png"
             height="30"
             alt="an image of a greenbriar vine"
@@ -26,25 +34,31 @@
           <!-- <img data-src="icon.png" class="lazyload" alt="an image of a greenbriar vine" /> -->
           <img
             id="icon"
-            style="color:transparent;"
+            style="color: transparent"
             src="icon.png"
             height="80"
             alt="an image of a greenbriar vine"
             class="lazyload"
           />
         </picture>
-        <strong id="brand">
-          Greenbriar Community School
-        </strong>
+        <strong id="brand"> Greenbriar Community School </strong>
       </mdb-navbar-brand>
       <mdb-navbar-toggler class="menu">
         <mdb-navbar-nav center>
           <!-- eslint-disable-next-line -->
-          <mdb-nav-item :class="isActive('/about') + ' link'" anchor-class="white-text" to="/about">
+          <mdb-nav-item
+            :class="isActive('/about') + ' link'"
+            anchor-class="white-text"
+            to="/about"
+          >
             About
           </mdb-nav-item>
           <!-- eslint-disable-next-line -->
-          <mdb-nav-item :class="isActive('/contact') + ' link'" anchor-class="white-text" to="/contact">
+          <mdb-nav-item
+            :class="isActive('/contact') + ' link'"
+            anchor-class="white-text"
+            to="/contact"
+          >
             Contact
           </mdb-nav-item>
           <!-- eslint-disable-next-line -->

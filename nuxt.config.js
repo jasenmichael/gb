@@ -1,46 +1,46 @@
 import path from 'path'
 import PurgecssPlugin from 'purgecss-webpack-plugin'
 import glob from 'glob-all'
-import axios from 'axios'
+// import axios from 'axios'
 require('dotenv').config()
 
 export default {
   // target: 'static',
   mode: 'universal',
   server: { port: '3030' },
-  generate: {
-    dir: 'dist',
-    routes: function() {
-      const config = {
-        headers: {
-          Authorization: 'Bearer ' + process.env.EVENTBRITE_KEY
-        }
-      }
-      return (
-        axios
-          // .get('https://www.eventbriteapi.com/v3/users/me/events', config)
-          .get(
-            'https://www.eventbriteapi.com/v3/organizations/312706594048/events',
-            config
-          )
-          .then(res => {
-            const events = res.data.events.filter(
-              event => event.status === 'live' || 'completed'
-            )
-            return events.map(event => {
-              const liveEvents = {
-                route:
-                  '/event/' +
-                  event.name.text.replace(/\s+/g, '-').toLowerCase(),
-                // route: '/event/' + event.id,
-                payload: event
-              }
-              return liveEvents
-            })
-          })
-      )
-    }
-  },
+  // generate: {
+  //   dir: 'dist',
+  //   routes: function() {
+  //     const config = {
+  //       headers: {
+  //         Authorization: 'Bearer ' + process.env.EVENTBRITE_KEY
+  //       }
+  //     }
+  //     return (
+  //       axios
+  //         // .get('https://www.eventbriteapi.com/v3/users/me/events', config)
+  //         .get(
+  //           'https://www.eventbriteapi.com/v3/organizations/312706594048/events',
+  //           config
+  //         )
+  //         .then(res => {
+  //           const events = res.data.events.filter(
+  //             event => event.status === 'live' || 'completed'
+  //           )
+  //           return events.map(event => {
+  //             const liveEvents = {
+  //               route:
+  //                 '/event/' +
+  //                 event.name.text.replace(/\s+/g, '-').toLowerCase(),
+  //               // route: '/event/' + event.id,
+  //               payload: event
+  //             }
+  //             return liveEvents
+  //           })
+  //         })
+  //     )
+  //   }
+  // },
   env: {
     contactApi: process.env.CONTACT_API_URL,
     // apiUrl: process.env.API_URL || '/.netlify/functions/',
@@ -92,7 +92,7 @@ export default {
     '@nuxtjs/robots',
     '@bazzite/nuxt-optimized-images',
     '@nuxtjs/recaptcha',
-    '@nuxtjs/auth',
+    // '@nuxtjs/auth',
     // '@nuxtjs/sitemap',
     // 'nuxt-purgecss',
     [
@@ -108,21 +108,21 @@ export default {
       }
     ]
   ],
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url: process.env.STRAPI_URL + '/auth/local',
-            method: 'post',
-            propertyName: 'jwt'
-          },
-          user: false,
-          logout: false
-        }
-      }
-    }
-  },
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           url: process.env.STRAPI_URL + '/auth/local',
+  //           method: 'post',
+  //           propertyName: 'jwt'
+  //         },
+  //         user: false,
+  //         logout: false
+  //       }
+  //     }
+  //   }
+  // },
   recaptcha: {
     hideBadge: false,
     siteKey: process.env.RECAPTCHA_KEY,
@@ -150,9 +150,9 @@ export default {
     }
   },
   robots: {
-    UserAgent: '*',
-    Disallow: '/staff',
-    Disallow: '/login'
+    UserAgent: '*'
+    // Disallow: '/staff',
+    // Disallow: '/login'
   },
   sitemap: {
     hostname: 'https://greenbriarschool.org',

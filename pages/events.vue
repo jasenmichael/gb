@@ -1,11 +1,13 @@
+/* eslint-disable prettier/prettier */
 <template>
   <div>
     <mdb-card
-      class="card-image"
       :style="{
         // eslint-disable-next-line
-        background: '#fff url(' + 'banner.jpg?webp' + ') no-repeat center center'
+        background:
+          '#fff url(' + 'banner.jpg?webp' + ') no-repeat center center'
       }"
+      class="card-image"
     >
       <div class="text-white text-center rgba-stylish-light py-5 px-4">
         <div>
@@ -13,10 +15,10 @@
             <strong>{{ description }}</strong>
           </h1>
           <h4
-            class="mx-4 mb-4 font-bold eventdescription"
             v-html="
               'Greenbriar Community School workshops & educational programs'
             "
+            class="mx-4 mb-4 font-bold eventdescription"
           ></h4>
         </div>
       </div>
@@ -27,19 +29,20 @@
 </template>
 
 <script>
-import Events from '@/components/Events'
+// import Events from '@/components/Events'
 // import PastEvents from '@/components/PastEvents'
 
 import { mdbCard } from 'mdbvue'
 
 export default {
-  components: { mdbCard, Events },
+  // components: { mdbCard, Events },
+  components: { mdbCard },
   data() {
     return {
-      events: this.$store.state.events.list,
+      events: [],
+      // events: this.$store.state.events.list,
       description: 'Upcoming Events & Workshops',
       eventLogo: '/banner.jpg'
-      // events: this.$store.state.events.list
     }
   },
   head() {

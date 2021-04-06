@@ -1,7 +1,7 @@
 <template>
   <!-- Footer -->
   <mdb-footer color="primary-color-dark" class="page-footer font-small mt-0">
-    <div style="backgroundColor: #00695c" class="z-depth-3">
+    <div style="backgroundcolor: #00695c" class="z-depth-3">
       <hr class="clearfix w-100 m-0" />
       <mdb-container class="text-center">
         <PayPal />
@@ -25,11 +25,11 @@
             <li class="ml-4 mb-3 pl-3">&nbsp;Bastrop Tx, 78602</li>
             <li>
               <mdb-icon icon="phone" size="2x" class="mr-2 mb-2" />
-              512-281-2661
+              <a href="tel:+1-512-281-2661"> 512-281-2661 </a>
             </li>
             <li>
               <mdb-icon icon="envelope" size="2x" class="mr-2" />
-              contactus@greenbriarschool.org
+              <a href="mail:thegreenbriarschool@gmail.com"> Contact Us </a>
             </li>
             <li>
               <mdb-icon fab icon="facebook-square" size="2x" class="mr-2" />
@@ -56,7 +56,7 @@
           <br />
         </mdb-col>
         <hr class="clearfix w-100 d-md-none" />
-        <mdb-col md="3">
+        <mdb-col md="6">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
             Community Network
           </h5>
@@ -68,8 +68,8 @@
             >
               <a
                 :href="link.href"
-                target="_blank"
                 :title="link.title"
+                target="_blank"
                 rel="noopener"
               >
                 {{ link.label }}
@@ -91,7 +91,7 @@
           /> -->
         </mdb-col>
         <hr class="clearfix w-100 d-md-none" />
-        <mdb-col md="3">
+        <!-- <mdb-col md="3">
           <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
             Upcoming Events
           </h5>
@@ -106,12 +106,8 @@
               </nuxt-link>
             </li>
           </ul>
-          <div v-else>
-            No upcoming events, check back later.
-          </div>
-          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">
-            Past Events
-          </h5>
+          <div v-else>No upcoming events, check back later.</div>
+          <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">Past Events</h5>
           <ul class="list-unstyled">
             <li
               v-for="event in pastEvents.slice(0, 6).reverse()"
@@ -123,11 +119,11 @@
               </nuxt-link>
             </li>
           </ul>
-        </mdb-col>
+        </mdb-col> -->
       </mdb-row>
     </mdb-container>
     <hr class="clearfix w-100 m-0" />
-    <div class="p-4 z-depth-5" style="backgroundColor: #00695c">
+    <div class="p-4 z-depth-5" style="backgroundcolor: #00695c">
       <mdb-container class="text-center">
         <p class="text-center">
           Greenbriar Community School does not and shall not discriminate on the
@@ -144,10 +140,10 @@
     </div>
     <div
       class="footer-copyright text-center py-3 z-depth-5"
-      style="backgroundColor: #004d40"
+      style="backgroundcolor: #004d40"
     >
       <mdb-container fluid>
-        &copy; 2019 Copyright:
+        &copy; {{ new Date().getFullYear() }} Copyright:
         <a href="https://greenbriarschool.org">Greenbriar Community School</a>
       </mdb-container>
     </div>
@@ -180,7 +176,7 @@ export default {
     return {
       communityLinks: [
         {
-          href: 'https://www.ic.org/directory/greenbriar-community-school/',
+          href: 'https://www.ic.org/directory/greenbriar/',
           title: 'Foundation for Intentional Community',
           label: 'Foundation for Intentional Community'
         },
@@ -214,12 +210,12 @@ export default {
           label: 'Global Ecovillage Network'
         }
       ],
-      upcomingEvents: this.$store.state.events.list.filter(
-        event => event.status === 'live'
-      ),
-      pastEvents: this.$store.state.events.list.filter(
-        event => event.status === 'completed'
-      )
+      upcomingEvents: [], // this.$store.state.events.list.filter(
+      // event => event.status === 'live'
+      // ),
+      pastEvents: [] // this.$store.state.events.list.filter(
+      // event => event.status === 'completed'
+      // )
     }
   }
 }

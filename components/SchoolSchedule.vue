@@ -116,7 +116,8 @@ export default {
           field: 'ends_at'
         }
       ],
-      unFormattedClasses: this.$store.state.classes.list,
+      // unFormattedClasses: this.$store.state.classes.list,
+      unFormattedClasses: require('static/data/classes.json'),
       classes: [],
       ageGroups: ['4-17', '4-7', '8-11', '12-17'],
       selected: 0
