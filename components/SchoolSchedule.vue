@@ -1,218 +1,475 @@
 <template>
-  <div>
-    <mdb-row>
-      <mdb-col col="md-3">
-        <h5 class="mt-2 pt-1">Filter by Age Group</h5>
-      </mdb-col>
-      <mdb-col col="md-3 pl-0">
-        <mdb-dropdown>
-          <mdb-dropdown-toggle
-            slot="toggle"
-            class="btn btn-lg btn-block z-depth-0"
-            hoverable="false"
-            size="lg"
-          >
-            {{
-              ageGroups[selected] === '4-17'
-                ? 'All Ages'
-                : `AGES ${ageGroups[selected]}`
-            }}
-          </mdb-dropdown-toggle>
-          <mdb-dropdown-menu>
-            <mdb-dropdown-item
-              v-for="(ages, index) in ageGroups"
-              :key="index"
-              :selected="index === 0 ? true : false"
-              @click.native.prevent="setSelected(index)"
-            >
-              {{ ages === '4-17' ? 'ALL AGES' : ages }}
-            </mdb-dropdown-item>
-          </mdb-dropdown-menu>
-        </mdb-dropdown>
-      </mdb-col>
-    </mdb-row>
-    <!-- <select class="custom-select">
-      <option
-        v-for="(ages, index) in ageGroups"
-        :key="index"
-        :selected="index === 0 ? true : false"
-        @click="setSelected(index)"
+  <div class="mx-auto">
+    <!-- <p class="c6"><span class="c1"></span></p>
+    <a id="t.ffa6de387d2bcebadc0381938dafdc9d987c2972"></a><a id="t.0"></a> -->
+    <table class="c12">
+      <tbody>
+        <tr class="c2">
+          <td class="c8" colspan="1" rowspan="1">
+            <p class="c5"><span class="c11">TUESDAY</span></p>
+          </td>
+          <td class="c8" colspan="1" rowspan="1">
+            <p class="c5"><span class="c11">WEDNESDAY</span></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="c6"><span class="c1"></span></p>
+    <a id="t.91d8e1fdb7185d72e61c466a79f14a9c398d4f66"></a><a id="t.1"></a>
+    <table class="c12">
+      <tbody>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">9:00-9:15</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Warm-up</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">9:00-9:15</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Warm-up</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">9:15-9:45</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Independent Reading</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">9:15-9:45</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Independent Reading</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Yoga</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Yoga</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Stations</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Stations</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">10:00-10:50</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Math</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">10:00-10:50</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Math</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">11:00-11:50</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">ELA &amp; Social Studies</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">11:00-11:50</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">ELA &amp; Social Studies</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">12:00-12:30</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Lunch</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">12:00-12:30</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Lunch</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">12:30-1:25</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Recess</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">12:30-1:25</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Recess</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">1:30-2:15</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Art </span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Art (available)</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Dungeons &amp; Dragons</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">1:30-2:15</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Science</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Beekeeping/</span></p>
+            <p class="c5"><span class="c1">Chicken Raising</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Blacksmithing</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">2:20-3:10</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Garden</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">2:20-3:10</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Garden</span></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="c10 c7"><span class="c1"></span></p>
+    <p class="c10">
+      <span class="c1"
+        >Afternoon Student Jobs are completed by each student before beginning
+        the last elective classes of the day</span
       >
-        {{ ages === '4-17' ? 'All Ages' : ages }}
-      </option>
-    </select>-->
-    <hr />
-    <div v-for="(ageGroup, index) in ageGroups" :key="index">
-      <div
-        v-for="(day, dayIndex) in getDaysClassesHeld(classes)"
-        v-show="selected === index"
-        :key="dayIndex"
-      >
-        <h4>{{ day }}s</h4>
-        <mdb-datatable
-          :class="'pt-4'"
-          :data="{
-            columns,
-            rows: getClassesOn(day, classesByAgeGroup(ageGroups[index]))
-          }"
-          :searching="false"
-          :sorting="false"
-          :pagination="false"
-          :tfoot="false"
-          :max-height="'800px'"
-          responsive
-          striped
-          bordered
-        />
-        <hr />
-      </div>
-    </div>
+    </p>
+    <p class="c7 c10"><span class="c1"></span></p>
+    <a id="t.048df3cfb622a3fe064009ebc60801ca00fabd94"></a><a id="t.2"></a>
+    <table class="c9">
+      <tbody>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">3:15-4:00</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Swimming</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4"><span class="c1">3:15-4:00</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Swimming</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Hiking</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Hiking</span></p>
+          </td>
+        </tr>
+        <tr class="c2">
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Games</span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c4 c7"><span class="c1"></span></p>
+          </td>
+          <td class="c3" colspan="1" rowspan="1">
+            <p class="c5"><span class="c1">Games</span></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="c10 c7"><span class="c1"></span></p>
   </div>
 </template>
-<script>
-// import axios from 'axios'
-import {
-  mdbDatatable,
-  mdbRow,
-  mdbCol,
-  mdbDropdown,
-  mdbDropdownItem,
-  mdbDropdownMenu,
-  mdbDropdownToggle
-} from 'mdbvue'
-export default {
-  name: 'DatatablePage',
-  components: {
-    mdbDatatable,
-    mdbRow,
-    mdbCol,
-    mdbDropdown,
-    mdbDropdownItem,
-    mdbDropdownMenu,
-    mdbDropdownToggle
-  },
-  data() {
-    return {
-      daysClassesHeld: [],
-      columns: [
-        {
-          label: 'Starts At',
-          field: 'starts_at'
-        },
-        {
-          label: 'Activity/Class',
-          field: 'name'
-        },
-        {
-          label: 'Age Range',
-          field: 'ages'
-        },
-        {
-          label: 'Teacher(s)',
-          field: 'teachers'
-        },
-        {
-          label: 'Ends At',
-          field: 'ends_at'
-        }
-      ],
-      // unFormattedClasses: this.$store.state.classes.list,
-      unFormattedClasses: require('static/data/classes.json'),
-      classes: [],
-      ageGroups: ['4-17', '4-7', '8-11', '12-17'],
-      selected: 0
-    }
-  },
-  computed: {},
-  watch: {
-    selected: function() {
-      // this.filteredClasses = this.classesByAgeGroup()
-      // // eslint-disable-next-line
-      // console.log('yo wazz', this.selected)
-    }
-  },
-  beforeMount() {
-    this.getClasses()
-  },
-  methods: {
-    classesByAgeGroup: function(ages) {
-      const minAge = Number(ages.split('-')[0])
-      const maxAge = Number(ages.split('-')[1])
-      const filtered = this.classes.filter(course => {
-        const courseMinAge = Number(course.ages.split('-')[0])
-        const courseMaxAge = Number(course.ages.split('-')[1])
-        const classAgeGroup =
-          // eslint-disable-next-line
-          (courseMinAge >= minAge &&
-            minAge <= courseMaxAge &&
-            maxAge <= courseMaxAge &&
-            maxAge >= courseMinAge) ||
-          courseMinAge === minAge ||
-          courseMaxAge === maxAge ||
-          ages === this.ageGroups[0] ||
-          course.ages === 'All'
-        return classAgeGroup
-      })
-      // eslint-disable-next-line
-      // console.log('filtered--', filtered)
-      return filtered
-    },
-    getClasses: function() {
-      const classes = this.unFormattedClasses
-      const formattedClasses = []
-      for (let i = 0; i < classes.length; i++) {
-        const course = classes[i]
-        formattedClasses.push({
-          _id: course._id,
-          name: course.name,
-          starts_at: course.starts_at,
-          ages: course.ages || 'All',
-          teachers: this.getNamesArray(course.teachers)
-            .toString()
-            .replace(/,/g, ', '),
-          ends_at: course.ends_at,
-          days: this.getNamesArray(course.days)
-        })
-      }
-      this.classes = formattedClasses
-      // })
-    },
-    setSelected: function(selected) {
-      this.selected = selected
-      // // eslint-disable-next-line
-      // console.log('selected', this.selected, this.ageGroups[this.selected])
-    },
-    getDaysClassesHeld: function(classes) {
-      const daysClassesHeld = []
-      classes.forEach(course => {
-        course.days.forEach(day => {
-          if (!daysClassesHeld.includes(day)) {
-            daysClassesHeld.push(day)
-          }
-        })
-      })
-      return daysClassesHeld
-    },
-    getClassesOn: function(day, filterClasses) {
-      const classes = filterClasses.filter(el => el.days.includes(day))
-      return classes.sort(this.sortByEarliest)
-    },
-    sortByEarliest: function(a, b) {
-      return this.getSortableTime(a) > this.getSortableTime(b)
-    },
-    getSortableTime: function(course) {
-      let sortableTime = parseInt(
-        course.starts_at.slice(0, -3).replace(':', '')
-      )
-      if (parseInt(sortableTime) < 700) {
-        sortableTime = sortableTime + 1200
-      }
-      return sortableTime
-    },
-    getNamesArray: objList => {
-      const names = objList.map(obj => obj.name)
-      return names
-    }
-  }
+
+<style scoped>
+ol {
+  margin: 0;
+  padding: 0;
 }
-</script>
+table td,
+table th {
+  padding: 0;
+}
+.c8 {
+  border-right-style: solid;
+  padding: 5pt 5pt 5pt 5pt;
+  border-bottom-color: #000000;
+  border-top-width: 1pt;
+  border-right-width: 1pt;
+  border-left-color: #000000;
+  vertical-align: top;
+  border-right-color: #000000;
+  border-left-width: 1pt;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-bottom-width: 1pt;
+  width: 234pt;
+  border-top-color: #000000;
+  border-bottom-style: solid;
+}
+.c3 {
+  border-right-style: solid;
+  padding: 5pt 5pt 5pt 5pt;
+  border-bottom-color: #000000;
+  border-top-width: 1pt;
+  border-right-width: 1pt;
+  border-left-color: #000000;
+  vertical-align: top;
+  border-right-color: #000000;
+  border-left-width: 1pt;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-bottom-width: 1pt;
+  width: 117pt;
+  border-top-color: #000000;
+  border-bottom-style: solid;
+}
+.c1 {
+  color: #000000;
+  font-weight: 400;
+  text-decoration: none;
+  vertical-align: baseline;
+  font-size: 14pt;
+  /* font-family: 'Arial'; */
+  font-style: normal;
+}
+.c11 {
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  vertical-align: baseline;
+  font-size: 14pt;
+  /* font-family: 'Arial'; */
+  font-style: normal;
+}
+.c6 {
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+  height: 11pt;
+}
+.c10 {
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1.15;
+  orphans: 2;
+  widows: 2;
+  text-align: center;
+}
+.c4 {
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1;
+  text-align: left;
+}
+.c9 {
+  margin-left: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-right: auto;
+}
+.c12 {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-right: auto;
+  margin-left: auto;
+}
+.c5 {
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+  line-height: 1;
+  text-align: center;
+}
+.c0 {
+  background-color: #ffffff;
+  max-width: 468pt;
+  padding: 72pt 72pt 72pt 72pt;
+}
+.c7 {
+  height: 11pt;
+}
+.c2 {
+  height: 0pt;
+}
+.title {
+  padding-top: 0pt;
+  color: #000000;
+  font-size: 26pt;
+  padding-bottom: 3pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+.subtitle {
+  padding-top: 0pt;
+  color: #666666;
+  font-size: 15pt;
+  padding-bottom: 16pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+li {
+  color: #000000;
+  font-size: 11pt;
+  /* font-family: 'Arial'; */
+}
+p {
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-size: 11pt;
+  /* font-family: 'Arial'; */
+  max-width: 750px;
+  /* text-align: center; */
+}
+h1 {
+  padding-top: 20pt;
+  color: #000000;
+  font-size: 20pt;
+  padding-bottom: 6pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+h2 {
+  padding-top: 18pt;
+  color: #000000;
+  font-size: 16pt;
+  padding-bottom: 6pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+h3 {
+  padding-top: 16pt;
+  color: #434343;
+  font-size: 14pt;
+  padding-bottom: 4pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+h4 {
+  padding-top: 14pt;
+  color: #666666;
+  font-size: 12pt;
+  padding-bottom: 4pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+h5 {
+  padding-top: 12pt;
+  color: #666666;
+  font-size: 11pt;
+  padding-bottom: 4pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+h6 {
+  padding-top: 12pt;
+  color: #666666;
+  font-size: 11pt;
+  padding-bottom: 4pt;
+  /* font-family: 'Arial'; */
+  line-height: 1.15;
+  page-break-after: avoid;
+  font-style: italic;
+  orphans: 2;
+  widows: 2;
+  text-align: left;
+}
+</style>
