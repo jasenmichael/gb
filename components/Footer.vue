@@ -48,10 +48,10 @@
             <nuxt-link to="/contact">
               <mdb-btn block color="primary">Contact Form</mdb-btn>
             </nuxt-link>
-            <br />
+            <!-- <br />
             <nuxt-link to="/student-interest-form">
               <mdb-btn block color="secondary">Student Interest Form</mdb-btn>
-            </nuxt-link>
+            </nuxt-link> -->
           </div>
           <br />
         </mdb-col>
