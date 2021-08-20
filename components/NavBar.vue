@@ -79,9 +79,15 @@
                 <mdb-dropdown-item anchor-class="white-text" to="/homeschool">
                   Homeschool Enrichment Program
                 </mdb-dropdown-item>
-                <mdb-dropdown-item anchor-class="white-text" to="/events">
-                  Events & Workshops
+                <mdb-dropdown-item
+                  anchor-class="white-text"
+                  to="/game-of-village"
+                >
+                  Game of Village
                 </mdb-dropdown-item>
+                <!-- <mdb-dropdown-item anchor-class="white-text" to="/events">
+                  Events & Workshops
+                </mdb-dropdown-item> -->
               </mdb-dropdown-menu>
             </mdb-dropdown>
           </div>
@@ -128,7 +134,7 @@ export default {
     //   return this.$route.path === '/' ? true : false
     // }
   },
-  mounted: function() {},
+  // mounted: function () {},
   methods: {
     isActive(page) {
       return page === this.$route.path ? 'active' : ''
