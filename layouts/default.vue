@@ -18,6 +18,14 @@ export default {
           rel: 'canonical',
           href: 'https://greenbriarschool.org' + this.$route.path
         }
+      ],
+      meta: [
+        { charset: 'utf-8' },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://greenbriarschool.org/slide/3.jpg'
+        }
       ]
     }
   },

@@ -56,7 +56,8 @@
       <pay-pal />
       <a
         class="pt-4 mt-2"
-        href="https://www.amazon.com/gp/aw/ls/?ref_=navm_accountmenu_lists&filter=unpurchased&sort=default&viewType=grid&fbclid=IwAR0uG04TRYqkpTaf0_47cICwEdhWaFdcfJz2djb1ISHJ4b7P5PPG_6hsn-Y"
+        target="_blank"
+        href="https://www.amazon.com/hz/wishlist/ls/31KD2ND5XY2J/?ref_=lol_ov_le&fbclid=IwAR2pquxt7CCZpuiVLsne9lNj65YBFuxu0npRAVPsAxV2mWLuKW3DXYpyKrQ"
       >
         Amazon Wishlist
       </a>

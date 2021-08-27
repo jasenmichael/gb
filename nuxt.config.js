@@ -6,6 +6,18 @@ require('dotenv').config()
 
 export default {
   // target: 'static',
+  head() {
+    return {
+      meta: [
+        { charset: 'utf-8' },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://greenbriarschool.org/slide/3.jpg',
+        },
+      ]
+    }
+  },
   mode: 'universal',
   server: { port: '3030' },
   // generate: {
