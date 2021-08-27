@@ -46,11 +46,21 @@
     <div class="">
       <school-schedule class=" mx-auto" />
     </div>
+
     <!-- <nuxt-link to="/student-interest-form">
       <div class="text-center">
         <mdb-btn>Student Interest Form</mdb-btn>
       </div>
     </nuxt-link> -->
+    <mdb-row center class="text-center">
+      <pay-pal />
+      <a
+        class="pt-4 mt-2"
+        href="https://www.amazon.com/gp/aw/ls/?ref_=navm_accountmenu_lists&filter=unpurchased&sort=default&viewType=grid&fbclid=IwAR0uG04TRYqkpTaf0_47cICwEdhWaFdcfJz2djb1ISHJ4b7P5PPG_6hsn-Y"
+      >
+        Amazon Wishlist
+      </a>
+    </mdb-row>
 
     <div
       class="
@@ -75,9 +85,10 @@
 </template>
 
 <script>
-import { mdbContainer, mdbBtn, mdbModal } from 'mdbvue'
+import { mdbContainer, mdbBtn, mdbModal, mdbRow } from 'mdbvue'
 import SchoolSchedule from '@/components/SchoolSchedule'
 import Covid from '@/components/Covid'
+import PayPal from '../components/PayPal.vue'
 
 export default {
   components: {
@@ -90,7 +101,9 @@ export default {
     // mdbModalTitle,
     // mdbModalBody,
     // mdbModalFooter,
-    mdbBtn
+    mdbRow,
+    mdbBtn,
+    PayPal
   },
   head: { title: 'Homeschool Enrichment Program Schedule' },
   data() {

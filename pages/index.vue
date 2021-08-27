@@ -115,16 +115,16 @@ export default {
       welcome: 'Greenbriar Community School',
       slides: [
         {
+          img: 'slide/3.jpg',
+          alt: 'slide 3'
+        },
+        {
           img: 'slide/1.jpg',
           alt: 'slide 1'
         },
         {
           img: 'slide/2.jpg',
           alt: 'slide 2'
-        },
-        {
-          img: 'slide/3.jpg',
-          alt: 'slide 3'
         }
       ]
     }
