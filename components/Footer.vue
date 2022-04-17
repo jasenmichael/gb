@@ -25,7 +25,7 @@
             <li class="ml-4 mb-3 pl-3">&nbsp;Bastrop Tx, 78602</li>
             <li>
               <mdb-icon icon="phone" size="2x" class="mr-2 mb-2" />
-              <a href="tel:+1-512-281-2661"> 512-281-2661 </a>
+              <a href="tel:+1-512-535-5532"> 512-535-5532 </a>
             </li>
             <li>
               <mdb-icon icon="envelope" size="2x" class="mr-2" />

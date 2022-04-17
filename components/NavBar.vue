@@ -1,5 +1,5 @@
 <template>
-  <div class="z-depth-5">
+  <div class="z-depth-5 mx-auto">
     <!-- <pre>{{ $mq }}</pre> -->
     <!-- eslint-disable-next-line -->
     <mdb-navbar
@@ -88,9 +88,22 @@
                 <!-- <mdb-dropdown-item anchor-class="white-text" to="/events">
                   Events & Workshops
                 </mdb-dropdown-item> -->
+                <mdb-dropdown-item
+                  anchor-class="white-text"
+                  to="/greenbriar-school-summer-program"
+                >
+                  School Summer Program
+                </mdb-dropdown-item>
               </mdb-dropdown-menu>
             </mdb-dropdown>
           </div>
+          <mdb-nav-item
+            :class="isActive('/greenbriar-school-summer-program') + ' link'"
+            anchor-class="white-text"
+            to="/greenbriar-school-summer-program"
+          >
+            School Summer Program
+          </mdb-nav-item>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>
