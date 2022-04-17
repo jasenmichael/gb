@@ -1,5 +1,5 @@
 <template>
-  <div class="z-depth-5 mx-auto">
+  <div class="z-depth-5">
     <!-- <pre>{{ $mq }}</pre> -->
     <!-- eslint-disable-next-line -->
     <mdb-navbar
@@ -44,7 +44,7 @@
         <strong id="brand"> Greenbriar Community School </strong>
       </mdb-navbar-brand>
       <mdb-navbar-toggler class="menu">
-        <mdb-navbar-nav center>
+        <mdb-navbar-nav class="ml-auto" style="margin-right: 2.5em !important">
           <!-- eslint-disable-next-line -->
           <mdb-nav-item
             :class="isActive('/about') + ' link'"
