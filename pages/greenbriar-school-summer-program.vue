@@ -1,13 +1,15 @@
 <template>
-  <mdb-container class="d-flex justify-content-around">
+  <mdb-container>
     <div class="h-100 d-inline-block mt-5">
       <h1 class="text-center">Greenbriar School Summer Program 2022</h1>
       <h2 class="text-center">June 16 - June 28</h2>
-      <div class="pt-4 text-center" style="max-width: 800px;">
+      <div
+        class="pt-4 text-center"
+        style="max-width: 800px; max-height: 600px;"
+      >
         <img
           src="/images/greenbriar-school-summer-program-2022.jpg"
           class="img-fluid lazyload z-depth-1-half mb-4 center"
-          style="max-width: 800px; max-height: 600px;"
           alt="Greenbriar School Summer Program 2022 flier image"
         />
       </div>
