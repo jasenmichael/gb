@@ -42,7 +42,7 @@
     "mdbvue": "^5.5.0",
     "moment": "^2.24.0",
     "netlify-lambda": "^1.5.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^3.4.3",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-mq": "^2.0.0",
     "nuxt-purgecss": "^0.2.1",
